@@ -1,1 +1,1 @@
-import "../style/reset.scss"
+import './intro.scss'
