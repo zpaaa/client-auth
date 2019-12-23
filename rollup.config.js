@@ -26,8 +26,8 @@ export default [
   {
     input: './src/auth/user.js',
     output: {
-        file: `./dist/auth/user.js`,
-        format: 'esm'
+      file: `./dist/auth/user.js`,
+      format: 'esm'
     },
     plugins: [
       // uglify(),
@@ -61,6 +61,26 @@ export default [
       template({
         template: './public/soft/intro.html',
         target: './dist/soft/intro.html',
+      })
+    ]
+  },
+  {
+    input: './src/auth/upload.js',
+    output: {
+      file: `./dist/auth/upload.js`,
+      format: 'esm'
+    },
+    plugins: [
+      uglify(),
+      scss({
+        output: `./dist/auth/upload.css`
+      }),
+      postcss({
+        plugins: [autoprefixer()]
+      }),
+      template({
+        template: './public/auth/upload.html',
+        target: './dist/auth/upload.html',
       })
     ]
   },
