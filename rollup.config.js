@@ -4,6 +4,7 @@ import autoprefixer from 'autoprefixer'
 import postcss from 'rollup-plugin-postcss-modules'
 // import sourceMaps from 'rollup-plugin-sourcemaps'
 import { uglify } from "rollup-plugin-uglify";
+import { terser } from "rollup-plugin-terser";
 export default [
   // 公共样式
   {
@@ -13,7 +14,7 @@ export default [
       format: 'esm'
     },
     plugins: [
-      uglify(),
+      terser(),
       scss({
         output: `./dist/common.css`
       }),
@@ -29,7 +30,8 @@ export default [
         format: 'esm'
     },
     plugins: [
-      uglify(),
+      // uglify(),
+      terser(),
       scss({
         output: `./dist/auth/user.css`
       }),
@@ -59,6 +61,26 @@ export default [
       template({
         template: './public/soft/intro.html',
         target: './dist/soft/intro.html',
+      })
+    ]
+  },
+  {
+    input: './src/ie/skin-upload.js',
+    output: {
+        file: `./dist/ie/skin-upload.js`,
+        format: 'esm'
+    },
+    plugins: [
+      uglify(),
+      scss({
+        output: `./dist/ie/upload.css`
+      }),
+      postcss({
+        plugins: [autoprefixer()]
+      }),
+      template({
+        template: './public/ie/skin-upload.html',
+        target: './dist/soft/skin-upload.html',
       })
     ]
   }
