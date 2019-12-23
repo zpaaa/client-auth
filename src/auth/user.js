@@ -1,3 +1,3 @@
-import "../style/reset.scss"
+// import "../style/reset.scss"
 import "./user.scss"
 console.log('auth')

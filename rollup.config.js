@@ -6,6 +6,22 @@ import postcss from 'rollup-plugin-postcss-modules'
 import { uglify } from "rollup-plugin-uglify";
 export default [
   {
+    input: './src/style/reset.scss',
+    output: {
+      file: `./dist/common.css`,
+      format: 'cjs'
+    },
+    plugins: [
+      uglify(),
+      scss({
+        output: `./dist/common.css`
+      }),
+      postcss({
+        plugins: [autoprefixer()]
+      })
+    ]
+  },
+  {
     input: './src/auth/user.js',
     output: {
         file: `./dist/auth/user.js`,
