@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "serve": "rollup -c -w",
+    "dev-html": "gulp -f config.js dev",
     "build": "rollup -c",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -12,6 +13,7 @@
   "license": "ISC",
   "devDependencies": {
     "autoprefixer": "^9.7.3",
+    "gulp": "^4.0.2",
     "rollup": "^1.27.13",
     "rollup-plugin-generate-html-template": "^1.6.0",
     "rollup-plugin-postcss-modules": "^2.0.1",

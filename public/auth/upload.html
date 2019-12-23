@@ -1,15 +1,166 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="common.css">
-  <title>上传资质</title>
+  <link rel="stylesheet" href="../common.css">
+  <link rel="stylesheet" href="./upload.css">
+  <title>资质审核页面</title>
 </head>
+
 <body>
-  上传资质
-  test
-  
+  <div id="verify">
+    <header class="verify-header">
+
+
+    </header>
+    <div class="verify-main">
+      <div class="verify-main-contain">
+        <div class="title">
+          <span>完整填写资料并通过资质审核后，即可提交软件<b>（*为必填项）</b></span>
+        </div>
+        <form>
+          <div class="form-item">
+            <div class="form-item-box align-top">
+              <div class="form-item_title is-required">
+                <span>作者类型：</span>
+              </div>
+              <div class="form-item_input">
+                <label class="margin-right-40">
+                  <span class="radio">
+                    <span class="radio-input">
+                      <span class="radio-input_inner"></span>
+                      <input type="radio">
+                    </span>
+                    <span class="radio-label">
+                      企业用户
+                    </span>
+                  </span>
+                </label>
+                <label>
+                  <span class="radio is-checked">
+                    <span class="radio-input">
+                      <span class="radio-input_inner"></span>
+                      <input type="radio" name="" id="">
+                    </span>
+                    <span class="radio-label">
+                      企业用户
+                    </span>
+                  </span>
+                </label>
+              </div>
+            </div>
+          </div>
+          <div class="form-item  is-error">
+            <div class="form-item-box align-top">
+              <div class="form-item_title is-required">
+                <span>公司全称</span>
+              </div>
+              <div class="form-item_input">
+                <input type="text" name="" id="" class="input">
+              </div>
+              <div class="error-msg">
+                此处为必填项
+              </div>
+            </div>
+          </div>
+
+          <div class="form-item">
+            <div class="form-item-box align-top">
+              <div class="form-item_title is-required">
+                <span>企业联系人：<b>（请填写公司企业联系人姓名）</b></span>
+              </div>
+              <div class="form-item_input">
+                <input type="text" name="" id="" class="input">
+              </div>
+            </div>
+          </div>
+
+          <div class="form-item">
+            <div class="form-item-box align-top">
+              <div class="form-item_title is-required">
+                <span>企业电话：<b>（建议填写114可以查询到的企业电话）</b></span>
+              </div>
+              <div class="form-item_input">
+                <input type="text" name="" id="" class="input">
+              </div>
+            </div>
+          </div>
+
+          <div class="form-item">
+            <div class="form-item-box align-top">
+              <div class="form-item_title is-required">
+                <span>公司资质照片：<b>（账户开通须提供：账户注册申请书（本页面下载）、《营业执照》、注册人手持身份证正反面照片等）</b></span>
+              </div>
+              <div class="form-item_input">
+                <button type="button" class="button">上传文件</button>
+                <input type="file" name="" multiple id="">
+              </div>
+            </div>
+          </div>
+
+          <div class="form-item">
+            <div class="form-item-box align-top">
+              <div class="form-item_title">
+                <span>企业邮箱:</span>
+              </div>
+              <div class="form-item_input">
+                <input type="text" name="" id="" class="input">
+              </div>
+            </div>
+          </div>
+
+          <div class="form-item">
+            <div class="form-item-box align-top">
+              <div class="form-item_title">
+                <span>联系电话:</span>
+              </div>
+              <div class="form-item_input">
+                <input type="text" name="" id="" class="input">
+              </div>
+            </div>
+          </div>
+
+          <div class="form-item introduce-form-item">
+            <div class="form-item-box align-top">
+              <div class="form-item_title">
+                <span>公司介绍：<b>（公司背景及主要包含产品的介绍和说明）</b></span>
+              </div>
+              <div class="form-item_input">
+                <textarea cols="30" rows="10" class="textarea"></textarea>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-item agree">
+            <div class="form-item-box align-top">
+              <label>
+                <span class="checkbox">
+                  <span class="checkbox-input">
+                    <span class="checkbox-input_inner"></span>
+                    <input type="checkbox">
+                  </span>
+                  <span class="checkbox-label">
+                    我同意<b>《作者协议》</b>
+                  </span>
+                </span>
+              </label>
+            </div>
+          </div>
+
+          <div class="form-item">
+            <button class="submit-btn button" type="button">立即提交</button>
+          </div>
+
+        </form>
+      </div>
+    </div>
+
+  </div>
+
+
 </body>
+
 </html>
