@@ -5,11 +5,12 @@ import postcss from 'rollup-plugin-postcss-modules'
 // import sourceMaps from 'rollup-plugin-sourcemaps'
 import { uglify } from "rollup-plugin-uglify";
 export default [
+  // 公共样式
   {
-    input: './src/style/reset.scss',
+    input: './src/index.js',
     output: {
-      file: `./dist/common.css`,
-      format: 'cjs'
+      file: `./dist/index.js`,
+      format: 'esm'
     },
     plugins: [
       uglify(),
@@ -38,6 +39,26 @@ export default [
       template({
         template: './public/auth/user.html',
         target: './dist/auth/user.html',
+      })
+    ]
+  },
+  {
+    input: './src/soft/intro.js',
+    output: {
+        file: `./dist/soft/intro.js`,
+        format: 'esm'
+    },
+    plugins: [
+      uglify(),
+      scss({
+        output: `./dist/soft/intro.css`
+      }),
+      postcss({
+        plugins: [autoprefixer()]
+      }),
+      template({
+        template: './public/soft/intro.html',
+        target: './dist/soft/intro.html',
       })
     ]
   },

@@ -1,0 +1,80 @@
+.soft-intro {
+  .tab, .container {
+    min-height: 690px;
+    float: left;
+    box-sizing: border-box;
+    border: 1px solid #e6e6e6;
+    background: #fff;
+  }
+  .tab {
+    width: 240px;
+    margin-right: 20px;
+    .title {
+      width: 240px;
+      height: 40px;
+      line-height: 40px;
+      padding-left: 40px;
+      margin: -1px 0 19px -1px;
+      box-sizing: border-box;
+      background: #3697f5;
+      font-size: 16px;
+      color: #fff;
+    }
+    ul {
+      padding-left: 20px;
+      li {
+        height: 14px;
+        line-height: 14px;
+        padding-left: 20px;
+        margin-bottom: 19px;
+        position: relative;
+        &::before {
+          content: "";
+          width: 6px;
+          height: 6px;
+          border-radius: 50%;
+          background: #ccc;
+          position: absolute;
+          left: 0px;
+          top: 4px;
+        }
+        a {
+          height: 14px;
+          line-height: 14px;
+          font-size: 14px;
+          color: #333;
+          display: inline-block;
+          &:hover {
+            color: #3697f5;
+            border-bottom: 1px solid #3697f5;
+          }
+        }
+      }
+    }
+  }
+  .container {
+    width: 940px;
+    padding: 27px 120px 0 50px;
+    .title {
+      height: 56px;
+      line-height: 56px;
+      font-size: 14px;
+      color: #333;
+      font-weight: bold;
+    }
+    p {
+      margin-bottom: 20px;
+      line-height: 24px;
+      font-size: 14px;
+      color: #666;
+      text-indent: 30px;
+    }
+    li {
+      height: 28px;
+      line-height: 28px;
+      margin-bottom: 12px;
+      font-size: 14px;
+      color: #666;
+    }
+  }
+}
