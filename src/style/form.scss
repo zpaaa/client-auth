@@ -6,7 +6,6 @@
   .form-item_title {
     height: 26px;
     font-size: 14px;
-    text-indent: 10px;
     color: #333333;
     @include when(required){
       &::before {
@@ -88,7 +87,6 @@
     padding: 0 10px;
     outline: none;
     &.input[type="text"]:focus{
-      color: #3d9df2;
       border: 1px solid  #3d9df2;
     }
   }
