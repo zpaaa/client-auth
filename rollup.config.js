@@ -65,6 +65,26 @@ export default [
     ]
   },
   {
+    input: './src/soft/index.js',
+    output: {
+        file: `./dist/soft/index.js`,
+        format: 'esm'
+    },
+    plugins: [
+      uglify(),
+      scss({
+        output: `./dist/soft/index.css`
+      }),
+      postcss({
+        plugins: [autoprefixer()]
+      }),
+      template({
+        template: './public/soft/index.html',
+        target: './dist/soft/index.html',
+      })
+    ]
+  },
+  {
     input: './src/auth/upload.js',
     output: {
       file: `./dist/auth/upload.js`,

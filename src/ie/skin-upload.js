@@ -3,4 +3,5 @@ import { headSwitch, getLoginState } from './common'
 $(function() {
   headSwitch()
   getLoginState()
+  initEvent()
 })
