@@ -38,40 +38,40 @@
     <!--头部 end--> 
     <div class="main inner">
       <div class="title">皮肤提交</div>
-      <div class="form-item" id="companyContactPerson">
+      <div class="form-item" id="display-name">
         <div class="form-item-box align-top">
           <div class="form-item_title is-required">
             <span>皮肤名称 <b>（不超过20个汉字或字符）</b></span>
           </div>
           <div class="form-item_input">
-            <input type="text" name="" id="" class="input">
+            <input type="text" name="" class="input">
           </div>
         </div>
       </div>
-      <div class="form-item" id="companyContactPerson">
+      <div class="form-item introduce-form-item" id="description">
         <div class="form-item-box align-top">
           <div class="form-item_title is-required">
             <span>皮肤描述<b>（不超过20个汉字或字符）</b></span>
           </div>
           <div class="form-item_input">
-            <input type="text" name="" id="" class="input">
+            <textarea cols="30" rows="10" class="textarea"></textarea>
           </div>
         </div>
       </div>
 
-      <div class="form-item">
+      <div class="form-item" id="upload-file">
         <div class="form-item-box align-top">
           <div class="form-item_title is-required">
             <span>文件 <b>（您的扩展包，只支持zip，不超过10M）</b></span>
           </div>
           <div class="form-item_input">
-            <button type="button" class="button">上传文件</button>
-            <input type="file" name="" id="">
+            <button type="button" class="button" id="upload-btn">上传文件</button>
+            <input type="file" name="" style="display: none;">
           </div>
         </div>
       </div>
 
-      <div class="form-item agree">
+      <div class="form-item agree" id="agree">
         <div class="form-item-box align-top">
           <label>
             <span class="checkbox">
@@ -87,10 +87,9 @@
         </div>
       </div>
 
-      <div class="form-item">
+      <div class="form-item" id="submit">
         <button class="submit-btn button" type="button">立即提交</button>
       </div>
-
     </div>
   </div>
   <script src="../lib/jquery-1.8.3.min.js"></script>
