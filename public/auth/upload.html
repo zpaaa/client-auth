@@ -29,18 +29,18 @@
               </div>
               <div class="form-item_input" id="userType">
                 <label class="margin-right-40" name='aa'>
-                  <span class="radio">
+                  <span class="radio is-checked">
                     <span class="radio-input">
                       <span class="radio-input_inner"></span>
-                      <input type="radio" id="aa" value="2">
+                      <input type="radio" id="aa" value="1">
                     </span>
                     <span class="radio-label">
-                      企业用户
+                      个人用户
                     </span>
                   </span>
                 </label>
                 <label>
-                  <span class="radio is-checked">
+                  <span class="radio">
                     <span class="radio-input">
                       <span class="radio-input_inner"></span>
                       <input type="radio" value="2">
@@ -56,7 +56,8 @@
             </div>
           </div>
 
-          <!-- <div class="form-item  is-required" id="userName">
+          <div id="person"  >
+            <div class="form-item  is-required" id="userName">
             <div class="form-item-box align-top">
               <div class="form-item_title is-required">
                 <span>姓名：<b>（请填写真实姓名）</b></span>
@@ -82,7 +83,7 @@
             </div>
           </div>
 
-          <div class="form-item" id="companyPictureList">
+          <div class="form-item" id="idCardHandHeld">
             <div class="form-item-box align-top">
               <div class="form-item_title is-required">
                 <span>身份证信息：<b>（手持身份证的证明头部照片，照片中能看清姓名、身份证号等信息）</b></span>
@@ -92,23 +93,7 @@
                   <button type="button" class="button">上传文件</button>
                   <input type="file" style="display: none;" accept="image/*" multiple>
                 </span>
-                <span id="uploadList">
-                  <span class="file-box" >
-                    <span class="file-name">哈哈哈哈</span><b>.png</b>
-                    <i></i>
-                  </span>
-                  <span class="file-box" >
-                    <span class="file-name">哈哈哈哈</span><b>.png</b>
-                    <i></i>
-                  </span>
-                  <span class="file-box" >
-                    <span class="file-name">哈哈哈哈</span><b>.png</b>
-                    <i></i>
-                  </span>
-                  <span class="file-box" >
-                    <span class="file-name">哈哈哈哈</span><b>.png</b>
-                    <i></i>
-                  </span>
+                <span id="idCardHandHeldUploadList"  class="upload-pic-list">
                 </span>
               </div>
               <div class="error-msg">
@@ -116,21 +101,27 @@
             </div>
           </div>
 
-          <div class="form-item" id="companyPictureList">
+          <div class="form-item" id="idCardFront">
             <div class="form-item-box align-top">
               <div class="form-item_title is-required">
                 <span>身份证照片：<b>（上传身份证正、反两面照片）</b></span>
               </div>
               <div class="form-item_input">
-                <button type="button" class="button">上传文件</button>
-                <input type="file"  style="display: none;" accept="image/*" multiple>
+                <span>
+                  <button type="button" class="button">上传文件</button>
+                  <input type="file" style="display: none;" accept="image/*" multiple>
+                </span>
+                <span id="idCardFrontUploadList" class="upload-pic-list">
+                </span>
+                <!-- <button type="button" class="button">上传文件</button>
+                <input type="file"  style="display: none;" accept="image/*" multiple> -->
               </div>
               <div class="error-msg">
               </div>
             </div>
           </div>
 
-          <div class="form-item  is-required" id="phone">
+          <div class="form-item  is-required" id="PersonPhone">
             <div class="form-item-box align-top">
               <div class="form-item_title is-required">
                 <span>手机号：</span>
@@ -143,9 +134,9 @@
             </div>
           </div>
 
-          <div class="form-item" id="email">
+          <div class="form-item" id="personEmail">
             <div class="form-item-box align-top">
-              <div class="form-item_title is-required">
+              <div class="form-item_title">
                 <span>邮箱：</span>
               </div>
               <div class="form-item_input">
@@ -154,118 +145,104 @@
               <div class="error-msg">
               </div>
             </div>
-          </div> -->
-
-          <div class="form-item " id="companyName">
-            <div class="form-item-box align-top">
-              <div class="form-item_title is-required">
-                <span>公司全称</span>
-              </div>
-              <div class="form-item_input">
-                <input type="text" name="" id="" class="input">
-              </div>
-              <div class="error-msg">
-              </div>
-            </div>
           </div>
 
-          <div class="form-item" id="companyContactPerson">
-            <div class="form-item-box align-top">
-              <div class="form-item_title is-required">
-                <span>企业联系人：<b>（请填写公司企业联系人姓名）</b></span>
-              </div>
-              <div class="form-item_input">
-                <input type="text" name="" id="" class="input">
-              </div>
-              <div class="error-msg">
-              </div>
-            </div>
           </div>
 
-          <div class="form-item" id="companyPersonalPhone">
-            <div class="form-item-box align-top">
-              <div class="form-item_title is-required">
-                <span>企业电话：<b>（建议填写114可以查询到的企业电话）</b></span>
-              </div>
-              <div class="form-item_input">
-                <input type="text" name="" id="" class="input">
-              </div>
-              <div class="error-msg">
+          <div id="company"  style="display: none;" >
+            <div class="form-item " id="companyName">
+              <div class="form-item-box align-top">
+                <div class="form-item_title is-required">
+                  <span>公司全称</span>
+                </div>
+                <div class="form-item_input">
+                  <input type="text" name="" id="" class="input">
+                </div>
+                <div class="error-msg">
+                </div>
               </div>
             </div>
-          </div>
 
-          <div class="form-item" id="companyPictureList">
-            <div class="form-item-box align-top">
-              <div class="form-item_title is-required">
-                <span>公司资质照片：<b>（账户开通须提供：账户注册申请书（本页面下载）、《营业执照》、注册人手持身份证正反面照片等）</b></span>
+            <div class="form-item" id="companyContactPerson">
+              <div class="form-item-box align-top">
+                <div class="form-item_title is-required">
+                  <span>企业联系人：<b>（请填写公司企业联系人姓名）</b></span>
+                </div>
+                <div class="form-item_input">
+                  <input type="text" name="" id="" class="input">
+                </div>
+                <div class="error-msg">
+                </div>
               </div>
-              <div class="form-item_input">
-                <span>
-                  <button type="button" class="button">上传文件</button>
-                  <input type="file"  style="display: none;" accept="image/*" multiple >
-                </span>
-                <span id="uploadList">
-                  <span class="file-box" >
-                    <span class="file-name">哈哈哈哈</span><b>.png</b>
-                    <i></i>
+            </div>
+
+            <div class="form-item" id="companyPersonalPhone">
+              <div class="form-item-box align-top">
+                <div class="form-item_title is-required">
+                  <span>企业电话：<b>（建议填写114可以查询到的企业电话）</b></span>
+                </div>
+                <div class="form-item_input">
+                  <input type="text" name="" id="" class="input">
+                </div>
+                <div class="error-msg">
+                </div>
+              </div>
+            </div>
+
+            <div class="form-item" id="companyPictureList">
+              <div class="form-item-box align-top">
+                <div class="form-item_title is-required">
+                  <span>公司资质照片：<b>（账户开通须提供：账户注册申请书（本页面下载）、《营业执照》、注册人手持身份证正反面照片等）</b></span>
+                </div>
+                <div class="form-item_input"
+                  style="user-select: none;-moz-user-select: none;-webkit-user-select: none;">
+                  <span>
+                    <button type="button" class="button">上传文件</button>
+                    <input type="file" style="display: none;" accept="image/*" multiple>
                   </span>
-                  <span class="file-box" >
-                    <span class="file-name">哈哈哈哈</span><b>.png</b>
-                    <i></i>
+                  <span id="uploadList"  class="upload-pic-list">
                   </span>
-                  <span class="file-box" >
-                    <span class="file-name">哈哈哈哈</span><b>.png</b>
-                    <i></i>
-                  </span>
-                  <span class="file-box" >
-                    <span class="file-name">哈哈哈哈</span><b>.png</b>
-                    <i></i>
-                  </span>
-                </span>
-              
-              </div>
-
-
-              <div class="error-msg">
+                </div>
+                <div class="error-msg">
+                </div>
               </div>
             </div>
-          </div>
 
-          <div class="form-item" id="email">
-            <div class="form-item-box align-top">
-              <div class="form-item_title">
-                <span>企业邮箱:</span>
-              </div>
-              <div class="form-item_input">
-                <input type="text" name="" id="" class="input">
+            <div class="form-item" id="email">
+              <div class="form-item-box align-top">
+                <div class="form-item_title">
+                  <span>企业邮箱:</span>
+                </div>
+                <div class="form-item_input">
+                  <input type="text" name="" id="" class="input">
+                </div>
               </div>
             </div>
-          </div>
 
-          <div class="form-item"  id="phone" >
-            <div class="form-item-box align-top">
-              <div class="form-item_title">
-                <span>联系电话:</span>
-              </div>
-              <div class="form-item_input">
-                <input type="text" name="" id="" class="input">
+            <div class="form-item" id="phone">
+              <div class="form-item-box align-top">
+                <div class="form-item_title">
+                  <span>联系电话:</span>
+                </div>
+                <div class="form-item_input">
+                  <input type="text" name="" id="" class="input">
+                </div>
               </div>
             </div>
-          </div>
 
-          <div class="form-item introduce-form-item" id="companyIntroduction">
-            <div class="form-item-box align-top">
-              <div class="form-item_title">
-                <span>公司介绍：<b>（公司背景及主要包含产品的介绍和说明）</b></span>
-              </div>
-              <div class="form-item_input">
-                <textarea cols="30" rows="10" class="textarea"></textarea>
+            <div class="form-item introduce-form-item" id="companyIntroduction">
+              <div class="form-item-box align-top">
+                <div class="form-item_title">
+                  <span>公司介绍：<b>（公司背景及主要包含产品的介绍和说明）</b></span>
+                </div>
+                <div class="form-item_input">
+                  <textarea cols="30" rows="10" class="textarea"></textarea>
+                </div>
               </div>
             </div>
+
           </div>
 
-         
           <div class="form-item " id="agree">
             <div class="form-item-box align-top">
               <label>
