@@ -38,8 +38,9 @@
     border: 1px solid #e6e6e6;
     background: #f4f4f4;
     li {
-      width: 234px;
+      width: 214px;
       height: 52px;
+      padding-right: 20px;
       position: relative;
       line-height: 52px;
       float: left;
@@ -50,6 +51,7 @@
       font-weight: bold;
       &.last-step {
         width: 220px;
+        padding-right: 0;
       }
       i {
         width: 20px;
