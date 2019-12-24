@@ -91,7 +91,7 @@ export default [
         format: 'esm'
     },
     plugins: [
-      uglify(),
+      terser(),
       scss({
         output: `./dist/ie/upload.css`
       }),

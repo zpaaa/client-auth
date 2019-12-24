@@ -1,4 +1,17 @@
+@import '../style/form.scss';
+@import "../style/mixins.scss";
+@import "./common.scss";
+body {
+  background: #fafafa;
+}
 .ie-upload {
+  .main {
+    margin-top: 20px;
+    padding: 33px 0 0 60px;
+    box-sizing: border-box;
+    background: #fff;
+    border: 1px solid #e6e6e6;
+  }
   .title {
     height: 70px;
     line-height: 70px;

@@ -1,2 +1,6 @@
 import './upload.scss'
-console.log('ie')
+import { headSwitch, getLoginState } from './common'
+$(function() {
+  headSwitch()
+  getLoginState()
+})
