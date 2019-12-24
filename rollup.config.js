@@ -71,7 +71,7 @@ export default [
       format: 'esm'
     },
     plugins: [
-      uglify(),
+      terser(),
       scss({
         output: `./dist/auth/upload.css`
       }),

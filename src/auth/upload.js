@@ -1,101 +1,171 @@
 
 import './upload.scss'
-  // import '../style/form.scss'
-  ; (function () {
-    $('#userType').on('click', 'label', function (e) {
-      console.log('切换userType')
-      if ($(e.target).is("input")) {
-        return
-      }
-      $(this).find('.radio').addClass('is-checked')
-      $(this).siblings().find('.is-checked').removeClass('is-checked')
-    })
+(function () {
+  var fileList = []
 
 
-    var vrertifyRules = {
-      isNonEmpty(value, errorMsg) {
-        return value === '' ?
-          errorMsg : void 0
-      },
-      minLength(value, length, errorMsg) {
-        return value.length < length ?
-          errorMsg : void 0
-      },
-      maxLength(value, length, errorMsg) {
-        return value.length < length ?
-          errorMsg : void 0
-      },
-      isMoblie(value, errorMsg) {
-        return !/^1(3|5|7|8|9)[0-9]{9}$/.test(value) ?
-          errorMsg : void 0
-      },
-      isEmail(value, errorMsg) {
-        return !/^\w+([+-.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/.test(value) ?
-          errorMsg : void 0
-      }
-    }
-    class Validator {
-      constructor() {
-        this.cache = {}
-      }
-      add(key, rules) {
-        this.cache[key] || (this.cache[key] = [])
-        for (let rule of rules) {
-          let verifyArr = rule.verify.split(':')
-          let errMsg = rule.errMsg
-          this.cache[key].push(() => {
-            let verify = verifyArr.shift()
-            verifyArr.unshift(dom.value)
-            verifyArr.push(errMsg)
-            return vrertifyRules[verify].apply(dom, verifyArr)
-          })
+  var formData = {
+    initEvent: function () {
+      /* 切换用户单选框 */
+      $('#userType').on('click', 'label', function (e) {
+        console.log('切换userType')
+        if ($(e.target).is("input")) {
+          return
         }
-        return this
-      }
-      start() {
-        let errMsg = {}
-        for (let key in this.cache) {
-          const verifyFnArr = this.cache[key]
-          for (var i = 0; i < verifyFnArr.length; i++) {
-            let err = verifyFnArr[i]()
-            if (err) {
-              errMsg = err
-              break;
-            }
+        $(this).find('.radio').addClass('is-checked')
+        $(this).siblings().find('.is-checked').removeClass('is-checked')
+      })
+      /* 统一的勾选统一按钮 */
+      $('#agree').on('click', '.checkbox-input', function (e) {
+        if ($(e.target).is("input")) {
+          return
+        }
+        var oCheckbox = $(this).parent('.checkbox')
+        oCheckbox.hasClass('is-checked') ? oCheckbox.removeClass('is-checked') : oCheckbox.addClass('is-checked'); $('#agree .error-msg').html('')
+      })
+      /* 点击上传文件 */
+      $('#companyPictureList').on('click', '[type="button"]', function () {
+        console.log('上传文件')
+        $('#companyPictureList [type="file"]').click()
+      })
+      /* 多次选择图片 */
+      $('#companyPictureList').on('click', '[ type="file"]', function () {
+        // console.log('上传文件')
+        // $('#companyPictureList [type="file"]').click()
+        fileList.concat(Array.prototype.slice.call( $('#companyPictureList [type="file"]')[0].files))
+
+      })
+      /* 点击上传按钮 */
+      $('#submit').on('click', function () {
+        var agree = $('#agree .checkbox').hasClass('is-checked')
+        var msg = validatorFunc()
+        console.log(msg)
+        if (JSON.stringify(msg) !== '{}') {
+          for (var id in msg) {
+            $('#' + id).addClass('is-error')
+            $('#' + id + ' ' + '.error-msg').html(msg[id])
           }
         }
-        return errMsg
-      }
-    }
+        if (agree) {
 
-
-    var validatorFunc = function(){
-      let validator = new Validator()
-      validator.add('companyName',[
-        {verify:'isNonEmpty',errMsg:'公司名称不能为空'},
-        {verify:'maxLength:50',errMsg:'长度不能超过50'}
-      ]).add('companyContactPerson',[
-        {verify:'isNonEmpty',errMsg:'名称不能为空'},
-        {verify:'maxLength:10',errMsg:'长度不能超过10'},
-      ]).add('companyPersonalPhone',[
-        {verify:'isNonEmpty',errMsg:'不能为空'},
-        {verify:'maxLength:10',errMsg:'长度不能超过100'},
-      ])
-      let msg = validator.start()
-      return msg
-    }
-    
-
-    function getFromData(){
+        } else {
+          $('#agree .error-msg').html('请先勾选作者协议')
+        }
+      });
+    },
+    getData: function () {
       var data = {}
-      console.log($('#userType .is-required input'))
+      var fileList = []
       data.userType = $('#userType .is-checked input').val()
       data.companyName = $('#companyName input').val()
-      data.companyContactPerson = $('#companyContactPerson').val()
+      data.companyContactPerson = $('#companyContactPerson input').val()
       data.companyPersonalPhone = $('#companyPersonalPhone input').val()
-      console.log(data,'表单的value')
+      data.email = $('#email input').val()
+      data.phone = $('#phone input').val()
+      data.companyIntroduction = $('#companyIntroduction textarea').val()
+      // data.companyPictureList = $('#companyPictureList [type="file"]')[0].files
+      data.companyPictureList = fileList
+      // data.companyPictureList = fileList.concat(Array.prototype.slice.call(data.companyPictureList))
+      console.log(window.a = data.companyPictureList)
+      return data
     }
-    getFromData()
+
+  }
+
+
+
+
+
+
+
+
+  var vrertifyRules = {
+    isNonEmpty: function (value, errorMsg) {
+      return value === '' ?
+        errorMsg : void 0
+    },
+    minLength: function (value, length, errorMsg) {
+      return value.length < length ?
+        errorMsg : void 0
+    },
+    maxLength: function (value, length, errorMsg) {
+      return value.length > length ?
+        errorMsg : void 0
+    },
+    isMoblie: function (value, errorMsg) {
+      return !/^1(3|5|7|8|9)[0-9]{9}$/.test(value) ?
+        errorMsg : void 0
+    },
+    isEmail: function (value, errorMsg) {
+      return !/^\w+([+-.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/.test(value) ?
+        errorMsg : void 0
+    }
+  }
+  class Validator {
+    constructor() {
+      this.cache = {}
+    }
+    add(key, value, rules) {
+      this.cache[key] || (this.cache[key] = [])
+      for (let rule of rules) {
+        let verifyArr = rule.verify.split(':')
+        let errMsg = rule.errMsg
+        this.cache[key].push(() => {
+          let verify = verifyArr.shift()
+          verifyArr.unshift(value)
+          verifyArr.push(errMsg)
+          return vrertifyRules[verify].apply(key, verifyArr)
+        })
+      }
+      return this
+    }
+    keyValidator(key) {
+      var verifyFnArr = this.cache[key]
+      for (var i = 0; i < verifyFnArr.length; i++) {
+        let err = verifyFnArr[i]()
+        if (err) {
+          return err
+        }
+      }
+    }
+    start() {
+      var errMsg = {}
+      for (let key in this.cache) {
+        var verifyFnArr = this.cache[key]
+        for (var i = 0; i < verifyFnArr.length; i++) {
+          let err = verifyFnArr[i]()
+          if (err) {
+            errMsg[key] = err
+            break;
+          }
+        }
+      }
+      return errMsg
+    }
+  }
+
+  var validatorFunc = function () {
+    const data = getFromData()
+    let validator = new Validator()
+    validator
+      .add('companyName', data.companyName, [
+        { verify: 'isNonEmpty', errMsg: '公司名称不能为空' },
+        { verify: 'maxLength:50', errMsg: '长度不能超过50' }
+      ])
+      .add('companyContactPerson', data.companyContactPerson, [
+        { verify: 'isNonEmpty', errMsg: '名称不能为空' },
+        { verify: 'maxLength:10', errMsg: '长度不能超过10' },
+      ])
+      .add('companyPersonalPhone', data.companyPersonalPhone, [
+        { verify: 'isNonEmpty', errMsg: '不能为空' },
+        { verify: 'maxLength:10', errMsg: '长度不能超过100' },
+      ])
+      .add('companyPictureList', data.companyPictureList, [
+        { verify: 'minLength:1', errMsg: '请选择公司资质照片' }
+      ])
+    let msg = validator.start()
+    return msg
+  }
 
 
 
@@ -111,35 +181,18 @@ import './upload.scss'
 
 
 
-  })()
 
 
 
-// class Validator {
-//   constructor() {
-//     this.cache = []
-//   }
-//   add(dom, rules) {
-//     for (let rule of rules) {
-//       let strategyArr = rule.strategy.split(':')  ////例如['minLength',6]
-//       let errMsg = rule.errorMsg      ////'用户名不能为空'
-//       this.cache.push(() => {
-//         let strategy = strategyArr.shift()  ////用户挑选的strategy
-//         strategyArr.unshift(dom.value)      //把input的value添加进去 此处是原生的写法 现在直接改为验证的key就可以
-//         strategyArr.push(errMsg)    ////把errorMsg添加进参数列表，[dom.value,6,errorMsg]
-//         return strategies[strategy].apply(dom, strategyArr)
-//       })
-//     }
-//   }
-//   start() {
-//     for (let validatorFunc of this.cache) {
-//       let errMsg = validatorFunc()
-//       if (errMsg) {
-//         return errMsg
-//       }
-//     }
-//   }
-// }
+
+
+
+
+
+
+})();
+
+
 
 
 
