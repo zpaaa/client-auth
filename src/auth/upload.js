@@ -131,12 +131,13 @@ import './upload.scss'
       /* 多次选择图片 */
       $('#companyPictureList').on('click', '[ type="file"]', function () {
         fileList.concat(Array.prototype.slice.call($('#companyPictureList [type="file"]')[0].files))
-
       })
       /* 点击图片的删除 */
       $('#uploadList').on('click', 'i', function () {
         var index = $(this).attr('data-index')
         fileList.splice(index, 1)
+        /* 不管删除的谁  都清空input的value */
+        $('#companyPictureList [type="file"]')[0].value = ''
         company.renderFilelist()
       })
 
@@ -152,6 +153,9 @@ import './upload.scss'
         if (msg) {
           $(this).parents('.form-item').addClass('is-error')
           $(this).parents('.form-item').find('.error-msg').html(msg)
+        }else{
+          $(this).parents('.form-item').removeClass('is-error')
+          $(this).parents('.form-item').find('.error-msg').html(msg)
         }
       })
       $('#companyContactPerson input').on('change', function () {
@@ -159,6 +163,9 @@ import './upload.scss'
         var msg = conpanyValidator.keyValidator('companyContactPerson')
         if (msg) {
           $(this).parents('.form-item').addClass('is-error')
+          $(this).parents('.form-item').find('.error-msg').html(msg)
+        }else{
+          $(this).parents('.form-item').removeClass('is-error')
           $(this).parents('.form-item').find('.error-msg').html(msg)
         }
       })
@@ -168,6 +175,9 @@ import './upload.scss'
         if (msg) {
           $(this).parents('.form-item').addClass('is-error')
           $(this).parents('.form-item').find('.error-msg').html(msg)
+        }else{
+          $(this).parents('.form-item').removeClass('is-error')
+          $(this).parents('.form-item').find('.error-msg').html(msg)
         }
       })
       $('#companyPictureList input').on('change', function () {
@@ -175,6 +185,9 @@ import './upload.scss'
         var msg = conpanyValidator.keyValidator('companyPictureList')
         if (msg) {
           $(this).parents('.form-item').addClass('is-error')
+          $(this).parents('.form-item').find('.error-msg').html(msg)
+        }else{
+          $(this).parents('.form-item').removeClass('is-error')
           $(this).parents('.form-item').find('.error-msg').html(msg)
         }
       })
@@ -268,7 +281,6 @@ import './upload.scss'
       })
       $('#idCardFront [type="file"]').on('change', function () {
         idCardFrontList = idCardFrontList.concat(Array.prototype.slice.call($(this)[0].files))
-        console.log(idCardFrontList, 'sssssssssssssss')
         person.render(idCardHandHeldList, 'idCardFrontUploadList')
       })
 
@@ -278,6 +290,9 @@ import './upload.scss'
         if (msg) {
           $(this).parents('.form-item').addClass('is-error')
           $(this).parents('.form-item').find('.error-msg').html(msg)
+        }else{
+          $(this).parents('.form-item').removeClass('is-error')
+          $(this).parents('.form-item').find('.error-msg').html('')
         }
       })
       $('#idNumber input').on('change', function () {
@@ -286,6 +301,9 @@ import './upload.scss'
         if (msg) {
           $(this).parents('.form-item').addClass('is-error')
           $(this).parents('.form-item').find('.error-msg').html(msg)
+        }else{
+          $(this).parents('.form-item').removeClass('is-error')
+          $(this).parents('.form-item').find('.error-msg').html('')
         }
       })
       $('#idCardHandHeld input').on('change', function () {
@@ -294,6 +312,9 @@ import './upload.scss'
         if (msg) {
           $(this).parents('.form-item').addClass('is-error')
           $(this).parents('.form-item').find('.error-msg').html(msg)
+        }else{
+          $(this).parents('.form-item').removeClass('is-error')
+          $(this).parents('.form-item').find('.error-msg').html('')
         }
       })
       $('#idCardFront input').on('change', function () {
@@ -302,9 +323,11 @@ import './upload.scss'
         if (msg) {
           $(this).parents('.form-item').addClass('is-error')
           $(this).parents('.form-item').find('.error-msg').html(msg)
+        }else{
+          $(this).parents('.form-item').removeClass('is-error')
+          $(this).parents('.form-item').find('.error-msg').html('')
         }
       })
-
     },
     render: function (data, id) {
       var str = ''
@@ -361,6 +384,9 @@ import './upload.scss'
           $('#' + id).addClass('is-error')
           $('#' + id + ' ' + '.error-msg').html(errObj[id])
         }
+      }else{
+        $('.is-error').removeClass('is-error')
+        $('.is-error .error-msg').html('')
       }
 
 
