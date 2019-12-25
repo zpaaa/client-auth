@@ -1,14 +1,18 @@
 @import "../style/mixins.scss";
 @import '../style/form.scss';
+@import '../style/softHeadeFooter.scss';
 
 #verify {
   width: 100%;
   background: #fafafa;
-  .verify-header {
-    height: 80px;
-    border: 1px solid #e6e6e6;
-    background: #ffffff;
-  }
+  // .verify-header {
+  //   height: 80px;
+  //   border: 1px solid #e6e6e6;
+  //   background: #ffffff;
+  // }
+  @include softHeader();
+
+  @include softFooter()
 }
 
 .verify-main {
@@ -17,6 +21,7 @@
   @include contain();
   overflow: hidden;
   .verify-main-contain {
+    box-sizing: border-box;
     @include contain-style();
     margin-top: 20px;
     margin-bottom: 30px;

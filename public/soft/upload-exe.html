@@ -13,7 +13,28 @@
 <body>
   <div id='upload-exe'>
     <header class="header">
-
+      <div class="header-box">
+        <div class="logo">
+          <a href="/"></a>
+        </div>
+        <nav class="nav">
+          <div class="user-info">
+            <span>@ued/2345.com</span>|
+            <span>退出</span>
+          </div>
+          <ul class="nav-list">
+            <li class="nav-item">
+              <a href="javascripe:;">首页</a>
+            </li>
+            <li class="nav-item">
+              <a href="javascripe:;">平台介绍</a>
+            </li>
+            <li class="nav-item">
+              <a href="javascripe:;">2345软件宝库</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
     </header>
     <main class="upload-exe-main">
       <div class="title">
@@ -91,6 +112,34 @@
               </span>
               <span id="idCardHandHeldUploadList" class="upload-pic-list">
               </span>
+            </div>
+            <div class="error-msg">
+            </div>
+          </div>
+        </div>
+
+        <div class="form-item" id="file">
+          <div class="form-item-box align-top">
+            <div class="form-item_title">
+              <span>软件分类</span>
+            </div>
+            <div class="form-item_input" style="overflow:inherit">
+              <div class="select"  id="select">
+                <div class="inner">
+                  选中的值
+                </div>
+                <ul class="options-list">
+                  <li class="options-item" value="1" label="视频软件">
+                    视频软件
+                  </li>
+                </ul>
+              </div>
+              <!-- <span>
+                <button type="button" class="button">上传文件</button>
+                <input type="file" style="display: none;">
+              </span>
+              <span id="idCardHandHeldUploadList" class="upload-pic-list">
+              </span> -->
             </div>
             <div class="error-msg">
             </div>
@@ -326,7 +375,7 @@
           </div>
         </div>
 
-        <div class="form-item introduce-form-item"  id="description">
+        <div class="form-item introduce-form-item" id="description">
           <div class="form-item-box align-top">
             <div class="form-item_title  is-required">
               <span>软件介绍：<b>（请填写软件的介绍和说明，300字以内）</b></span>
@@ -393,7 +442,7 @@
             <div class="form-item_input">
               <span>
                 <button type="button" class="button">上传文件</button>
-                <input type="file" style="display: none;"  accept="image/*" multiple>
+                <input type="file" style="display: none;" accept="image/*" multiple>
               </span>
               <span id="softIdentity" class="upload-pic-list">
               </span>

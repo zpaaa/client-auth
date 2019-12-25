@@ -12,9 +12,29 @@
 
 <body>
   <div id="verify">
-    <header class="verify-header">
-
-
+    <header class="header">
+      <div class="header-box">
+        <div class="logo">
+          <a href="/"></a>
+        </div>
+        <nav class="nav">
+          <div class="user-info">
+            <span>@ued/2345.com</span>|
+            <span>退出</span>
+          </div>
+          <ul class="nav-list">
+            <li class="nav-item">
+              <a href="javascripe:;">首页</a>
+            </li>
+            <li class="nav-item">
+              <a href="javascripe:;">平台介绍</a>
+            </li>
+            <li class="nav-item">
+              <a href="javascripe:;">2345软件宝库</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
     </header>
     <div class="verify-main">
       <div class="verify-main-contain">
@@ -56,100 +76,100 @@
             </div>
           </div>
 
-          <div id="person"  >
+          <div id="person">
             <div class="form-item  is-required" id="userName">
-            <div class="form-item-box align-top">
-              <div class="form-item_title is-required">
-                <span>姓名：<b>（请填写真实姓名）</b></span>
-              </div>
-              <div class="form-item_input">
-                <input type="text" name="" id="" class="input">
-              </div>
-              <div class="error-msg">
-              </div>
-            </div>
-          </div>
-
-          <div class="form-item  is-required" id="idNumber">
-            <div class="form-item-box align-top">
-              <div class="form-item_title is-required">
-                <span>身份证号码：</b></span>
-              </div>
-              <div class="form-item_input">
-                <input type="text" name="" id="" class="input">
-              </div>
-              <div class="error-msg">
+              <div class="form-item-box align-top">
+                <div class="form-item_title is-required">
+                  <span>姓名：<b>（请填写真实姓名）</b></span>
+                </div>
+                <div class="form-item_input">
+                  <input type="text" name="" id="" class="input">
+                </div>
+                <div class="error-msg">
+                </div>
               </div>
             </div>
-          </div>
 
-          <div class="form-item" id="idCardHandHeld">
-            <div class="form-item-box align-top">
-              <div class="form-item_title is-required">
-                <span>身份证信息：<b>（手持身份证的证明头部照片，照片中能看清姓名、身份证号等信息）</b></span>
-              </div>
-              <div class="form-item_input">
-                <span>
-                  <button type="button" class="button">上传文件</button>
-                  <input type="file" style="display: none;" accept="image/*" multiple>
-                </span>
-                <span id="idCardHandHeldUploadList"  class="upload-pic-list">
-                </span>
-              </div>
-              <div class="error-msg">
+            <div class="form-item  is-required" id="idNumber">
+              <div class="form-item-box align-top">
+                <div class="form-item_title is-required">
+                  <span>身份证号码：</b></span>
+                </div>
+                <div class="form-item_input">
+                  <input type="text" name="" id="" class="input">
+                </div>
+                <div class="error-msg">
+                </div>
               </div>
             </div>
-          </div>
 
-          <div class="form-item" id="idCardFront">
-            <div class="form-item-box align-top">
-              <div class="form-item_title is-required">
-                <span>身份证照片：<b>（上传身份证正、反两面照片）</b></span>
+            <div class="form-item" id="idCardHandHeld">
+              <div class="form-item-box align-top">
+                <div class="form-item_title is-required">
+                  <span>身份证信息：<b>（手持身份证的证明头部照片，照片中能看清姓名、身份证号等信息）</b></span>
+                </div>
+                <div class="form-item_input">
+                  <span>
+                    <button type="button" class="button">上传文件</button>
+                    <input type="file" style="display: none;" accept="image/*" multiple>
+                  </span>
+                  <span id="idCardHandHeldUploadList" class="upload-pic-list">
+                  </span>
+                </div>
+                <div class="error-msg">
+                </div>
               </div>
-              <div class="form-item_input">
-                <span>
-                  <button type="button" class="button">上传文件</button>
-                  <input type="file" style="display: none;" accept="image/*" multiple>
-                </span>
-                <span id="idCardFrontUploadList" class="upload-pic-list">
-                </span>
-                <!-- <button type="button" class="button">上传文件</button>
+            </div>
+
+            <div class="form-item" id="idCardFront">
+              <div class="form-item-box align-top">
+                <div class="form-item_title is-required">
+                  <span>身份证照片：<b>（上传身份证正、反两面照片）</b></span>
+                </div>
+                <div class="form-item_input">
+                  <span>
+                    <button type="button" class="button">上传文件</button>
+                    <input type="file" style="display: none;" accept="image/*" multiple>
+                  </span>
+                  <span id="idCardFrontUploadList" class="upload-pic-list">
+                  </span>
+                  <!-- <button type="button" class="button">上传文件</button>
                 <input type="file"  style="display: none;" accept="image/*" multiple> -->
-              </div>
-              <div class="error-msg">
-              </div>
-            </div>
-          </div>
-
-          <div class="form-item  is-required" id="PersonPhone">
-            <div class="form-item-box align-top">
-              <div class="form-item_title is-required">
-                <span>手机号：</span>
-              </div>
-              <div class="form-item_input">
-                <input type="text" name="" id="" class="input">
-              </div>
-              <div class="error-msg">
+                </div>
+                <div class="error-msg">
+                </div>
               </div>
             </div>
-          </div>
 
-          <div class="form-item" id="personEmail">
-            <div class="form-item-box align-top">
-              <div class="form-item_title">
-                <span>邮箱：</span>
-              </div>
-              <div class="form-item_input">
-                <input type="text" name="" id="" class="input">
-              </div>
-              <div class="error-msg">
+            <div class="form-item  is-required" id="PersonPhone">
+              <div class="form-item-box align-top">
+                <div class="form-item_title is-required">
+                  <span>手机号：</span>
+                </div>
+                <div class="form-item_input">
+                  <input type="text" name="" id="" class="input">
+                </div>
+                <div class="error-msg">
+                </div>
               </div>
             </div>
-          </div>
+
+            <div class="form-item" id="personEmail">
+              <div class="form-item-box align-top">
+                <div class="form-item_title">
+                  <span>邮箱：</span>
+                </div>
+                <div class="form-item_input">
+                  <input type="text" name="" id="" class="input">
+                </div>
+                <div class="error-msg">
+                </div>
+              </div>
+            </div>
 
           </div>
 
-          <div id="company"  style="display: none;" >
+          <div id="company" style="display: none;">
             <div class="form-item " id="companyName">
               <div class="form-item-box align-top">
                 <div class="form-item_title is-required">
@@ -200,7 +220,7 @@
                     <button type="button" class="button">上传文件</button>
                     <input type="file" style="display: none;" accept="image/*" multiple>
                   </span>
-                  <span id="uploadList"  class="upload-pic-list">
+                  <span id="uploadList" class="upload-pic-list">
                   </span>
                 </div>
                 <div class="error-msg">
@@ -268,7 +288,13 @@
         </form>
       </div>
     </div>
-
+    <footer class="footer">
+      <p>2345版权所有&emsp;沪ICP备15036234号-1</p>
+      <p>
+        <i></i>
+        沪公网安备&nbsp;310115&emsp;&emsp;&emsp;02005439号&emsp;|&emsp;软件申诉邮箱：safesoft@2345.com
+      </p>
+    </footer>
   </div>
   <script src="../lib/jquery-1.8.3.min.js"></script>
 </body>

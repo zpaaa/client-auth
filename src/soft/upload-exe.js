@@ -135,6 +135,7 @@ import { Validator } from '../utils';
     data.softVersion = $('#softVersion input').val()
     data.softComment = $('#softComment input').val()
     data.downloadUrl = $('#downloadUrl input').val()
+    data.softCategory = $('#select .inner').attr('value')
     /* 文件 file */
     data.file = $('#file [type="file"]')[0].files[0]
     data.softLanguage = $('#softLanguage .is-checked input').val()
@@ -164,6 +165,7 @@ import { Validator } from '../utils';
   function valida() {
     var validator = new Validator()
     var data = getData()
+    console.log(data)
     validator
       .add('displayName', data.displayName, [
         { verify: 'isNonEmpty', errMsg: '名称不能为空' },
@@ -190,7 +192,13 @@ import { Validator } from '../utils';
         { verify: 'isNonEmpty', errMsg: '请上传软件logo' },
         { verify: 'fileSize:100', errMsg: '图片总大小不能超过100M' },
         { verify: 'maxLength:10', errMsg: '图片总数不能超过10张' },
-        { verify: 'fileType:["png","jpeg","jpg"]', errMsg: '图片类型' },
+        { verify: 'fileType:["png","jpeg","jpg"]', errMsg: '图片类型只能是png、jpeg、jpg' },
+      ])
+      .add('softIdentityList', data.softScreenshotList, [
+        { verify: 'isNonEmpty', errMsg: '请上传软件logo' },
+        { verify: 'fileSize:100', errMsg: '图片总大小不能超过100M' },
+        { verify: 'maxLength:10', errMsg: '图片总数不能超过10张' },
+        { verify: 'fileType:["png","jpeg","jpg"]', errMsg: '图片类型只能是png、jpeg、jpg' },
       ])
     // .add('file', [data.downloadUrl, data.file], [
     //   { verify: 'allEmpty', errMsg: '文件和downURL必须选择一项' },
@@ -220,8 +228,83 @@ import { Validator } from '../utils';
     }
   })
 
+  function Select(options) {
+    var list = options.list || []
+    var defaultValue = options.defaultValue || { value: '', label: '' }
+    var id = options.id
+    this.list = list
+    this.defaultValue = defaultValue
+    this.id = id
+    this.init()
+    this.initEvent()
+  }
+  Select.prototype.init = function () {
+    var str = '';
+    $.each(this.list, function (index, item) {
+      str += `<li class="options-item" value="${item.value}" label="${item.label}">
+          ${item.label}
+        </li>`
+    })
+    str = `<ul class="options-list">${str}</ul>`
+    console.log(str, 'ssssssssss')
 
-
+    str = `<div class="inner" value="${this.defaultValue.value}" label="${this.defaultValue.label}">
+                ${this.defaultValue.label}
+              </div>` + str
+    $(this.id).html(str)
+  }
+  Select.prototype.initEvent = function () {
+    var that = this
+    $(this.id).on('click', function (e) {
+      var target = $(e.target)
+      console.log(target)
+      if(target.hasClass('inner')){
+        var options = $(that.id).find('.options-list')
+        options.css('display')==='block'?options.css({'display':'none'}):options.css({'display':'block'})
+      }else{
+        var value = target.attr('value')
+        var label = target.attr('label')
+        $(that.id).find('.inner').attr({ value: value, label: label })
+        $(that.id).find('.inner').html(label)
+        $(that.id).find('.options-list').css({'display':'none'})
+      }
+     
+    })
+    $(this.id).on('mouseleave',function(){
+      $(that.id).find('.options-list').css({'display':'none'})
+    })
+  }
+  const options = {
+    id: '#select',
+    list: [
+      { value: 1, label: '视频软件' },
+      { value: 2, label: '聊天工具' },
+      { value: 3, label: '浏览器' },
+      { value: 4, label: '游戏娱乐' },
+      { value: 5, label: '音乐软件' },
+      { value: 6, label: '安全杀毒' },
+      { value: 7, label: '系统工具' },
+      { value: 8, label: '下载工具' },
+      { value: 9, label: '办公软件' },
+      { value: 10, label: '手机数码' },
+      { value: 11, label: '输入法' },
+      { value: 12, label: '图形图像' },
+      { value: 13, label: '股票网银' },
+      { value: 14, label: '阅读翻译' },
+      { value: 15, label: '网络应用' },
+      { value: 16, label: '主题壁纸' },
+      { value: 17, label: '教育学习' },
+      { value: 18, label: '压缩刻录' },
+      { value: 19, label: '编程开发' },
+      { value: 20, label: '行业软件' },
+      { value: 21, label: '其他软件' }
+    ],
+    defaultValue: {
+      value: 1,
+      label: '视频软件'
+    }
+  }
+  new Select(options)
 
 
 
