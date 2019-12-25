@@ -61,7 +61,7 @@ export var vrertifyRules = {
   fileSize: function (value, size, errorMsg) {
 
     value = value || [];
-    Object.prototype.toString.call(value) !== "[object Array]"
+    Object.prototype.toString.call(value) !== "[object Array]"?value = [value]:void 0
     value = [value]
     var totalSize = 0;
     for (var i = 0; i < value.length; i++) {
