@@ -1,0 +1,51 @@
+.agree-pop {
+  z-index: 998;
+  .modal {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    background: rgba($color: #000000, $alpha: 0.4);
+  }
+  .pop-wrap {
+    width: 1000px;
+    padding: 30px 10px 66px 58px;
+    position: absolute;
+    top: 116px;
+    left: 50%;
+    margin-left: -500px;
+    box-sizing: border-box;
+    background: #fff;
+    .agree-title {
+      width: 880px;
+      height: 60px;
+      line-height: 60px;
+      text-align: center;
+      color: #3697f5;
+      border-bottom: 1px solid #e6e6e6;
+    }
+    .pop-container {
+      height: 60vh;
+      padding-top: 24px;
+      overflow-y: scroll;
+      &::-webkit-scrollbar {
+        border-radius: 20px;
+        width: 6px;
+        background-color: #E6E8EB;
+      }
+      &::-webkit-scrollbar-thumb {
+        width: 100%;
+        background: #8ab1e6;
+        border-radius: 20px;
+      }
+      .agree-text {
+        width: 880px;
+        height: 1111px;
+      }
+    }
+    
+
+  }
+}
