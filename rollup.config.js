@@ -151,7 +151,7 @@ export default [
         format: 'esm'
     },
     plugins: [
-      uglify(),
+      terser(),
       scss({
         output: `./dist/soft/upload-exe.css`
       }),

@@ -23,7 +23,7 @@
         <span>完整填写资料并通过资质审核后，即可提交软件<b>（*为必填项）</b></span>
       </div>
       <form>
-        <div class="form-item  is-required" id="displayName">
+        <div class="form-item" id="displayName">
           <div class="form-item-box align-top">
             <div class="form-item_title is-required">
               <span>软件名称:</b></span>
@@ -36,7 +36,7 @@
           </div>
         </div>
 
-        <div class="form-item  is-required" id="softVersion">
+        <div class="form-item " id="softVersion">
           <div class="form-item-box align-top">
             <div class="form-item_title is-required">
               <span>软件版本：<b>（请输入版本号，用'.'分割）</b></span>
@@ -51,7 +51,7 @@
 
         <div class="form-item" id="softComment">
           <div class="form-item-box align-top">
-            <div class="form-item_title is-required">
+            <div class="form-item_title">
               <span>备注说明：<b>（填写软件运行环境、密码序列等）</b></span>
             </div>
             <div class="form-item_input">
@@ -87,7 +87,7 @@
             <div class="form-item_input">
               <span>
                 <button type="button" class="button">上传文件</button>
-                <input type="file" style="display: none;" accept="image/*" multiple>
+                <input type="file" style="display: none;">
               </span>
               <span id="idCardHandHeldUploadList" class="upload-pic-list">
               </span>
@@ -326,13 +326,16 @@
           </div>
         </div>
 
-        <div class="form-item introduce-form-item" id="companyIntroduction" id="description">
+        <div class="form-item introduce-form-item"  id="description">
           <div class="form-item-box align-top">
             <div class="form-item_title  is-required">
               <span>软件介绍：<b>（请填写软件的介绍和说明，300字以内）</b></span>
             </div>
             <div class="form-item_input">
               <textarea cols="30" rows="10" class="textarea"></textarea>
+            </div>
+            <div class="error-msg">
+
             </div>
           </div>
         </div>
@@ -344,6 +347,58 @@
             </div>
             <div class="form-item_input">
               <textarea cols="30" rows="10" class="textarea"></textarea>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-item" id="softLogo">
+          <div class="form-item-box align-top">
+            <div class="form-item_title  is-required">
+              <span>软件logo：<b>尺寸为72px*72px,格式为png</b></span>
+            </div>
+            <div class="form-item_input ">
+              <span>
+                <button type="button" class="button">上传文件</button>
+                <input type="file" style="display: none;" accept="image/png">
+              </span>
+              <span id="idCardHandHeldUploadList" class="upload-pic-list">
+              </span>
+            </div>
+            <div class="error-msg">
+            </div>
+          </div>
+        </div>
+        <div class="form-item" id="softScreenshotList">
+          <div class="form-item-box align-top">
+            <div class="form-item_title   is-required">
+              <span>软件截图：<b>尺寸为500px*380xp,软件截图，最多为10张</b></span>
+            </div>
+            <div class="form-item_input">
+              <span>
+                <button type="button" class="button">上传文件</button>
+                <input type="file" style="display: none;" multiple accept="image/*">
+              </span>
+              <span id="softScreenshot" class="upload-pic-list">
+              </span>
+            </div>
+            <div class="error-msg">
+            </div>
+          </div>
+        </div>
+        <div class="form-item" id="softIdentityList">
+          <div class="form-item-box align-top">
+            <div class="form-item_title  is-required">
+              <span>软件资质：<b style="color: #ff4040;">（请务必提供软件著作证书。如有其他相关资源，请一并提供）</b></span>
+            </div>
+            <div class="form-item_input">
+              <span>
+                <button type="button" class="button">上传文件</button>
+                <input type="file" style="display: none;"  accept="image/*" multiple>
+              </span>
+              <span id="softIdentity" class="upload-pic-list">
+              </span>
+            </div>
+            <div class="error-msg">
             </div>
           </div>
         </div>

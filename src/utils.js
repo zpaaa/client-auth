@@ -1,11 +1,11 @@
 // 验证登录信息
-export function checkLogin (i, s, v, domain) {
+export function checkLogin(i, s, v, domain) {
   return new Promise((resolve, reject) => {
     $.ajax({
       type: "post",
       url: "http://172.17.19.40:9090/mock/21/api/index.php?r=Api/login",
       data: `i=${i}&s=${s}&v=${v}&domain=${domain}`,
-      success: function(data){
+      success: function (data) {
         resolve(data)
       }
     })
@@ -13,12 +13,12 @@ export function checkLogin (i, s, v, domain) {
 }
 
 // 验证审核信息
-export function getMyIdentity () {
+export function getMyIdentity() {
   return new Promise((resolve, reject) => {
     $.ajax({
       type: "post",
       url: "http://172.17.19.40:9090/mock/21/api/index.php?r=Api/myIdentity",
-      success: function(data){
+      success: function (data) {
         resolve(data)
       }
     })
@@ -49,6 +49,40 @@ export var vrertifyRules = {
   isEmail: function (value, errorMsg) {
     return !/^\w+([+-.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/.test(value) ?
       errorMsg : void 0
+  },
+  allEmpty: function (value, errorMsg) {
+    for (var i = 0; i < value.length; i++) {
+      if (value[i]) {
+        return void 0
+      }
+    }
+    return errorMsg
+  },
+  fileSize: function (value, size, errorMsg) {
+
+    value = value || [];
+    Object.prototype.toString.call(value) !== "[object Array]"
+    value = [value]
+    var totalSize = 0;
+    for (var i = 0; i < value.length; i++) {
+      totalSize += value[i].size
+    }
+    return totalSize > size * 1024 ? errorMsg : void 0
+  },
+  fileType: function (value, type, errorMsg) {
+    console.log(value, type, errorMsg)
+    var type = eval(type)
+    value = value || [];
+    Object.prototype.toString.call(value) !== "[object Array]"?value = [value]:void 0
+    // 
+    for (var i = 0; i < value.length; i++) {
+      console.log(value[i])
+      var selfType = value[i].type.split('/')[1]
+      if (type.indexOf(selfType) === -1) {
+        return errorMsg
+      }
+    }
+    return void 0
   }
 }
 
