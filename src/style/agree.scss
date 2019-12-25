@@ -24,6 +24,7 @@
       line-height: 60px;
       text-align: center;
       color: #3697f5;
+      font-weight: bold;
       border-bottom: 1px solid #e6e6e6;
     }
     .pop-container {
@@ -32,17 +33,28 @@
       overflow-y: scroll;
       &::-webkit-scrollbar {
         border-radius: 20px;
-        width: 6px;
+        width: 10px;
         background-color: #E6E8EB;
       }
       &::-webkit-scrollbar-thumb {
         width: 100%;
-        background: #8ab1e6;
+        background: #dbdbdb;
         border-radius: 20px;
       }
       .agree-text {
         width: 880px;
-        height: 1111px;
+        // height: 1111px;
+        font-size: 14px;
+        line-height: 26px;
+        h3 {
+          color: #333333;
+          font-weight: bold;
+          margin-bottom: 10px;
+        }
+        p {
+          color: #666666;
+          margin-bottom: 10px;
+        }
       }
     }
     

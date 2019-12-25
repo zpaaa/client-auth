@@ -7,6 +7,7 @@ export function upload (project, type) {
   getLoginState()
   init()
   var fileList = []
+
   function uploadVali() {
     var uploadValidator = new Validator()
     var data = getData()
@@ -20,7 +21,9 @@ export function upload (project, type) {
         { verify: 'maxLength:10', errMsg: '长度不能超过20个汉字或字符' },
       ])
       .add('upload-file', data.file, [
-        { verify: 'minLength:1', errMsg: '请上传文件' }
+        { verify: 'isNonEmpty', errMsg: '请上传文件' },
+        { verify: 'fileSize:20', errMsg: '文件大小不能超过20M' },
+        { verify: 'fileType:["zip"]', errMsg: '文件类型只能为Zip' },
       ])
     return uploadValidator
   }
