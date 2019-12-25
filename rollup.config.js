@@ -105,7 +105,7 @@ export default [
     ]
   },
   {
-    input: './src/ie/skin-upload.js',
+    input: './src/ie/skin.js',
     output: {
         file: `./dist/ie/skin-upload.js`,
         format: 'esm'
@@ -120,30 +120,31 @@ export default [
       }),
       template({
         template: './public/ie/skin-upload.html',
-        target: './dist/soft/skin-upload.html',
+        target: './dist/ie/skin-upload.html',
       })
     ]
   },
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  {
+    input: './src/ie/extension.js',
+    output: {
+        file: `./dist/ie/extension-upload.js`,
+        format: 'esm'
+    },
+    plugins: [
+      terser(),
+      scss({
+        output: `./dist/ie/upload.css`
+      }),
+      postcss({
+        plugins: [autoprefixer()]
+      }),
+      template({
+        template: './public/ie/extension-upload.html',
+        target: './dist/ie/extension-upload.html',
+      })
+    ]
+  },
   {
     input: './src/soft/upload-exe.js',
     output: {
@@ -163,5 +164,5 @@ export default [
         target: './dist/soft/upload-exe.html',
       })
     ]
-  },
+  }
 ];
