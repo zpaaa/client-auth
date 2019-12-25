@@ -123,5 +123,45 @@ export default [
         target: './dist/soft/skin-upload.html',
       })
     ]
-  }
+  },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  {
+    input: './src/soft/upload-exe.js',
+    output: {
+        file: `./dist/soft/upload-exe.js`,
+        format: 'esm'
+    },
+    plugins: [
+      uglify(),
+      scss({
+        output: `./dist/soft/upload-exe.css`
+      }),
+      postcss({
+        plugins: [autoprefixer()]
+      }),
+      template({
+        template: './public/soft/upload-exe.html',
+        target: './dist/soft/upload-exe.html',
+      })
+    ]
+  },
 ];

@@ -152,6 +152,9 @@ import './upload.scss'
         if (msg) {
           $(this).parents('.form-item').addClass('is-error')
           $(this).parents('.form-item').find('.error-msg').html(msg)
+        }else{
+          $(this).parents('.form-item').removeClass('is-error')
+          $(this).parents('.form-item').find('.error-msg').html(msg)
         }
       })
       $('#companyContactPerson input').on('change', function () {
@@ -159,6 +162,9 @@ import './upload.scss'
         var msg = conpanyValidator.keyValidator('companyContactPerson')
         if (msg) {
           $(this).parents('.form-item').addClass('is-error')
+          $(this).parents('.form-item').find('.error-msg').html(msg)
+        }else{
+          $(this).parents('.form-item').removeClass('is-error')
           $(this).parents('.form-item').find('.error-msg').html(msg)
         }
       })
@@ -168,6 +174,9 @@ import './upload.scss'
         if (msg) {
           $(this).parents('.form-item').addClass('is-error')
           $(this).parents('.form-item').find('.error-msg').html(msg)
+        }else{
+          $(this).parents('.form-item').removeClass('is-error')
+          $(this).parents('.form-item').find('.error-msg').html(msg)
         }
       })
       $('#companyPictureList input').on('change', function () {
@@ -175,6 +184,9 @@ import './upload.scss'
         var msg = conpanyValidator.keyValidator('companyPictureList')
         if (msg) {
           $(this).parents('.form-item').addClass('is-error')
+          $(this).parents('.form-item').find('.error-msg').html(msg)
+        }else{
+          $(this).parents('.form-item').removeClass('is-error')
           $(this).parents('.form-item').find('.error-msg').html(msg)
         }
       })
@@ -361,6 +373,9 @@ import './upload.scss'
           $('#' + id).addClass('is-error')
           $('#' + id + ' ' + '.error-msg').html(errObj[id])
         }
+      }else{
+        $('.is-error').removeClass('is-error')
+        $('.is-error .error-msg').html('')
       }
 
 
