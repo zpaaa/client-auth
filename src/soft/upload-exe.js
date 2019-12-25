@@ -58,64 +58,19 @@ import { Validator } from '../utils';
       oCheckbox.hasClass('is-checked') ? oCheckbox.removeClass('is-checked') : oCheckbox.addClass('is-checked'); $('#agree .error-msg').html('')
     })
     /* 需要监听的change事件 */
-    $('#displayName input').on('change', function () {
+    onchangeValidator($('#displayName input'),'displayName')
+    onchangeValidator($('#softVersion input'),'softVersion')
+    onchangeValidator($('#description input'),'description')
+    onchangeValidator($('#softLogo input'),'softLogo')
+    onchangeValidator($('#softScreenshotList input'),'softScreenshotList')
+    onchangeValidator($('#softIdentityList input'),'softIdentityList')
+  
+  }
+
+  function onchangeValidator(el,key) {
+    el.on('change', function () {
       var validator = valida()
-      var msg = validator.keyValidator('displayName')
-      if (msg) {
-        $(this).parents('.form-item').addClass('is-error')
-        $(this).parents('.form-item').find('.error-msg').html(msg)
-      } else {
-        $(this).parents('.form-item').removeClass('is-error')
-        $(this).parents('.form-item').find('.error-msg').html('')
-      }
-    })
-    $('#softVersion input').on('change', function () {
-      var validator = valida()
-      var msg = validator.keyValidator('softVersion')
-      if (msg) {
-        $(this).parents('.form-item').addClass('is-error')
-        $(this).parents('.form-item').find('.error-msg').html(msg)
-      } else {
-        $(this).parents('.form-item').removeClass('is-error')
-        $(this).parents('.form-item').find('.error-msg').html('')
-      }
-    })
-    $('#description input').on('change', function () {
-      var validator = valida()
-      var msg = validator.keyValidator('description')
-      if (msg) {
-        $(this).parents('.form-item').addClass('is-error')
-        $(this).parents('.form-item').find('.error-msg').html(msg)
-      } else {
-        $(this).parents('.form-item').removeClass('is-error')
-        $(this).parents('.form-item').find('.error-msg').html('')
-      }
-    })
-    $('#softLogo input').on('change', function () {
-      var validator = valida()
-      var msg = validator.keyValidator('softLogo')
-      if (msg) {
-        $(this).parents('.form-item').addClass('is-error')
-        $(this).parents('.form-item').find('.error-msg').html(msg)
-      } else {
-        $(this).parents('.form-item').removeClass('is-error')
-        $(this).parents('.form-item').find('.error-msg').html('')
-      }
-    })
-    $('#softScreenshotList input').on('change', function () {
-      var validator = valida()
-      var msg = validator.keyValidator('softScreenshotList')
-      if (msg) {
-        $(this).parents('.form-item').addClass('is-error')
-        $(this).parents('.form-item').find('.error-msg').html(msg)
-      } else {
-        $(this).parents('.form-item').removeClass('is-error')
-        $(this).parents('.form-item').find('.error-msg').html('')
-      }
-    })
-    $('#softIdentityList input').on('change', function () {
-      var validator = valida()
-      var msg = validator.keyValidator('softIdentityList')
+      var msg = validator.keyValidator(key)
       if (msg) {
         $(this).parents('.form-item').addClass('is-error')
         $(this).parents('.form-item').find('.error-msg').html(msg)
@@ -125,6 +80,7 @@ import { Validator } from '../utils';
       }
     })
   }
+
 
   initEvent()
 
@@ -158,7 +114,6 @@ import { Validator } from '../utils';
                 <i data-index="${index}"></i>
               </span>`
     })
-    // console.log(`#${id}`,str)
     $(`#${id}`).html(str)
   }
 

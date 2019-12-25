@@ -164,5 +164,25 @@ export default [
         target: './dist/soft/upload-exe.html',
       })
     ]
+  },
+  {
+    input: './src/pinyin/look-upload.js',
+    output: {
+        file: `./dist/pinyin/look-upload.js`,
+        format: 'esm'
+    },
+    plugins: [
+      terser(),
+      scss({
+        output: `./dist/pinyin/look-upload.css`
+      }),
+      postcss({
+        plugins: [autoprefixer()]
+      }),
+      template({
+        template: './public/pinyin/look-upload.html',
+        target: './dist/pinyin/look-upload.html',
+      })
+    ]
   }
 ];

@@ -147,50 +147,12 @@ import './upload.scss'
         fileList = fileList.concat(Array.prototype.slice.call($(this)[0].files))
         company.renderFilelist()
       })
-      $('#companyName input').on('change', function () {
-        var conpanyValidator = conpanyVali()
-        var msg = conpanyValidator.keyValidator('companyName')
-        if (msg) {
-          $(this).parents('.form-item').addClass('is-error')
-          $(this).parents('.form-item').find('.error-msg').html(msg)
-        }else{
-          $(this).parents('.form-item').removeClass('is-error')
-          $(this).parents('.form-item').find('.error-msg').html(msg)
-        }
-      })
-      $('#companyContactPerson input').on('change', function () {
-        var conpanyValidator = conpanyVali()
-        var msg = conpanyValidator.keyValidator('companyContactPerson')
-        if (msg) {
-          $(this).parents('.form-item').addClass('is-error')
-          $(this).parents('.form-item').find('.error-msg').html(msg)
-        }else{
-          $(this).parents('.form-item').removeClass('is-error')
-          $(this).parents('.form-item').find('.error-msg').html(msg)
-        }
-      })
-      $('#companyPersonalPhone input').on('change', function () {
-        var conpanyValidator = conpanyVali()
-        var msg = conpanyValidator.keyValidator('companyPersonalPhone')
-        if (msg) {
-          $(this).parents('.form-item').addClass('is-error')
-          $(this).parents('.form-item').find('.error-msg').html(msg)
-        }else{
-          $(this).parents('.form-item').removeClass('is-error')
-          $(this).parents('.form-item').find('.error-msg').html(msg)
-        }
-      })
-      $('#companyPictureList input').on('change', function () {
-        var conpanyValidator = conpanyVali()
-        var msg = conpanyValidator.keyValidator('companyPictureList')
-        if (msg) {
-          $(this).parents('.form-item').addClass('is-error')
-          $(this).parents('.form-item').find('.error-msg').html(msg)
-        }else{
-          $(this).parents('.form-item').removeClass('is-error')
-          $(this).parents('.form-item').find('.error-msg').html(msg)
-        }
-      })
+      
+      onchangeValidator($('#companyName input'),'companyName','company')
+      onchangeValidator($('#companyContactPerson input'),'companyContactPerson','company')
+      onchangeValidator($('#companyPersonalPhone input'),'companyPersonalPhone','company')
+      onchangeValidator($('#companyPictureList input'),'companyPictureList','company')
+     
     },
     renderFilelist: function () {
       var str = '';
@@ -283,51 +245,10 @@ import './upload.scss'
         idCardFrontList = idCardFrontList.concat(Array.prototype.slice.call($(this)[0].files))
         person.render(idCardHandHeldList, 'idCardFrontUploadList')
       })
-
-      $('#userName input').on('change', function () {
-        var conpanyValidator = personVali()
-        var msg = conpanyValidator.keyValidator('userName')
-        if (msg) {
-          $(this).parents('.form-item').addClass('is-error')
-          $(this).parents('.form-item').find('.error-msg').html(msg)
-        }else{
-          $(this).parents('.form-item').removeClass('is-error')
-          $(this).parents('.form-item').find('.error-msg').html('')
-        }
-      })
-      $('#idNumber input').on('change', function () {
-        var conpanyValidator = personVali()
-        var msg = conpanyValidator.keyValidator('idNumber')
-        if (msg) {
-          $(this).parents('.form-item').addClass('is-error')
-          $(this).parents('.form-item').find('.error-msg').html(msg)
-        }else{
-          $(this).parents('.form-item').removeClass('is-error')
-          $(this).parents('.form-item').find('.error-msg').html('')
-        }
-      })
-      $('#idCardHandHeld input').on('change', function () {
-        var conpanyValidator = personVali()
-        var msg = conpanyValidator.keyValidator('idCardHandHeld')
-        if (msg) {
-          $(this).parents('.form-item').addClass('is-error')
-          $(this).parents('.form-item').find('.error-msg').html(msg)
-        }else{
-          $(this).parents('.form-item').removeClass('is-error')
-          $(this).parents('.form-item').find('.error-msg').html('')
-        }
-      })
-      $('#idCardFront input').on('change', function () {
-        var conpanyValidator = personVali()
-        var msg = conpanyValidator.keyValidator('idCardFront')
-        if (msg) {
-          $(this).parents('.form-item').addClass('is-error')
-          $(this).parents('.form-item').find('.error-msg').html(msg)
-        }else{
-          $(this).parents('.form-item').removeClass('is-error')
-          $(this).parents('.form-item').find('.error-msg').html('')
-        }
-      })
+      onchangeValidator($('#userName input'),'userName','person')
+      onchangeValidator($('#idNumber input'),'idNumber','person')
+      onchangeValidator($('#idCardHandHeld input'),'idCardHandHeld','person')
+      onchangeValidator($('#idCardFront input'),'idCardFront','person')
     },
     render: function (data, id) {
       var str = ''
@@ -353,6 +274,19 @@ import './upload.scss'
     }
   }
 
+  function onchangeValidator(el,key,type) {
+    el.on('change', function () {
+      var validator =type==='person'?personVali():conpanyVali()
+      var msg = validator.keyValidator(key)
+      if (msg) {
+        $(this).parents('.form-item').addClass('is-error')
+        $(this).parents('.form-item').find('.error-msg').html(msg)
+      } else {
+        $(this).parents('.form-item').removeClass('is-error')
+        $(this).parents('.form-item').find('.error-msg').html('')
+      }
+    })
+  }
 
   person.initEvent()
   person.inintChangeEvent()
