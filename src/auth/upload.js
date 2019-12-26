@@ -1,5 +1,10 @@
 
 import './upload.scss'
+
+import '../dialog'
+
+
+
 (function () {
   var vrertifyRules = {
     isNonEmpty: function (value, errorMsg) {
@@ -147,12 +152,10 @@ import './upload.scss'
         fileList = fileList.concat(Array.prototype.slice.call($(this)[0].files))
         company.renderFilelist()
       })
-      
       onchangeValidator($('#companyName input'),'companyName','company')
       onchangeValidator($('#companyContactPerson input'),'companyContactPerson','company')
       onchangeValidator($('#companyPersonalPhone input'),'companyPersonalPhone','company')
       onchangeValidator($('#companyPictureList input'),'companyPictureList','company')
-     
     },
     renderFilelist: function () {
       var str = '';
