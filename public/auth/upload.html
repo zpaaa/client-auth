@@ -77,7 +77,7 @@
           </div>
 
           <div id="person">
-            <div class="form-item  is-required" id="userName">
+            <div class="form-item  is-required" id="realName">
               <div class="form-item-box align-top">
                 <div class="form-item_title is-required">
                   <span>姓名：<b>（请填写真实姓名）</b></span>
@@ -111,7 +111,7 @@
                 <div class="form-item_input">
                   <span>
                     <button type="button" class="button">上传文件</button>
-                    <input type="file" style="display: none;" accept="image/*" multiple>
+                    <input type="file" style="display: none;" accept="image/*">
                   </span>
                   <span id="idCardHandHeldUploadList" class="upload-pic-list">
                   </span>
@@ -124,7 +124,7 @@
             <div class="form-item" id="idCardFront">
               <div class="form-item-box align-top">
                 <div class="form-item_title is-required">
-                  <span>身份证照片：<b>（上传身份证正、反两面照片）</b></span>
+                  <span>身份证照片：<b>（上传身份证正面照片）</b></span>
                 </div>
                 <div class="form-item_input">
                   <span>
@@ -133,8 +133,24 @@
                   </span>
                   <span id="idCardFrontUploadList" class="upload-pic-list">
                   </span>
-                  <!-- <button type="button" class="button">上传文件</button>
-                <input type="file"  style="display: none;" accept="image/*" multiple> -->
+                </div>
+                <div class="error-msg">
+                </div>
+              </div>
+            </div>
+
+            <div class="form-item" id="idCardBack">
+              <div class="form-item-box align-top">
+                <div class="form-item_title is-required">
+                  <span>身份证照片：<b>（上传身份证反面照片）</b></span>
+                </div>
+                <div class="form-item_input">
+                  <span>
+                    <button type="button" class="button">上传文件</button>
+                    <input type="file" style="display: none;" accept="image/*" multiple>
+                  </span>
+                  <span id="idCardBackUpload" class="upload-pic-list">
+                  </span>
                 </div>
                 <div class="error-msg">
                 </div>

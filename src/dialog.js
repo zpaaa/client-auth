@@ -1,4 +1,10 @@
-function Dialog(value) {
+
+
+
+
+
+
+export function Dialog(value) {
   this.dialogText = value
   this.render()
   this.initEvent()
@@ -31,9 +37,11 @@ Dialog.prototype.render = function () {
   </div>
 </div>`
   $(document.body).append(str)
+}
+Dialog.prototype.show = function(){
+  $('#dialog').css({display:'block'})
   $(document.body).css({overflow:'hidden'})
 }
-
 Dialog.prototype.initEvent = function(){
   $('#dialog').on('click',function(e){
     console.log(window.a = $($(e.target).attr('class')==='close'))
@@ -43,9 +51,15 @@ Dialog.prototype.initEvent = function(){
     }
   })
 }
+Dialog.prototype.hide = function(){
+  $('#dialog').css({display:'none'})
+  $(document.body).css({overflow:'inherit'})
+}
 
+Dialog.prototype.inner = function(msg){
+  $('#dialog').find('.dialog-msg').html(msg)
+}
 
-new Dialog('sssssssssssssssssss')
 
 
 
