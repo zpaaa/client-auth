@@ -223,6 +223,9 @@
 
 .adjust-height {
   height: 76px !important;
+  .checkbox-label::before{
+    display: none;
+  }
 }
 #softAuthorization {
   .form-item_input {

@@ -1,78 +1,15 @@
 
 import './upload.scss'
+
+import '../dialog'
+
+import { Validator } from '../utils';
+
+import { uploadIdentity } from '../api'
+import { Dialog } from '../dialog';
+
 (function () {
-  var vrertifyRules = {
-    isNonEmpty: function (value, errorMsg) {
-      return value === '' ?
-        errorMsg : void 0
-    },
-    minLength: function (value, length, errorMsg) {
-      return value.length < length ?
-        errorMsg : void 0
-    },
-    maxLength: function (value, length, errorMsg) {
-      return value.length > length ?
-        errorMsg : void 0
-    },
-    rightLength: function (value, length, errorMsg) {
-      return value.length = length ?
-        errorMsg : void 0
-    },
-    isMoblie: function (value, errorMsg) {
-      return !/^1(3|5|7|8|9)[0-9]{9}$/.test(value) ?
-        errorMsg : void 0
-    },
-    isEmail: function (value, errorMsg) {
-      return !/^\w+([+-.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/.test(value) ?
-        errorMsg : void 0
-    }
-  }
-  class Validator {
-    constructor() {
-      this.cache = {}
-    }
-    add(key, value, rules) {
-      this.cache[key] || (this.cache[key] = [])
-      for (let rule of rules) {
-        let verifyArr = rule.verify.split(':')
-        let errMsg = rule.errMsg
-        this.cache[key].push(() => {
-          let verify = verifyArr.shift()
-          verifyArr.unshift(value)
-          verifyArr.push(errMsg)
-          return vrertifyRules[verify].apply(key, verifyArr)
-        })
-      }
-      return this
-    }
-    keyValidator(key) {
-      var verifyFnArr = this.cache[key] || []
-      for (var i = 0; i < verifyFnArr.length; i++) {
-        let err = verifyFnArr[i]()
-        if (err) {
-          return err
-        }
-      }
-    }
-    start() {
-      var errMsg = {}
-      for (let key in this.cache) {
-        var verifyFnArr = this.cache[key]
-        for (var i = 0; i < verifyFnArr.length; i++) {
-          let err = verifyFnArr[i]()
-          if (err) {
-            errMsg[key] = err
-            break;
-          }
-        }
-      }
-      return errMsg
-    }
-  }
-
-
   var fileList = []
-
   function conpanyVali() {
     var conpanyValidator = new Validator()
     var data = company.getData()
@@ -147,12 +84,10 @@ import './upload.scss'
         fileList = fileList.concat(Array.prototype.slice.call($(this)[0].files))
         company.renderFilelist()
       })
-      
-      onchangeValidator($('#companyName input'),'companyName','company')
-      onchangeValidator($('#companyContactPerson input'),'companyContactPerson','company')
-      onchangeValidator($('#companyPersonalPhone input'),'companyPersonalPhone','company')
-      onchangeValidator($('#companyPictureList input'),'companyPictureList','company')
-     
+      onchangeValidator($('#companyName input'), 'companyName', 'company')
+      onchangeValidator($('#companyContactPerson input'), 'companyContactPerson', 'company')
+      onchangeValidator($('#companyPersonalPhone input'), 'companyPersonalPhone', 'company')
+      onchangeValidator($('#companyPictureList input'), 'companyPictureList', 'company')
     },
     renderFilelist: function () {
       var str = '';
@@ -191,7 +126,7 @@ import './upload.scss'
     var conpanyValidator = new Validator()
     var data = person.getData()
     conpanyValidator
-      .add('userName', data.userName, [
+      .add('realName', data.realName, [
         { verify: 'isNonEmpty', errMsg: '名称不能为空' },
         { verify: 'maxLength:50', errMsg: '长度不能超过50' }
       ])
@@ -203,7 +138,10 @@ import './upload.scss'
         { verify: 'minLength:1', errMsg: '必须上传手持身份证照片' },
       ])
       .add('idCardFront', data.idCardFront, [
-        { verify: 'minLength:2', errMsg: '必须上传手持身份证正反面' }
+        { verify: 'minLength:1', errMsg: '必须上传身份证正面' }
+      ])
+      .add('idCardBack', data.idCardBack, [
+        { verify: 'minLength:1', errMsg: '必须上传身份证反面' }
       ])
     return conpanyValidator
   }
@@ -213,7 +151,7 @@ import './upload.scss'
 
   var idCardHandHeldList = []
   var idCardFrontList = []
-
+  var idCardBackUploadList = []
   /* 个人 */
   var person = {
     initEvent: function () {
@@ -224,6 +162,9 @@ import './upload.scss'
       $('#idCardFront [type="button"]').on('click', function () {
         $('#idCardFront [type="file"]').click()
       })
+      $('#idCardBack [type="button"]').on('click', function () {
+        $('#idCardBack [type="file"]').click()
+      })
       /* 点击图片的删除 */
       $('#idCardHandHeldUploadList').on('click', 'i', function () {
         var index = $(this).attr('data-index')
@@ -232,23 +173,33 @@ import './upload.scss'
       })
       $('#idCardFrontUploadList').on('click', 'i', function () {
         var index = $(this).attr('data-index')
-        idCardFrontUploadList.splice(index, 1)
-        person.render(idCardHandHeldList, 'idCardFrontUploadList')
+        idCardFrontList.splice(index, 1)
+        person.render(idCardFrontList, 'idCardFrontUploadList')
+      })
+      $('#idCardBackUpload').on('click', 'i', function () {
+        var index = $(this).attr('data-index')
+        idCardBackUploadList.splice(index, 1)
+        person.render(idCardBackUploadList, 'idCardBackUpload')
       })
     },
     inintChangeEvent: function () {
       $('#idCardHandHeld [type="file"]').on('change', function () {
-        idCardHandHeldList = idCardHandHeldList.concat(Array.prototype.slice.call($(this)[0].files))
+        idCardHandHeldList = Array.prototype.slice.call($(this)[0].files)
         person.render(idCardHandHeldList, 'idCardHandHeldUploadList')
       })
       $('#idCardFront [type="file"]').on('change', function () {
-        idCardFrontList = idCardFrontList.concat(Array.prototype.slice.call($(this)[0].files))
-        person.render(idCardHandHeldList, 'idCardFrontUploadList')
+        idCardFrontList = Array.prototype.slice.call($(this)[0].files)
+        person.render(idCardFrontList, 'idCardFrontUploadList')
       })
-      onchangeValidator($('#userName input'),'userName','person')
-      onchangeValidator($('#idNumber input'),'idNumber','person')
-      onchangeValidator($('#idCardHandHeld input'),'idCardHandHeld','person')
-      onchangeValidator($('#idCardFront input'),'idCardFront','person')
+      $('#idCardBack [type="file"]').on('change', function () {
+        idCardBackUploadList = Array.prototype.slice.call($(this)[0].files)
+        person.render(idCardBackUploadList, 'idCardBackUpload')
+      })
+      onchangeValidator($('#realName input'), 'realName', 'person')
+      onchangeValidator($('#idNumber input'), 'idNumber', 'person')
+      onchangeValidator($('#idCardHandHeld input'), 'idCardHandHeld', 'person')
+      onchangeValidator($('#idCardFront input'), 'idCardFront', 'person')
+      onchangeValidator($('#idCardBack input'), 'idCardBack', 'person')
     },
     render: function (data, id) {
       var str = ''
@@ -258,25 +209,25 @@ import './upload.scss'
                   <i data-index="${index}"></i>
                 </span>`
       })
-      // console.log(`#${id}`,str)
       $(`#${id}`).html(str)
     },
     getData: function () {
       var data = {}
       data.userType = $('#userType .is-checked input').val()
-      data.userName = $('#userName input').val()
+      data.realName = $('#realName input').val()
       data.idNumber = $('#idNumber input').val()
-      data.idCardHandHeld = idCardHandHeldList
-      data.idCardFront = idCardFrontList
+      data.idCardHandHeld = $('#idCardHandHeld input')[0].files[0]
+      data.idCardFront = $('#idCardFront input')[0].files[0]
+      data.idCardBack = $('#idCardBack input')[0].files[0]
       data.phone = $('#PersonPhone input').val()
       data.email = $('#personEmail input').val()
       return data
     }
   }
 
-  function onchangeValidator(el,key,type) {
+  function onchangeValidator(el, key, type) {
     el.on('change', function () {
-      var validator =type==='person'?personVali():conpanyVali()
+      var validator = type === 'person' ? personVali() : conpanyVali()
       var msg = validator.keyValidator(key)
       if (msg) {
         $(this).parents('.form-item').addClass('is-error')
@@ -292,7 +243,7 @@ import './upload.scss'
   person.inintChangeEvent()
 
 
-
+  var dialog = new Dialog('上传资料中~')
   /* 点击上传按钮 */
   $('#submit').on('click', function () {
     var agree = $('#agree .checkbox').hasClass('is-checked')
@@ -318,13 +269,25 @@ import './upload.scss'
           $('#' + id).addClass('is-error')
           $('#' + id + ' ' + '.error-msg').html(errObj[id])
         }
-      }else{
+        return
+      } else {
         $('.is-error').removeClass('is-error')
         $('.is-error .error-msg').html('')
       }
 
 
-
+      var data = userType === '1' ? person.getData() : company.getData()
+      dialog.show()
+      uploadIdentity(data).then(function(res){
+        dialog.inner('上传成功！')
+      }).catch(function(err){
+        dialog.inner('上传失败，请稍后再试！')
+        console.log(err)
+      }).finally(function(){
+        setTimeout(()=>{
+          dialog.hide()
+        },500)
+      })
     } else {
       $('#agree .error-msg').html('请先勾选作者协议')
     }

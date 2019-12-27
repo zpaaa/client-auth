@@ -8,12 +8,18 @@ import { Validator } from '../utils';
   var softScreenshotList = []
   var softIdentityList = []
   function initEvent() {
-    $('#radioChange').on('click', 'label', function (e) {
+    $('#radioChange').on('click', '.radio', function (e) {
       if ($(e.target).is("input")) {
         return
       }
-      $(this).find('.radio').addClass('is-checked')
-      $(this).siblings().find('.is-checked').removeClass('is-checked')
+      $(this).addClass('is-checked')
+      $(this).parent().siblings().find('.is-checked').removeClass('is-checked')
+    })
+    $('#radioChange').on('click', '.checkbox', function (e) {
+      if ($(e.target).is("input")) {
+        return
+      }
+      $(this).hasClass('is-checked')?$(this).removeClass('is-checked'):$(this).addClass('is-checked')
     })
     $('#file [type="button"]').on('click', function () {
       $('#file [type="file"]').click()
@@ -201,8 +207,6 @@ import { Validator } from '../utils';
         </li>`
     })
     str = `<ul class="options-list">${str}</ul>`
-    console.log(str, 'ssssssssss')
-
     str = `<div class="inner" value="${this.defaultValue.value}" label="${this.defaultValue.label}">
                 ${this.defaultValue.label}
               </div>` + str
