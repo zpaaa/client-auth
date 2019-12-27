@@ -1,7 +1,6 @@
 
 
 import './upload-exe.scss';
-import { vrertifyRules } from '../utils';
 import { Validator } from '../utils';
 (function () {
   var MAX_SIZE = 1024 * 100

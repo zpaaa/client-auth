@@ -37,6 +37,7 @@
       }
     }
     .user-info {
+     
       float: right;
       height: 82px;
       width: 242px;
@@ -45,6 +46,27 @@
       line-height: 82px;
       text-align: right;
       cursor: pointer;
+      .name{
+        display: inline-block;
+        max-width: 100px;
+        vertical-align: middle;
+        text-overflow:ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+      }
+      .login{
+        display: block;
+        width: 70px;
+        height: 24px;
+        border: 1px solid #029aff;
+        border-radius:12px ;
+        font-size: 12px;
+        color: #029aff;
+        line-height: 24px;
+        text-align: center;
+        margin-top: 19px;
+        cursor: pointer;
+      }
     }
   }
 }
