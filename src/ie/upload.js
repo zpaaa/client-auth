@@ -1,5 +1,6 @@
 import './style/upload.scss'
-import '../style/agree.scss'
+import 'jquery'
+// import '../style/agree.scss'
 import { Validator } from '../utils'
 export function upload (project, type) {
   init()
