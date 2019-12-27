@@ -6,23 +6,23 @@ import postcss from 'rollup-plugin-postcss-modules'
 import { uglify } from "rollup-plugin-uglify";
 import { terser } from "rollup-plugin-terser";
 export default [
-  // 公共样式
-  {
-    input: './src/index.js',
-    output: {
-      file: `./dist/index.js`,
-      format: 'esm'
-    },
-    plugins: [
-      terser(),
-      scss({
-        output: `./dist/common.css`
-      }),
-      postcss({
-        plugins: [autoprefixer()]
-      })
-    ]
-  },
+  // // 公共样式
+  // {
+  //   input: './src/index.js',
+  //   output: {
+  //     file: `./dist/index.js`,
+  //     format: 'esm'
+  //   },
+  //   plugins: [
+  //     terser(),
+  //     scss({
+  //       output: `./dist/common.css`
+  //     }),
+  //     postcss({
+  //       plugins: [autoprefixer()]
+  //     })
+  //   ]
+  // },
   {
     input: './src/auth/user.js',
     output: {

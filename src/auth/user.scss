@@ -3,7 +3,7 @@ body {
   .use-center {
     .main {
       margin-top: 20px;
-      padding: 45px 0 24px 60px;
+      padding: 45px 60px 24px 60px;
       box-sizing: border-box;
       background: #fff;
       border: 1px solid #e6e6e6;
@@ -23,6 +23,19 @@ body {
           top: 13px;
           left: 0px;
           background: #2693ff;
+        }
+        span {
+          width: 150px;
+          height: 40px;
+          margin-left: 19px;
+          line-height: 40px;
+          border-radius: 3px;
+          display: inline-block;
+          background: #2693ff;
+          text-align: center;
+          color: #fff;
+          font-size: 16px;
+          cursor: pointer;
         }
       }
       .tip {
@@ -47,6 +60,7 @@ body {
           height: 45px;
           line-height: 45px;
           color: #666666;
+          padding: 0 16px;
           &.time {
             min-width: 150px;
           }
@@ -60,6 +74,7 @@ body {
         td {
           height: 54px;
           line-height: 54px;
+          padding: 0 16px;
           color: #333333;
         }
       }
@@ -76,7 +91,6 @@ body {
           }
         }
       }
-  
     }
   }
 }

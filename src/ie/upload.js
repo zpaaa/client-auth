@@ -1,10 +1,7 @@
-import './upload.scss'
+import './style/upload.scss'
 import '../style/agree.scss'
-import { headSwitch, getLoginState } from './common'
 import { Validator } from '../utils'
 export function upload (project, type) {
-  headSwitch()
-  getLoginState()
   init()
   var fileList = []
 

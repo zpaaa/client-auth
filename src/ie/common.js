@@ -24,12 +24,16 @@ export function headSwitch() {
 	});
 }
 
-export function getLoginState () {
-  checkLogin().then(res => {
-    console.log('res', res)
-    if (res && res.response.code === 2000) {
-      // 已登录
-      console.log(res.response.username)
-    }
+export function getLoginState (url) {
+  checkLogin(url).then(res => {
+    $('.user-info .login-info').find('.username').text(res.response.username)
+    $('.user-info .login-btn').hide().siblings().show()
+  }).catch(() => {
+    $('.user-info .login-btn').show().siblings().hide()
+    
   })
 }
+
+$('.user-info .login-btn').on('click', function() {
+  window.location.href= "http://passport.2345.com/login?forward=" + window.location.href
+})

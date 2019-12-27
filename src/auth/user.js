@@ -1,14 +1,19 @@
 // import "../style/reset.scss"
 import "./user.scss"
-import { getMyIdentity } from '../utils'
+import { getMyIdentity, checkLogin } from '../utils'
 console.log('auth')
 
-function getMyworks (project, type) {
+function getMyworks (project, type, domain) {
   return new Promise((resolve, reject) => {
     $.ajax({
       type: "post",
-      url: "http://172.17.19.40:9090/mock/21/api/index.php?r=Api/myWorks",
-      data: `projectID=${project}&type=${type}`,
+      url: "//ie.kehuduan.2345.com/index.php?r=Api/myWorks",
+      data: {
+        projectId: project,
+        type: type,
+        domain
+      },
+      dataType: 'json',
       success: function(data){
         // console.log(data)
         resolve(data)
@@ -51,14 +56,30 @@ function renderMyIdentity (data, el) {
   el.append($(identityStr))
 }
 
+function initEvent () {
+  $('.user-info .login-btn').on('click', function() {
+    window.location.href= "http://passport.2345.com/login?forward=" + window.location.href
+  })
+}
+
 function init() {
-  getMyworks(1,1).then((res) => {
+  initEvent()
+  const domain= window.location.origin
+  checkLogin(domain).then(res => {
+    $('.user-info .login-info').find('.username').text(res.response.username)
+    $('.user-info .login-btn').hide().siblings().show()
+  }).catch(() => {
+    $('.user-info .login-btn').show().siblings().hide()
+  })
+
+
+
+  getMyworks(1,1, window.location.host).then((res) => {
     renderMywork(res, $('.myworks'))
   })
-  getMyIdentity().then((res) => {
+  getMyIdentity(window.location.host).then((res) => {
     renderMyIdentity(res, $('.myidentity'))
   })
 }
 
 init()
-
