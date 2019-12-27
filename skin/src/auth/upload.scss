@@ -1,0 +1,49 @@
+@import "../style/mixins.scss";
+@import '../style/form.scss';
+@import '../style/softHeadeFooter.scss';
+@import '../style/dialog.scss';
+@import '../style/reset.scss';
+
+#verify {
+  width: 100%;
+  background: #fafafa;
+  // .verify-header {
+  //   height: 80px;
+  //   border: 1px solid #e6e6e6;
+  //   background: #ffffff;
+  // }
+  @include softHeader();
+
+  @include softFooter()
+}
+
+.verify-main {
+
+  
+  @include contain();
+  overflow: hidden;
+  .verify-main-contain {
+    box-sizing: border-box;
+    @include contain-style();
+    margin-top: 20px;
+    margin-bottom: 30px;
+    background: #ffffff;
+    padding: 45px 60px 60px;
+    box-sizing: border-box;
+    border: 1px solid #e6e6e6;
+  }
+  .title{
+    height: 50px;
+    font-size: 20px;
+    color: #333333;
+    span>b{
+      color: #ff4040;
+      font-weight: 400;
+    }
+  }
+}
+
+
+
+
+
