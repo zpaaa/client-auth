@@ -48,7 +48,6 @@ import { Agree } from '../utils/agree'
       ])
       .add('phone', data.phone, [
         { verify: 'isNonEmpty', errMsg: '不能为空' },
-        { verify: 'maxLength:10', errMsg: '长度不能超过100' },
       ])
       .add('companyPictureList', data.companyPictureList, [
         { verify: 'minLength:1', errMsg: '请选择公司资质照片' }
