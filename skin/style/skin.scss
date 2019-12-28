@@ -1,0 +1,35 @@
+@import '../../style/form.scss';
+@import "../../style/mixins.scss";
+@import "../common.scss";
+body {
+  background: #fafafa;
+}
+.ie-upload {
+  padding-bottom: 250px;
+  position: relative;
+  .main {
+    margin-top: 20px;
+    padding: 33px 0 0 60px;
+    box-sizing: border-box;
+    background: #fff;
+    border: 1px solid #e6e6e6;
+  }
+  .title {
+    height: 70px;
+    line-height: 70px;
+    padding-left: 14px;
+    position: relative;
+    font-size: 20px;
+    color: #333333;
+    font-weight: bold;
+    &::before {
+      content: "";
+      width: 4px;
+      height: 20px;
+      position: absolute;
+      top: 25px;
+      left: 0px;
+      background: #2693ff;
+    }
+  }
+}

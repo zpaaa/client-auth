@@ -59,7 +59,7 @@ function init() {
       <span>退出</span>`
     } else {
       var str = `<span class="login">
-                    <a href="//passport.2345.com/login?forward=http://ruanjian.2345.cc">
+                    <a href="//passport.2345.com/login?forward=${location.href}">
                       账号登录
                     </a>
                   </span>`
@@ -68,7 +68,7 @@ function init() {
     $('#userInfo').html(str)
   }).catch(() => {
     var str = `<span class="login">
-        <a href="//passport.2345.com/login?forward=http://ruanjian.2345.cc">
+        <a href="//passport.2345.com/login?forward=${location.href}">
           账号登录
         </a>
       </span>`
@@ -78,7 +78,7 @@ function init() {
 
   // projectId: project,项目id（1浏览器，2输入法，3软件管家）
   // type: type,类型（1浏览器皮肤，2浏览器插件，3输入法表情，4输入法皮肤，5软件）
-  getMyworks(3, 5).then((res) => {
+  getMyworks(3).then((res) => {
     renderMywork(res, $('.myworks'))
   })
   getMyIdentity(window.location.host).then((res) => {

@@ -15,7 +15,7 @@ import { checkLogin, getMyIdentity } from '../utils/api';
       <span>退出</span>`
     } else {
       var str = `<span class="login">
-                    <a href="//passport.2345.com/login?forward=http://ruanjian.2345.cc">
+                    <a href="//passport.2345.com/login?forward=${location.href}">
                       账号登录
                     </a>
                   </span>`
@@ -23,7 +23,7 @@ import { checkLogin, getMyIdentity } from '../utils/api';
     $('#userInfo').html(str)
   }).catch(function () {
     var str = `<span class="login">
-                    <a href="//passport.2345.com/login?forward=http://ruanjian.2345.cc">
+                    <a href="//passport.2345.com/login?forward=${location.href}">
                       账号登录
                     </a>
                   </span>`
@@ -48,7 +48,7 @@ import { checkLogin, getMyIdentity } from '../utils/api';
         }
       })
     } else {
-      location.href = '//passport.2345.com/login?forward=http://ruanjian.2345.cc'
+      location.href = `//passport.2345.com/login?forward=${location.href}`
     }
   })
 

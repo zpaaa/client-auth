@@ -134,14 +134,13 @@ export function uploadIdentity(data) {
 }
 
 /*  */
-export function getMyworks(project, type) {
+export function getMyworks(project) {
   return new Promise((resolve, reject) => {
     $.ajax({
       type: "post",
       url: "//ie.kehuduan.2345.com/index.php?r=Api/myWorks",
       data: {
         projectId: project,
-        type: type,
         domain: location.hostname
       },
       dataType: 'json',
