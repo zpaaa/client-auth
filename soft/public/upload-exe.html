@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>上传软件</title>
+  <link rel="stylesheet" href="./upload-exe.css">
+</head>
+
+<body>
+  <div id='upload-exe'>
+    <header class="header">
+      <div class="header-box">
+        <div class="logo">
+          <a href="//ruanjian.2345.cc/"></a>
+        </div>
+        <nav class="nav">
+          <div class="user-info" id="userInfo">
+            <span class="login">
+              <a href="//passport.2345.com/login?forward=http://ruanjian.2345.cc">
+                账号登录
+              </a>
+            </span>
+          </div>
+          <ul class="nav-list">
+            <li class="nav-item">
+              <a href="//ruanjian.2345.cc/upload">首页</a>
+            </li>
+            <li class="nav-item">
+              <a href="./intro.html">平台介绍</a>
+            </li>
+            <li class="nav-item">
+              <a href="//ruanjian.2345.cc/">2345软件宝库</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <main class="upload-exe-main">
+      <div class="title">
+        <span>软件提交</span>
+      </div>
+      <div class="sub-title">
+        <span>完整填写资料并通过资质审核后，即可提交软件<b>（*为必填项）</b></span>
+      </div>
+      <form>
+        <div class="form-item" id="displayName">
+          <div class="form-item-box align-top">
+            <div class="form-item_title is-required">
+              <span>软件名称:</b></span>
+            </div>
+            <div class="form-item_input">
+              <input type="text" class="input">
+            </div>
+            <div class="error-msg">
+            </div>
+          </div>
+        </div>
+
+        <div class="form-item " id="softVersion">
+          <div class="form-item-box align-top">
+            <div class="form-item_title is-required">
+              <span>软件版本：<b>（请输入版本号，用'.'分割）</b></span>
+            </div>
+            <div class="form-item_input">
+              <input type="text" class="input">
+            </div>
+            <div class="error-msg">
+            </div>
+          </div>
+        </div>
+
+        <div class="form-item" id="softComment">
+          <div class="form-item-box align-top">
+            <div class="form-item_title">
+              <span>备注说明：<b>（填写软件运行环境、密码序列等）</b></span>
+            </div>
+            <div class="form-item_input">
+              <input type="text" class="input">
+            </div>
+            <div class="error-msg">
+            </div>
+          </div>
+        </div>
+
+        <div class="form-item" id="dividingline">
+          <span>以下方式任选一种即可</span>
+        </div>
+
+        <div class="form-item" id="downloadUrl">
+          <div class="form-item-box align-top">
+            <div class="form-item_title">
+              <span>1、提供官网下载URL地址：<b>（安装包URL地址）</b></span>
+            </div>
+            <div class="form-item_input">
+              <input type="text" class="input">
+            </div>
+            <div class="error-msg">
+            </div>
+          </div>
+        </div>
+
+        <div class="form-item" id="file">
+          <div class="form-item-box align-top">
+            <div class="form-item_title">
+              <span>2、本地上传安装包<b>（请上传安装包大小在100M以内，100M以上请选择第一种方式提供下载URL地址）</b></span>
+            </div>
+            <div class="form-item_input">
+              <span>
+                <button type="button" class="button">上传文件</button>
+                <input type="file" style="display: none;">
+              </span>
+              <span id="idCardHandHeldUploadList" class="upload-pic-list">
+              </span>
+            </div>
+            <div class="error-msg">
+            </div>
+          </div>
+        </div>
+
+        <div class="form-item" id="softCategory">
+          <div class="form-item-box align-top">
+            <div class="form-item_title">
+              <span>软件分类</span>
+            </div>
+            <div class="form-item_input" style="overflow:inherit">
+              <div class="select" id="select">
+                <div class="inner">
+                  选中的值
+                </div>
+                <ul class="options-list">
+                  <li class="options-item" value="1" label="视频软件">
+                    视频软件
+                  </li>
+                </ul>
+              </div>
+              <!-- <span>
+                <button type="button" class="button">上传文件</button>
+                <input type="file" style="display: none;">
+              </span>
+              <span id="idCardHandHeldUploadList" class="upload-pic-list">
+              </span> -->
+            </div>
+            <div class="error-msg">
+            </div>
+          </div>
+        </div>
+
+        <div id="radioChange">
+          <div class="form-item  adjust-height" id="softLanguage">
+            <div class="form-item-box align-top">
+              <div class="form-item_title">
+                <span>软件语言</span>
+              </div>
+              <div class="form-item_input" id="userType">
+                <label class="margin-right-40" name='aa'>
+                  <span class="radio is-checked">
+                    <span class="radio-input">
+                      <span class="radio-input_inner"></span>
+                      <input type="radio" id="aa" value="1">
+                    </span>
+                    <span class="radio-label">
+                      中文版
+                    </span>
+                  </span>
+                </label>
+                <label class="margin-right-40">
+                  <span class="radio">
+                    <span class="radio-input">
+                      <span class="radio-input_inner"></span>
+                      <input type="radio" value="2">
+                    </span>
+                    <span class="radio-label">
+                      英文版
+                    </span>
+                  </span>
+                </label>
+                <label>
+                  <span class="radio">
+                    <span class="radio-input">
+                      <span class="radio-input_inner"></span>
+                      <input type="radio" value="3">
+                    </span>
+                    <span class="radio-label">
+                      其他语言
+                    </span>
+                  </span>
+                </label>
+              </div>
+              <div class="error-msg">
+              </div>
+            </div>
+          </div>
+
+          <div class="form-item adjust-height" id="softAuthorization">
+            <div class="form-item-box align-top">
+              <div class="form-item_title">
+                <span>软件授权</span>
+              </div>
+              <div class="form-item_input" id="userType">
+                <label class="margin-right-40" name='aa'>
+                  <span class="radio is-checked">
+                    <span class="radio-input">
+                      <span class="radio-input_inner"></span>
+                      <input type="radio" id="aa" value="1">
+                    </span>
+                    <span class="radio-label">
+                      免费
+                    </span>
+                  </span>
+                </label>
+                <label class="margin-right-40">
+                  <span class="radio">
+                    <span class="radio-input">
+                      <span class="radio-input_inner"></span>
+                      <input type="radio" value="2">
+                    </span>
+                    <span class="radio-label">
+                      收费
+                    </span>
+                  </span>
+                </label>
+                <label class="margin-right-40">
+                  <span class="radio">
+                    <span class="radio-input">
+                      <span class="radio-input_inner"></span>
+                      <input type="radio" value="4">
+                    </span>
+                    <span class="radio-label">
+                      含有收费功能
+                    </span>
+                  </span>
+                </label>
+                <label>
+                  <span class="radio">
+                    <span class="radio-input">
+                      <span class="radio-input_inner"></span>
+                      <input type="radio" value="3">
+                    </span>
+                    <span class="radio-label">
+                      试用
+                      <input class="try-time" id="try-time" type="text">
+                      天
+                    </span>
+                  </span>
+                </label>
+              </div>
+              <div class="error-msg">
+              </div>
+            </div>
+          </div>
+
+
+          <div class="form-item  adjust-height" id="osBit">
+            <div class="form-item-box align-top">
+              <div class="form-item_title">
+                <span>操作系统位数：</span>
+              </div>
+              <div class="form-item_input" id="userType">
+                <label class="margin-right-40" name='aa'>
+                  <span class="radio is-checked">
+                    <span class="radio-input">
+                      <span class="radio-input_inner"></span>
+                      <input type="radio" id="aa" value="1">
+                    </span>
+                    <span class="radio-label">
+                      32位
+                    </span>
+                  </span>
+                </label>
+                <label class="margin-right-40">
+                  <span class="radio">
+                    <span class="radio-input">
+                      <span class="radio-input_inner"></span>
+                      <input type="radio" value="2">
+                    </span>
+                    <span class="radio-label">
+                      64位
+                    </span>
+                  </span>
+                </label>
+              </div>
+              <div class="error-msg">
+              </div>
+            </div>
+          </div>
+
+          <div class="form-item  adjust-height" id="osVersionList">
+            <div class="form-item-box align-top">
+              <div class="form-item_title">
+                <span>系统环境：</span>
+              </div>
+              <div class="form-item_input" id="userType">
+                <label class="margin-right-40">
+                  <span class="checkbox">
+                    <span class="checkbox-input">
+                      <span class="checkbox-input_inner"></span>
+                      <input type="checkbox" value="1">
+                    </span>
+                    <span class="checkbox-label">
+                      Win10
+                    </span>
+                  </span>
+                </label>
+
+                <label class="margin-right-40">
+                  <span class="checkbox">
+                    <span class="checkbox-input">
+                      <span class="checkbox-input_inner"></span>
+                      <input type="checkbox" value="2">
+                    </span>
+                    <span class="checkbox-label">
+                      Win8.1
+                    </span>
+                  </span>
+                </label>
+
+                <label class="margin-right-40">
+                  <span class="checkbox">
+                    <span class="checkbox-input">
+                      <span class="checkbox-input_inner"></span>
+                      <input type="checkbox" value="3">
+                    </span>
+                    <span class="checkbox-label">
+                      Win8
+                    </span>
+                  </span>
+                </label>
+
+                <label class="margin-right-40">
+                  <span class="checkbox">
+                    <span class="checkbox-input">
+                      <span class="checkbox-input_inner"></span>
+                      <input type="checkbox" value="4">
+                    </span>
+                    <span class="checkbox-label">
+                      Win7
+                    </span>
+                  </span>
+                </label>
+
+                <label class="margin-right-40">
+                  <span class="checkbox">
+                    <span class="checkbox-input">
+                      <span class="checkbox-input_inner"></span>
+                      <input type="checkbox" value="5">
+                    </span>
+                    <span class="checkbox-label">
+                      Vista
+                    </span>
+                  </span>
+                </label>
+
+                <label class="margin-right-40">
+                  <span class="checkbox">
+                    <span class="checkbox-input">
+                      <span class="checkbox-input_inner"></span>
+                      <input type="checkbox" value="6">
+                    </span>
+                    <span class="checkbox-label">
+                      Win2003
+                    </span>
+                  </span>
+                </label>
+
+                <label class="margin-right-40">
+                  <span class="checkbox">
+                    <span class="checkbox-input">
+                      <span class="checkbox-input_inner"></span>
+                      <input type="checkbox" value="7">
+                    </span>
+                    <span class="checkbox-label">
+                      WinXp
+                    </span>
+                  </span>
+                </label>
+
+              </div>
+              <div class="error-msg">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-item introduce-form-item" id="description">
+          <div class="form-item-box align-top">
+            <div class="form-item_title  is-required">
+              <span>软件介绍：<b>（请填写软件的介绍和说明，300字以内）</b></span>
+            </div>
+            <div class="form-item_input">
+              <textarea cols="30" rows="10" class="textarea"></textarea>
+            </div>
+            <div class="error-msg">
+
+            </div>
+          </div>
+        </div>
+
+        <div class="form-item introduce-form-item" id="updateLog">
+          <div class="form-item-box align-to">
+            <div class="form-item_title">
+              <span>更新日志：<b>（请一行填写一项更新内容，300字以内）</b></span>
+            </div>
+            <div class="form-item_input">
+              <textarea cols="30" rows="10" class="textarea"></textarea>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-item" id="softLogo">
+          <div class="form-item-box align-top">
+            <div class="form-item_title  is-required">
+              <span>软件logo：<b>尺寸为72px*72px,格式为png</b></span>
+            </div>
+            <div class="form-item_input ">
+              <span>
+                <button type="button" class="button">上传文件</button>
+                <input type="file" style="display: none;" accept="image/png">
+              </span>
+              <span id="logoList" class="upload-pic-list">
+              </span>
+            </div>
+            <div class="error-msg">
+            </div>
+          </div>
+        </div>
+        <div class="form-item" id="softScreenshotList">
+          <div class="form-item-box align-top">
+            <div class="form-item_title   is-required">
+              <span>软件截图：<b>尺寸为500px*380xp,软件截图，最多为10张</b></span>
+            </div>
+            <div class="form-item_input">
+              <span>
+                <button type="button" class="button">上传文件</button>
+                <input type="file" style="display: none;" multiple accept="image/*">
+              </span>
+              <span id="softScreenshot" class="upload-pic-list">
+              </span>
+            </div>
+            <div class="error-msg">
+            </div>
+          </div>
+        </div>
+        <div class="form-item" id="softIdentityList">
+          <div class="form-item-box align-top">
+            <div class="form-item_title  is-required">
+              <span>软件资质：<b style="color: #ff4040;">（请务必提供软件著作证书。如有其他相关资源，请一并提供）</b></span>
+            </div>
+            <div class="form-item_input">
+              <span>
+                <button type="button" class="button">上传文件</button>
+                <input type="file" style="display: none;" accept="image/*" multiple>
+              </span>
+              <span id="softIdentity" class="upload-pic-list">
+              </span>
+            </div>
+            <div class="error-msg">
+            </div>
+          </div>
+        </div>
+
+
+        <div class="form-item " id="agree">
+          <div class="form-item-box align-top">
+            <label>
+              <span class="checkbox">
+                <span class="checkbox-input">
+                  <span class="checkbox-input_inner"></span>
+                  <input type="checkbox">
+                </span>
+                <span class="checkbox-label">
+                  我同意<b>《作者协议》</b>
+                </span>
+              </span>
+            </label>
+            <div class="error-msg">
+            </div>
+          </div>
+        </div>
+
+        <div class="form-item">
+          <button class="submit-btn button" id="submit" type="button">立即提交</button>
+        </div>
+      </form>
+
+
+
+    </main>
+    <footer class="footer" style="position:inherit;margin-top: 30px;">
+      <p>2345版权所有&emsp;沪ICP备15036234号-1</p>
+      <p>
+        <i></i>
+        沪公网安备&nbsp;310115&emsp;&emsp;&emsp;02005439号&emsp;|&emsp;软件申诉邮箱：safesoft@2345.com
+      </p>
+
+    </footer>
+
+  </div>
+  <script src="../lib/jquery-1.8.3.min.js"></script>
+  <script src="../lib/promise-polyfill.min.js"></script>
+  <script src="http://ie.2345.com/js/footer.js?style=2345ie&201911251851" type="text/javascript" charset="gbk"></script>
+
+</body>
+
+</html>

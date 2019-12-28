@@ -1,0 +1,117 @@
+body {  background-color: #ffffff; color: #666; }
+
+html, body, p, dl, dt, dd, table, td, th, input, img, form, div, span, ul, ol, li, h1, h2, h3, h4, h5, h6, select, fieldset, button, sub, sup, textarea { margin: 0; padding: 0; }
+
+table { border-collapse: collapse; border-spacing: 0; }
+
+h1, h2, h3, h4, h5, h6 { font-size: 100%; }
+
+img { border: 0 none; }
+
+em, i { font-style: normal; }
+
+ul, ol { list-style: none outside none; }
+
+.clearfix:after { content: ""; display: block; clear: both; }
+
+.clearfix { *zoom: 1; }
+
+a { color: #666; text-decoration: none; }
+
+a:hover { color: #298fc6; text-decoration: underline; }
+
+:focus { outline: 0; }
+
+.clear { clear: both; overflow: hidden; font-size: 0; height: 0; line-height: 0; }
+
+input, textarea, select { background-color: #ffffff; }
+
+.footer {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+}
+.footer .inner {
+  background-color: #f6f6f6;
+}
+
+.footer {
+  border-top: 1px solid #e5e5e5;
+  zoom: 1;
+  font-family: simsun;
+}
+.footer .inner {
+  width: auto;
+  border-top: 1px solid #fff;
+  zoom: 1;
+  background: #f2f2f2;
+}
+.footer .links {
+  overflow: hidden;
+  *zoom: 1;
+  width: 986px;
+  margin: 0 auto;
+  padding: 27px 0;
+  border-bottom: 1px solid #e5e5e5;
+}
+.footer .links dl {
+  float: left;
+  width: 120px;
+  border-left: 1px dotted #d8d4d4;
+  padding: 0 24px;
+  height: 157px;
+}
+.footer .links dt {
+  margin-bottom: 8px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #666;
+}
+.footer .links dd {
+  line-height: 24px;
+}
+.footer .links .lastItem {
+  width: 145px;
+}
+.footer .links .wbItem {
+  position: relative;
+  *zoom: 1;
+}
+.footer .links .wbItem .trig {
+  // position: absolute;
+  top: 1px;
+  left: 68px;
+}
+.footer .links .ewm_box {
+  float: left;
+  width: 115px;
+  height: 115px;
+  overflow: hidden;
+  background: url(../images/ewm_wx.png) no-repeat;
+}
+.footer .copyright {
+  width: 986px;
+  margin: 0 auto;
+  padding: 15px 0;
+  text-align: center;
+  border-top: 1px solid #fff;
+  font-family: Arial;
+}
+.footer .links .product {
+  width: 444px;
+  overflow: hidden;
+  border-left: 0 none;
+}
+
+.product-list {
+  width: 480px;
+}
+
+.product-list li {
+  float: left;
+  _display: inline;
+  width: 160px;
+  height: 26px;
+  line-height: 26px;
+}
