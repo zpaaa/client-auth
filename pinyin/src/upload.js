@@ -12,6 +12,8 @@ import { Agree } from '../utils/agree'
 
   /* 页面初始化获取当前用户的信息 */
   var dialog = new Dialog('登录状态无效,请重新登录~')
+
+  
   checkLogin(location.hostname).then(function (res) {
     var code = res.response.code
     var userName = res.userName;

@@ -7,6 +7,163 @@ import { uploadWorks } from '../utils/api'
 import { Agree } from '../utils/agree';
 
 (function () {
+
+  const urlobj = {};
+  location.search.replace(/([^?&=]+)=([^&]+)/g, (_, k, v) => (obj[k] = v));
+
+
+  if (urlobj.type == 1) {
+    var str = ` <div class="title">皮肤</div>
+    <div class="form-item" id="display-name">
+      <div class="form-item-box align-top">
+        <div class="form-item_title is-required">
+          <span>皮肤名称 <b>（不超过20个汉字或字符）</b></span>
+        </div>
+        <div class="form-item_input">
+          <input type="text" class="input">
+        </div>
+        <div class="error-msg">
+        </div>
+      </div>
+    </div>
+
+    <div class="form-item introduce-form-item" id="description">
+      <div class="form-item-box align-top">
+        <div class="form-item_title is-required">
+          <span>皮肤描述<b>（不超过100个汉字或字符）</b></span>
+        </div>
+        <div class="form-item_input">
+          <textarea cols="30" rows="10" class="textarea"></textarea>
+        </div>
+        <div class="error-msg">
+        </div>
+      </div>
+    </div>
+
+    <div class="form-item" id="upload-file">
+      <div class="form-item-box align-top">
+        <div class="form-item_title is-required">
+          <span>文件 <b>（您的扩展包，只支持zip或ssf，不超过100M）</b></span>
+        </div>
+        <div class="form-item_input">
+          <button type="button" class="button" id="upload-btn">上传文件</button>
+          <input type="file" style="display: none;"  accept="application/zip">
+          <span id="file" class="upload-pic-list"></span>
+          <span id="uploadList" class="upload-pic-list">
+          </span>
+        </div>
+        <div class="error-msg">
+        </div>
+      </div>
+    </div>
+
+    <div class="form-item agree" id="agree">
+      <div class="form-item-box align-top">
+        <label>
+          <span class="checkbox">
+            <span class="checkbox-input">
+              <span class="checkbox-input_inner"></span>
+              <input type="checkbox">
+            </span>
+            <span class="checkbox-label">
+              我同意<b>《作者协议》</b>
+            </span>
+          </span>
+        </label>
+        <div class="error-msg">
+        </div>
+      </div>
+    </div>
+
+    <div class="form-item" id="submit">
+      <button class="submit-btn button" id="submit" type="button">立即提交</button>
+    </div>`
+    $('#main').html(str)
+
+  } else {
+    var str = ` <div class="title">表情</div>
+    <div class="form-item" id="display-name">
+      <div class="form-item-box align-top">
+        <div class="form-item_title is-required">
+          <span>表情名称 <b>（不超过20个汉字或字符）</b></span>
+        </div>
+        <div class="form-item_input">
+          <input type="text" class="input">
+        </div>
+        <div class="error-msg">
+        </div>
+      </div>
+    </div>
+
+    <div class="form-item introduce-form-item" id="description">
+      <div class="form-item-box align-top">
+        <div class="form-item_title is-required">
+          <span>表情介绍<b>（不超过100个汉字或字符）</b></span>
+        </div>
+        <div class="form-item_input">
+          <textarea cols="30" rows="10" class="textarea"></textarea>
+        </div>
+        <div class="error-msg">
+        </div>
+      </div>
+    </div>
+
+    <div class="form-item" id="upload-file">
+      <div class="form-item-box align-top">
+        <div class="form-item_title is-required">
+          <span>文件 <b>（您的扩展包，只支持png、jgp、zip，不超过1M）</b></span>
+        </div>
+        <div class="form-item_input">
+          <button type="button" class="button" id="upload-btn">上传文件</button>
+          <input type="file" style="display: none;"  accept="application/zip">
+          <span id="file" class="upload-pic-list"></span>
+          <span id="uploadList" class="upload-pic-list">
+          </span>
+        </div>
+        <div class="error-msg">
+        </div>
+      </div>
+    </div>
+
+    <div class="form-item agree" id="agree">
+      <div class="form-item-box align-top">
+        <label>
+          <span class="checkbox">
+            <span class="checkbox-input">
+              <span class="checkbox-input_inner"></span>
+              <input type="checkbox">
+            </span>
+            <span class="checkbox-label">
+              我同意<b>《作者协议》</b>
+            </span>
+          </span>
+        </label>
+        <div class="error-msg">
+        </div>
+      </div>
+    </div>
+
+    <div class="form-item" id="submit">
+      <button class="submit-btn button" id="submit" type="button">立即提交</button>
+    </div>`
+    $('#main').html(str)
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   var fileList = []
   function uploadVali() {
     var uploadValidator = new Validator()
@@ -25,6 +182,22 @@ import { Agree } from '../utils/agree';
         { verify: 'fileSize:20', errMsg: '文件大小不能超过20M' },
         { verify: 'fileType:["zip","ssf"]', errMsg: '文件类型只能为Zip' },
       ])
+    /* 1为皮肤 */
+    if (urlobj.type == 1) {
+      uploadValidator.add('upload-file', data.file, [
+        { verify: 'minLength:1', errMsg: '请上传文件' },
+        { verify: 'fileSize:1', errMsg: '文件大小不能超过1M' },
+        { verify: 'fileType:["zip","ssf"]', errMsg: '文件类型只能为Zip' },
+      ])
+    } else {
+      uploadValidator.add('upload-file', data.file, [
+        { verify: 'minLength:1', errMsg: '请上传文件' },
+        { verify: 'fileSize:20', errMsg: '文件大小不能超过20M' },
+        { verify: 'fileType:["png","jgp"，"zip"]', errMsg: '文件类型只能为png、jgp、zip' },
+      ])
+
+    }
+
     return uploadValidator
   }
 

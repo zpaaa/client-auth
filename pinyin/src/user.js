@@ -6,12 +6,9 @@ console.log('auth');
 function renderMywork(data, el) {
   if (!data) return
   var { myWorks = [] } = data
-  myWorks = myWorks.filter(v => {
-    return v.uploadType === "5"
-  })
   let workItem = ``
   for (var item of myWorks) {
-    var { commitTime, uploadName, status } = item || {}
+    var { commitTime, uploadName, status, uploadType } = item || {}
     var statueMap = {
       0: '待审核',
       1: '通过审核',
@@ -19,10 +16,18 @@ function renderMywork(data, el) {
       3: '已上架',
       4: '已下架'
     }
+    var uploadTypeMap = {
+      1: '浏览器皮肤',
+      2: '浏览器插件',
+      3: '输入法表情',
+      4: '输入法皮肤',
+      5: '软件'
+    }
+
     workItem += `
       <tr>
         <td>${commitTime}</td>
-        <td>软件</td>
+        <td>${uploadTypeMap[uploadType]}</td>
         <td>${uploadName}</td>
         <td ${status === 2 ? "class='red'" : ""}>${statueMap[status]}</td>
       </tr>
@@ -90,7 +95,7 @@ function init() {
 
   // projectId: project,项目id（1浏览器，2输入法，3软件管家）
   // type: type,类型（1浏览器皮肤，2浏览器插件，3输入法表情，4输入法皮肤，5软件）
-  getMyworks(3).then((res) => {
+  getMyworks(2).then((res) => {
     renderMywork(res, $('.myworks'))
   })
   getMyIdentity(window.location.host).then((res) => {

@@ -55,7 +55,7 @@ body {
       .upload-check, .upload-list, .upload-info {
         margin-bottom: 36px;
       }
-      .upload-list .title a{
+      .upload-list .title a,.upload-info .title a{
         display: block;
       }
       table {
@@ -78,7 +78,7 @@ body {
             min-width: 150px;
           }
           &.type, &.name {
-            min-width: 240px;
+            min-width: 220px;
           }
           &.state {
             min-width: 310px;

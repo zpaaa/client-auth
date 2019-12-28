@@ -467,7 +467,7 @@ body {
       color: #999; }
     body .use-center .main .upload-check, body .use-center .main .upload-list, body .use-center .main .upload-info {
       margin-bottom: 36px; }
-    body .use-center .main .upload-list .title a {
+    body .use-center .main .upload-list .title a, body .use-center .main .upload-info .title a {
       display: block; }
     body .use-center .main table, body .use-center .main table th, body .use-center .main table td {
       border: 1px solid #dbdbdb;
@@ -485,7 +485,7 @@ body {
       body .use-center .main table th.time {
         min-width: 150px; }
       body .use-center .main table th.type, body .use-center .main table th.name {
-        min-width: 240px; }
+        min-width: 220px; }
       body .use-center .main table th.state {
         min-width: 310px; }
     body .use-center .main table td {
