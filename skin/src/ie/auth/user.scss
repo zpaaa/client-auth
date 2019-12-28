@@ -1,6 +1,9 @@
+@import "../common.scss";
 body {
   background: #fafafa;
   .use-center {
+    position: relative;
+    padding-bottom: 250px;
     .main {
       margin-top: 20px;
       padding: 45px 60px 24px 60px;

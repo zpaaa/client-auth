@@ -1,12 +1,15 @@
 
 import './upload.scss'
 
-import '../dialog'
+import '../../dialog'
 
-import { Validator } from '../utils';
+import { Validator } from '../../utils';
 
-import { uploadIdentity } from '../api'
-import { Dialog } from '../dialog';
+import { uploadIdentity } from '../../api'
+import { Dialog } from '../../dialog';
+import { headSwitch, getLoginState } from '../common'
+headSwitch();
+getLoginState()
 
 (function () {
   var fileList = []

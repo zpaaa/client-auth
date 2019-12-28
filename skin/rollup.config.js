@@ -6,7 +6,7 @@ import postcss from 'rollup-plugin-postcss-modules'
 import { terser } from "rollup-plugin-terser";
 export default [
   {
-    input: './src/auth/user.js',
+    input: './src/ie/auth/user.js',
     output: {
       file: `./dist/auth/user.js`,
       format: 'esm'
@@ -27,7 +27,7 @@ export default [
     ]
   },
   {
-    input: './src/auth/upload.js',
+    input: './src/ie/auth/upload.js',
     output: {
       file: `./dist/auth/upload.js`,
       format: 'esm'
@@ -47,7 +47,7 @@ export default [
     ]
   },
   {
-    input: './src/ie/skin.js',
+    input: './src/ie/skin/skin.js',
     output: {
         file: `./dist/ie/skin-upload.js`,
         format: 'esm'
