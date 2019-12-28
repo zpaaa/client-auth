@@ -6,14 +6,17 @@ console.log('auth');
 function renderMywork(data, el) {
   if (!data) return
   var { myWorks = [] } = data
+  myWorks = myWorks.filter(v => {
+    return v.uploadType === "5"
+  })
   let workItem = ``
   for (var item of myWorks) {
     var { commitTime, uploadType, uploadName, status, auditReason } = item || {}
     workItem += `
       <tr>
         <td>${commitTime}</td>
-        <td>${uploadType}</td>
-        <td>${uploadName}.6</td>
+        <td>软件</td>
+        <td>${uploadName}</td>
         <td ${status === 2 ? "class='red'" : ""}>${status + auditReason ? auditReason : ''}</td>
       </tr>
     `
@@ -32,11 +35,12 @@ function renderMyIdentity(data, el) {
     return
   }
   const { commitTime, userType, auditStatus, auditReason } = identity
+  const statusText = auditStatus === '0' ? '待审核' : auditStatus === '1' ? '通过审核' : '审核未通过';
   let identityStr = `
     <tr>
       <td>${commitTime}</td>
-      <td>${userType}</td>
-      <td ${auditStatus === 2 ? "class='red'" : ""}>${auditStatus + auditReason ? auditReason : ''}</td>
+      <td>${userType === '1' ? '个人用户' : '企业用户'}</td>
+      <td ${auditStatus === 2 ? "class='red'" : ""}>${statusText + auditReason ? auditReason : ''}</td>
     </tr>
   `
   identityStr = identityStr === '' ? '<td colspan="5">还未提交审核~</td>' : identityStr
