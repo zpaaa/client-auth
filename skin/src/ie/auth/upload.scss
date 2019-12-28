@@ -1,20 +1,19 @@
-@import "../style/mixins.scss";
-@import '../style/form.scss';
-@import '../style/softHeadeFooter.scss';
-@import '../style/dialog.scss';
-@import '../style/reset.scss';
+@import "../../style/mixins.scss";
+@import '../../style/form.scss';
+@import '../../style/dialog.scss';
+@import '../../style/reset.scss';
+@import "../common.scss";
 
 #verify {
   width: 100%;
   background: #fafafa;
+  position: relative;
+  padding-bottom: 250px;
   // .verify-header {
   //   height: 80px;
   //   border: 1px solid #e6e6e6;
   //   background: #ffffff;
   // }
-  @include softHeader();
-
-  @include softFooter()
 }
 
 .verify-main {

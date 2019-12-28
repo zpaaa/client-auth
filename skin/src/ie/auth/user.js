@@ -1,8 +1,9 @@
 // import "../style/reset.scss"
 import "./user.scss"
-import { getMyIdentity, checkLogin } from '../utils'
-console.log('auth')
-
+import { getMyIdentity, checkLogin } from '../../utils'
+import { headSwitch, getLoginState } from '../common'
+headSwitch()
+getLoginState(window.location.host)
 function getMyworks (project, type, domain) {
   return new Promise((resolve, reject) => {
     $.ajax({
@@ -71,8 +72,6 @@ function init() {
   }).catch(() => {
     $('.user-info .login-btn').show().siblings().hide()
   })
-
-
 
   getMyworks(1,1, window.location.host).then((res) => {
     renderMywork(res, $('.myworks'))

@@ -30,10 +30,5 @@ export function getLoginState (url) {
     $('.user-info .login-btn').hide().siblings().show()
   }).catch(() => {
     $('.user-info .login-btn').show().siblings().hide()
-    
   })
 }
-
-$('.user-info .login-btn').on('click', function() {
-  window.location.href= "http://passport.2345.com/login?forward=" + window.location.href
-})
