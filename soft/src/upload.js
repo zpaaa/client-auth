@@ -335,7 +335,6 @@ import { Agree } from '../utils/agree'
 
   $('#agree-btn').on('click', function () {
     new Agree()
-
   })
 
 

@@ -11,13 +11,20 @@ function renderMywork(data, el) {
   })
   let workItem = ``
   for (var item of myWorks) {
-    var { commitTime, uploadType, uploadName, status, auditReason } = item || {}
+    var { commitTime, uploadName, status, auditReason } = item || {}
+    var statueMap = {
+      0: '待审核',
+      1: '通过审核',
+      2: '不通过审核',
+      3: '已上架',
+      4: '已下架'
+    }
     workItem += `
       <tr>
         <td>${commitTime}</td>
         <td>软件</td>
         <td>${uploadName}</td>
-        <td ${status === 2 ? "class='red'" : ""}>${status + auditReason ? auditReason : ''}</td>
+        <td ${status === 2 ? "class='red'" : ""}>${statueMap[status] + (auditReason ? '原因:' + auditReason : '')}</td>
       </tr>
     `
   }
@@ -40,7 +47,7 @@ function renderMyIdentity(data, el) {
     <tr>
       <td>${commitTime}</td>
       <td>${userType === '1' ? '个人用户' : '企业用户'}</td>
-      <td ${auditStatus === 2 ? "class='red'" : ""}>${statusText + auditReason ? auditReason : ''}</td>
+      <td ${auditStatus === 2 ? "class='red'" : ""}>${statusText + (auditReason ? auditReason : '')}</td>
     </tr>
   `
   identityStr = identityStr === '' ? '<td colspan="5">还未提交审核~</td>' : identityStr

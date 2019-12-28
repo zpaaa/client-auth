@@ -39,7 +39,7 @@ import { checkLogin, getMyIdentity } from '../utils/api';
         if (res.response.code === 4005) { //资质未上传
           location.href = './upload.html'
         } else if (res.response.code === 2000) {
-          var auditStatus = res.auditStatus
+          var auditStatus = res.identity.auditStatus
           if (auditStatus === '1') {  //审核通过
             location.href = './upload-exe.html'
           } else if (auditStatus === '0' || auditStatus === '2') {  //待审核

@@ -89,11 +89,6 @@ body {
   width: 1200px;
   margin: 0 auto; }
 
-body {
-  font: 12px/1.5 microsoft yahei, Arial;
-  background-color: #ffffff;
-  color: #666; }
-
 html, body, p, dl, dt, dd, table, td, th, input, img, form, div, span, ul, ol, li, h1, h2, h3, h4, h5, h6, select, fieldset, button, sub, sup, textarea {
   margin: 0;
   padding: 0; }
@@ -334,11 +329,15 @@ body {
       color: #999; }
     body .use-center .main .upload-check, body .use-center .main .upload-list, body .use-center .main .upload-info {
       margin-bottom: 36px; }
+    body .use-center .main .upload-list .title a {
+      display: block; }
     body .use-center .main table, body .use-center .main table th, body .use-center .main table td {
       border: 1px solid #dbdbdb;
       border-collapse: collapse;
       text-align: center;
       color: 14px; }
+    body .use-center .main table .red {
+      color: #ff4040; }
     body .use-center .main table th {
       background: #f5f5f5;
       height: 45px;
@@ -348,7 +347,7 @@ body {
       body .use-center .main table th.time {
         min-width: 150px; }
       body .use-center .main table th.type, body .use-center .main table th.name {
-        min-width: 240px; }
+        min-width: 220px; }
       body .use-center .main table th.state {
         min-width: 310px; }
     body .use-center .main table td {
@@ -360,7 +359,8 @@ body {
       height: 16px;
       line-height: 16px;
       margin-top: 16px;
-      box-sizing: border-box; }
+      box-sizing: border-box;
+      font-size: 14px; }
       body .use-center .main .upload-check p a {
         line-height: 16px;
         color: #2693ff;

@@ -89,11 +89,6 @@ body {
   width: 1200px;
   margin: 0 auto; }
 
-body {
-  font: 12px/1.5 microsoft yahei, Arial;
-  background-color: #ffffff;
-  color: #666; }
-
 html, body, p, dl, dt, dd, table, td, th, input, img, form, div, span, ul, ol, li, h1, h2, h3, h4, h5, h6, select, fieldset, button, sub, sup, textarea {
   margin: 0;
   padding: 0; }

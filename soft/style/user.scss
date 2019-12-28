@@ -78,7 +78,7 @@ body {
             min-width: 150px;
           }
           &.type, &.name {
-            min-width: 240px;
+            min-width: 220px;
           }
           &.state {
             min-width: 310px;
@@ -97,6 +97,7 @@ body {
           line-height: 16px;
           margin-top: 16px;
           box-sizing: border-box;
+          font-size: 14px;
           a {
             line-height: 16px;
             color: #2693ff;
