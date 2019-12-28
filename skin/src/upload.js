@@ -1,13 +1,13 @@
 
-import './upload.scss'
+import '../style/upload.scss'
 
-import '../../dialog'
+import '../style/common/dialog.scss'
 
-import { Validator } from '../../utils';
+import { Validator } from '../utils/utils';
 
-import { uploadIdentity } from '../../api'
-import { Dialog } from '../../dialog';
-import { headSwitch, getLoginState } from '../common'
+import { uploadIdentity } from '../utils/api'
+import { Dialog } from '../utils/dialog';
+import { headSwitch, getLoginState } from '../utils/common'
 headSwitch();
 getLoginState()
 

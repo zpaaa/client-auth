@@ -1,6 +1,6 @@
-@import '../../style/form.scss';
-@import "../../style/mixins.scss";
-@import "../common.scss";
+@import './style/common/form.scss';
+@import "./style/common/mixins.scss";
+@import "./common.scss";
 body {
   background: #fafafa;
 }

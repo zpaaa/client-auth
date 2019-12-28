@@ -1,6 +1,6 @@
-import './skin.scss'
-import '../../style/agree.scss'
-import { Validator } from '../../utils'
+import '../style/skin.scss'
+import '../style/common/agree.scss'
+import { Validator } from '../utils/utils'
 export function upload (project, type) {
   init()
   var fileList = []

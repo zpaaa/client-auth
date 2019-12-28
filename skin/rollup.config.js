@@ -26,44 +26,44 @@ export default [
       })
     ]
   },
-  // {
-  //   input: './src/ie/auth/upload.js',
-  //   output: {
-  //     file: `./dist/auth/upload.js`,
-  //     format: 'esm'
-  //   },
-  //   plugins: [
-  //     terser(),
-  //     scss({
-  //       output: `./dist/auth/upload.css`
-  //     }),
-  //     postcss({
-  //       plugins: [autoprefixer()]
-  //     }),
-  //     template({
-  //       template: './public/auth/upload.html',
-  //       target: './dist/auth/upload.html',
-  //     })
-  //   ]
-  // },
-  // {
-  //   input: './src/ie/skin/skin.js',
-  //   output: {
-  //       file: `./dist/ie/skin-upload.js`,
-  //       format: 'esm'
-  //   },
-  //   plugins: [
-  //     terser(),
-  //     scss({
-  //       output: `./dist/ie/upload.css`
-  //     }),
-  //     postcss({
-  //       plugins: [autoprefixer()]
-  //     }),
-  //     template({
-  //       template: './public/ie/skin-upload.html',
-  //       target: './dist/ie/skin-upload.html',
-  //     })
-  //   ]
-  // }
+  {
+    input: './src/upload.js',
+    output: {
+      file: `./dist/upload.js`,
+      format: 'esm'
+    },
+    plugins: [
+      terser(),
+      scss({
+        output: `./dist/upload.css`
+      }),
+      postcss({
+        plugins: [autoprefixer()]
+      }),
+      template({
+        template: './public/upload.html',
+        target: './dist/upload.html',
+      })
+    ]
+  },
+  {
+    input: './src/skin.js',
+    output: {
+        file: `./dist/skin-upload.js`,
+        format: 'esm'
+    },
+    plugins: [
+      terser(),
+      scss({
+        output: `./dist/upload.css`
+      }),
+      postcss({
+        plugins: [autoprefixer()]
+      }),
+      template({
+        template: './public/skin-upload.html',
+        target: './dist/skin-upload.html',
+      })
+    ]
+  }
 ];
