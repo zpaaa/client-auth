@@ -14,7 +14,7 @@ function renderMywork(data, el) {
         <td>${commitTime}</td>
         <td>${uploadType}</td>
         <td>${uploadName}.6</td>
-        <td>${status + auditReason ? auditReason : ''}</td>
+        <td ${status === 2 ? "class='red'" : ""}>${status + auditReason ? auditReason : ''}</td>
       </tr>
     `
   }
@@ -36,7 +36,7 @@ function renderMyIdentity(data, el) {
     <tr>
       <td>${commitTime}</td>
       <td>${userType}</td>
-      <td>${auditStatus + auditReason ? auditReason : ''}</td>
+      <td ${auditStatus === 2 ? "class='red'" : ""}>${auditStatus + auditReason ? auditReason : ''}</td>
     </tr>
   `
   identityStr = identityStr === '' ? '<td colspan="5">还未提交审核~</td>' : identityStr
