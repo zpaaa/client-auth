@@ -1,6 +1,6 @@
 @import "./common/reset.scss";
 body {
-  font: 12px/1.5 microsoft yahei, Arial;
+  // font: 12px/1.5 microsoft yahei, Arial;
   // background-color: #ffffff;
   // color: #666;
 }
@@ -272,6 +272,7 @@ select {
   left: 0;
   bottom: 0;
   width: 100%;
+  font-size: 12px;
 }
 .footer .inner {
   background-color: #f6f6f6;
