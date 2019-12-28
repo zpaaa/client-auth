@@ -6,46 +6,45 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="./user.css">
+  <!-- <link rel="stylesheet" href="../common.css"> -->
   <title>个人中心</title>
 </head>
 
 <body>
   <div class="use-center">
-    <!--头部 begin  -->
-    <div class="head-wp">
-      <div class="headinner clearfix">
-        <a class="logo" href="index.html"><span></span></a>
-        <div class="pc-m clearfix">
-          <i id="curr-pc-m"></i>
-          <a class="pcIcon-bg currColor" href="http://ie.2345.cc">电脑版</a>
-          <a class="mIcon-bg" target="_blank" href="http://app.2345.com/">手机版</a>
+    <header class="head-wp">
+      <div class="head-wp-box">
+        <div class="logo">
+          <a href="/"></a>
         </div>
-        <div class="user-info">
-          <a href="javascript:;" class="login-btn">登录</a>
-          <div class="log-info clearfix">
-            <a class="username line-cut" href="javascript:;">azhupa@2345.com</a> <span>&nbsp|&nbsp</span> <a
-              class="logout" href="javascript:;">退出</a>
-          </div>
+        <div class="user-info" id="userInfo">
+          <span class="login">账号登录</span>
         </div>
-        <ul class="nav-wp">
-          <li><a class="curr-wp" href="http://ie.2345.cc">首页</a></li>
-          <li><a target="_blank" href="http://skin.ie.2345.com">皮肤</a></li>
-          <li><a target="_blank" href="http://extension.ie.2345.com">应用</a></li>
-          <!-- <li><a href="http://ie.2345.cc/log.htm">日志</a></li> -->
-          <li><a href="http://ie.2345.cc/help/v7/index.htm">帮助</a></li>
-          <li><a target="_blank" href="http://bbs.2345.cn/forumdisplay.php?fid=2">论坛</a></li>
+        <ul class="nav-list">
+          <li class="nav-item">
+            <a href="/">首页</a>
+          </li>
+          <li class="nav-item active">
+            <a href="javascript:;">皮肤&表情</a>
+          </li>
+          <li class="nav-item">
+            <a href="//pinyin.2345.cc/cjwt/1.htm">帮助</a>
+          </li>
+          <li class="nav-item">
+            <a href="//bbs.2345.cn/forumdisplay.php?fid=20">论坛</a>
+          </li>
         </ul>
       </div>
-    </div>
-    <!--head-wp end-->
-    <!--头部 end-->
+    </header>
+
+
     <div class="main inner">
       <div class="upload-check">
         <div class="title">软件提交</div>
-        <p>前往<a href="##">2345用户中心</a>修改账户信息</p>
+        <p>前往<a href="#">2345用户中心</a>修改账户信息</p>
       </div>
       <div class="upload-info">
-        <div class="title">资质信息<span>提交</span></div>
+        <div class="title">资质信息<span><a href="./upload.html">提交</a></span></div>
         <div class="tip">备注：资质审核通过后，才能进行作品上传</div>
         <table class="myidentity">
           <tr>
@@ -53,15 +52,10 @@
             <th class="type">作者类型</th>
             <th class="state">状态</th>
           </tr>
-          <!-- <tr>
-                <td>2019-12-25</td>
-                <td>软件</td>
-                <td>待审</td>
-              </tr> -->
         </table>
       </div>
       <div class="upload-list">
-        <div class="title">我的作品<span>提交</span></div>
+        <div class="title">我的作品<span><a href="./look-upload.html">提交</a></span></div>
         <div class="tip">备注：如需撤销作品，请发邮件到safesoft@2345.com邮箱，我们会在15个工作日内对作品进行下架</div>
         <table class="myworks">
           <tr>
@@ -70,16 +64,10 @@
             <th class="name">作品名称</th>
             <th class="state">状态</th>
           </tr>
-          <!-- <tr>
-                <td>2019-12-25</td>
-                <td>软件</td>
-                <td>安全卫士v5.6</td>
-                <td>待审</td>
-              </tr> -->
         </table>
       </div>
     </div>
-    <footer class="footer">
+    <footer class="footer" style="font-size: 12px;position: inherit;">
       <p>2345版权所有&emsp;沪ICP备15036234号-1</p>
       <p>
         <i></i>
@@ -87,8 +75,9 @@
       </p>
     </footer>
   </div>
-  <script src="http://ie.2345.com/js/footer.js?style=2345ie&201911251851" type="text/javascript" charset="gbk"></script>
   <script src="./lib/jquery-1.8.3.min.js"></script>
+  <script src="./lib/promise-polyfill.min.js"></script>
+  <script src="http://ie.2345.com/js/footer.js?style=2345ie&201911251851" type="text/javascript" charset="gbk"></script>
 </body>
 
 </html>

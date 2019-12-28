@@ -1,17 +1,36 @@
 
-import './upload.scss'
+import '../style/upload.scss'
 
-import '../../dialog'
 
-import { Validator } from '../../utils';
+import { Validator } from '../utils/utils';
 
-import { uploadIdentity } from '../../api'
-import { Dialog } from '../../dialog';
-import { headSwitch, getLoginState } from '../common'
-headSwitch();
-getLoginState()
+import { uploadIdentity, checkLogin } from '../utils/api'
+import { Dialog } from '../utils/dialog';
+import { Agree } from '../utils/agree'
 
 (function () {
+
+  /* 页面初始化获取当前用户的信息 */
+  var dialog = new Dialog('登录状态无效,请重新登录~')
+  checkLogin(location.hostname).then(function (res) {
+    var code = res.response.code
+    var userName = res.userName;
+    if (code === 2000) {
+      var str = ` <span class="name"><a href="./user.html">${userName}</a></span>|
+      <span>退出</span>`
+    } else {
+      var str = `<span class="login">
+                    <a href="//passport.2345.com/login?forward=${location.href}">
+                      账号登录
+                    </a>
+                  </span>`
+    }
+    $('#userInfo').html(str)
+  }).catch(function (err) {
+
+  })
+
+
   var fileList = []
   function conpanyVali() {
     var conpanyValidator = new Validator()
@@ -25,12 +44,16 @@ getLoginState()
         { verify: 'isNonEmpty', errMsg: '名称不能为空' },
         { verify: 'maxLength:10', errMsg: '长度不能超过10' },
       ])
-      .add('companyPersonalPhone', data.companyPersonalPhone, [
+      .add('phone', data.phone, [
         { verify: 'isNonEmpty', errMsg: '不能为空' },
         { verify: 'maxLength:10', errMsg: '长度不能超过100' },
       ])
       .add('companyPictureList', data.companyPictureList, [
         { verify: 'minLength:1', errMsg: '请选择公司资质照片' }
+      ])
+      .add('companyIntroduction', data.companyIntroduction, [
+        { verify: 'isNonEmpty', errMsg: '请填写公司介绍' },
+        { verify: 'maxLength:300', errMsg: '公司介绍不能超过300字' },
       ])
     return conpanyValidator
   }
@@ -278,55 +301,40 @@ getLoginState()
         $('.is-error .error-msg').html('')
       }
 
-
       var data = userType === '1' ? person.getData() : company.getData()
       dialog.show()
-      uploadIdentity(data).then(function(res){
-        dialog.inner('上传成功！')
-      }).catch(function(err){
+      uploadIdentity(data).then(function (res) {
+        console.log(res.response.code, 'sssssssss')
+        var code = res.response.code
+        var msg = res.response.msg
+        switch (code) {
+          case 2000: dialog.inner('上传成功！'); break;
+          case 4002:
+            dialog.inner('登录状态无效,请重新登录~');
+            setTimeout(() => {
+              // location.href = '//passport.2345.com/login?forward=http://ruanjian.2345.cc'
+            }, 1100);
+            break;
+          default:
+            dialog.inner(msg); break;
+        }
+      }).catch(function (err) {
         dialog.inner('上传失败，请稍后再试！')
         console.log(err)
-      }).finally(function(){
-        setTimeout(()=>{
+      }).finally(function () {
+        setTimeout(() => {
           dialog.hide()
-        },500)
+        }, 1000)
       })
     } else {
       $('#agree .error-msg').html('请先勾选作者协议')
     }
   });
 
+  $('#agree-btn').on('click', function () {
+    new Agree()
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  })
 })();
 
 

@@ -1,15 +1,13 @@
-// import "../style/reset.scss"
-import "../style/user.scss";
-import { getMyIdentity, checkLogin, getMyworks } from '../utils/api.js';
-import { headSwitch, getLoginState } from '../utils/common';
-headSwitch()
+import '../style/user.scss';
+import { getMyIdentity, checkLogin, getMyworks } from '../utils/api';
+console.log('auth');
 
 
 function renderMywork(data, el) {
   if (!data) return
   var { myWorks = [] } = data
   myWorks = myWorks.filter(v => {
-    return v.uploadType === "3" ||  v.uploadType === "4"
+    return v.uploadType === "5"
   })
   let workItem = ``
   for (var item of myWorks) {
@@ -17,7 +15,7 @@ function renderMywork(data, el) {
     workItem += `
       <tr>
         <td>${commitTime}</td>
-        <td>${uploadType === '3' ? '输入法表情' : '输入法皮肤'}</td>
+        <td>软件</td>
         <td>${uploadName}</td>
         <td ${status === 2 ? "class='red'" : ""}>${status + auditReason ? auditReason : ''}</td>
       </tr>
@@ -26,8 +24,6 @@ function renderMywork(data, el) {
   workItem = workItem === '' ? '<td colspan="5">暂无作品~</td>' : workItem
   el.append(workItem)
 }
-
-
 
 
 function renderMyIdentity(data, el) {
@@ -59,21 +55,39 @@ function initEvent() {
 
 function init() {
   initEvent()
-  const domain = window.location.hostname
-  checkLogin(domain).then(res => {
-    $('.user-info .login-btn').hide().siblings().show()
-    $('.user-info .log-info').find('.username').text(res.userName)
+  checkLogin().then(res => {
+    var code = res.response.code
+    var userName = res.userName;
+    if (code === 2000) {
+      var str = ` <span class="name"><a href="./user.html">${userName}</a></span>|
+      <span>退出</span>`
+    } else {
+      var str = `<span class="login">
+                    <a href="//passport.2345.com/login?forward=${location.href}">
+                      账号登录
+                    </a>
+                  </span>`
+    }
+    console.log(str)
+    $('#userInfo').html(str)
   }).catch(() => {
-    $('.user-info .login-btn').show().siblings().hide()
+    var str = `<span class="login">
+        <a href="//passport.2345.com/login?forward=${location.href}">
+          账号登录
+        </a>
+      </span>`
+    $('#userInfo').html(str)
   })
 
-  getMyworks(1, 1, window.location.hostname).then((res) => {
+
+  // projectId: project,项目id（1浏览器，2输入法，3软件管家）
+  // type: type,类型（1浏览器皮肤，2浏览器插件，3输入法表情，4输入法皮肤，5软件）
+  getMyworks(3).then((res) => {
     renderMywork(res, $('.myworks'))
   })
-  getMyIdentity(window.location.hostname).then((res) => {
+  getMyIdentity(window.location.host).then((res) => {
     renderMyIdentity(res, $('.myidentity'))
   })
 }
 
-init()
-
+init();

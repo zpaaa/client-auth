@@ -1,9 +1,10 @@
-import '../style/look-upload.scss'
-
+import '../style/look-upload.scss';
+import '../style/common/agree.scss';
 console.log('pinyin');
 
-import { Validator } from '../utils/utils';
-
+import { Validator, renderLogin } from '../utils/utils';
+import { uploadWorks } from '../utils/api'
+import { Agree } from '../utils/agree';
 
 (function () {
   var fileList = []
@@ -17,12 +18,12 @@ import { Validator } from '../utils/utils';
       ])
       .add('description', data.description, [
         { verify: 'isNonEmpty', errMsg: '描述不能为空' },
-        { verify: 'maxLength:10', errMsg: '长度不能超过20个汉字或字符' },
+        { verify: 'maxLength:100', errMsg: '长度不能超过100个汉字或字符' },
       ])
       .add('upload-file', data.file, [
         { verify: 'minLength:1', errMsg: '请上传文件' },
-        // { verify: 'fileSize:20', errMsg: '文件大小不能超过20M' },
-        // { verify: 'fileType:["zip"]', errMsg: '文件类型只能为Zip' },
+        { verify: 'fileSize:20', errMsg: '文件大小不能超过20M' },
+        { verify: 'fileType:["zip","ssf"]', errMsg: '文件类型只能为Zip' },
       ])
     return uploadValidator
   }
@@ -79,7 +80,7 @@ import { Validator } from '../utils/utils';
 
   function checkboxEvent() {
     $('#type').on('click', '.radio', function (e) {
-      if($(e.target).is('input')){
+      if ($(e.target).is('input')) {
         return
       }
       $(this).addClass('is-checked').parent().siblings().find('.radio').removeClass('is-checked')
@@ -97,6 +98,11 @@ import { Validator } from '../utils/utils';
       var oCheckbox = $(this).parent('.checkbox')
       oCheckbox.hasClass('is-checked') ? oCheckbox.removeClass('is-checked') : oCheckbox.addClass('is-checked'); $('#agree .error-msg').html('')
     })
+
+    $('#agree').on('click', 'b', function () {
+      new Agree()
+    })
+
   }
 
   function submitEvent() {
@@ -106,7 +112,6 @@ import { Validator } from '../utils/utils';
       if (agree) {
         var uploadValidator;
         var errObj;
-
         uploadValidator = uploadVali()
         errObj = uploadValidator.start()
         console.log(errObj)
@@ -115,8 +120,16 @@ import { Validator } from '../utils/utils';
             $('#' + id).addClass('is-error')
             $('#' + id + ' ' + '.error-msg').html(errObj[id])
           }
+
         } else {
-          console.log(getData(), project, type)
+          var data = getData()
+          uploadWorks(data).then(function (res) {
+            if (res.response.code === 2000) {
+              location.href = './user.html'
+            }
+          }).catch(function (err) {
+            console.log(err)
+          })
         }
       } else {
         $('#agree .error-msg').html('请先勾选作者协议')
@@ -126,6 +139,7 @@ import { Validator } from '../utils/utils';
 
 
   function init() {
+    renderLogin($('#userInfo'))
     uploadEvent()
     agreeEvent()
     submitEvent()
@@ -135,7 +149,7 @@ import { Validator } from '../utils/utils';
     valiChangeEvent($('#upload-file input'), 'upload-file')
   }
 
-  init()
+  init();
 
 
 

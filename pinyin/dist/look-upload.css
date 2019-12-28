@@ -312,11 +312,6 @@ body {
   width: 1200px;
   margin: 0 auto; }
 
-body {
-  font: 12px/1.5 microsoft yahei, Arial;
-  background-color: #ffffff;
-  color: #666; }
-
 html, body, p, dl, dt, dd, table, td, th, input, img, form, div, span, ul, ol, li, h1, h2, h3, h4, h5, h6, select, fieldset, button, sub, sup, textarea {
   margin: 0;
   padding: 0; }
@@ -470,9 +465,24 @@ input, textarea, select {
       height: 100%; }
   .pinyin .head-wp .user-info {
     float: right;
-    padding-left: 36px;
-    width: 70px; }
+    height: 62px;
+    width: 242px;
+    font-size: 14px;
+    color: #666666;
+    line-height: 62px;
+    text-align: right;
+    cursor: pointer; }
+    .pinyin .head-wp .user-info .name {
+      display: inline-block;
+      max-width: 100px;
+      vertical-align: middle;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap; }
+    .pinyin .head-wp .user-info a {
+      color: inherit; }
     .pinyin .head-wp .user-info .login {
+      float: right;
       display: block;
       width: 70px;
       height: 24px;
@@ -482,7 +492,7 @@ input, textarea, select {
       color: #029aff;
       line-height: 24px;
       text-align: center;
-      margin-top: 19px;
+      margin-top: 16px;
       cursor: pointer; }
   .pinyin .head-wp .nav-list {
     float: right;
@@ -491,6 +501,7 @@ input, textarea, select {
       float: left;
       padding: 0 14px; }
       .pinyin .head-wp .nav-list .nav-item a {
+        font-size: 14px;
         color: #555555;
         position: relative; }
       .pinyin .head-wp .nav-list .nav-item.active a::before {
@@ -499,7 +510,7 @@ input, textarea, select {
         width: 100%;
         height: 2px;
         background: #029aff;
-        bottom: -20px; }
+        bottom: -22px; }
 
 .pinyin .main {
   margin-top: 20px;
@@ -524,3 +535,71 @@ input, textarea, select {
     top: 25px;
     left: 0px;
     background: #2693ff; }
+
+.agree-pop {
+  z-index: 998;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0; }
+  .agree-pop .modal {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.4); }
+  .agree-pop .pop-wrap {
+    width: 1000px;
+    padding: 30px 10px 66px 98px;
+    position: absolute;
+    top: 116px;
+    left: 50%;
+    margin-left: -500px;
+    box-sizing: border-box;
+    background: #fff; }
+    .agree-pop .pop-wrap .agree-title {
+      width: 880px;
+      height: 60px;
+      line-height: 60px;
+      text-align: center;
+      color: #3697f5;
+      font-weight: bold;
+      border-bottom: 1px solid #e6e6e6; }
+    .agree-pop .pop-wrap .pop-container {
+      height: 60vh;
+      padding-top: 24px;
+      overflow-y: auto; }
+      .agree-pop .pop-wrap .pop-container::-webkit-scrollbar {
+        border-radius: 20px;
+        width: 10px;
+        background-color: #e6e8eb; }
+      .agree-pop .pop-wrap .pop-container::-webkit-scrollbar-thumb {
+        width: 100%;
+        background: #dbdbdb;
+        border-radius: 20px; }
+      .agree-pop .pop-wrap .pop-container .agree-text {
+        width: 880px;
+        font-size: 14px;
+        line-height: 26px; }
+        .agree-pop .pop-wrap .pop-container .agree-text h3 {
+          color: #333333;
+          font-weight: bold;
+          margin-bottom: 10px; }
+        .agree-pop .pop-wrap .pop-container .agree-text p {
+          color: #666666;
+          margin-bottom: 10px; }
+  .agree-pop .agree-close {
+    position: absolute;
+    width: 150px;
+    height: 40px;
+    border-radius: 4px;
+    cursor: pointer;
+    background: #42cb42;
+    color: #fff;
+    text-align: center;
+    line-height: 40px;
+    left: 50%;
+    bottom: 30px;
+    margin-left: -75px; }

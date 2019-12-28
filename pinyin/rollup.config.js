@@ -6,44 +6,64 @@ import postcss from 'rollup-plugin-postcss-modules'
 import { uglify } from "rollup-plugin-uglify";
 import { terser } from "rollup-plugin-terser";
 export default [
-  // {
-  //   input: './src/user.js',
-  //   output: {
-  //       file: `./dist/user.js`,
-  //       format: 'esm'
-  //   },
-  //   plugins: [
-  //     terser(),
-  //     scss({
-  //       output: `./dist/user.css`
-  //     }),
-  //     postcss({
-  //       plugins: [autoprefixer()]
-  //     }),
-  //     template({
-  //       template: './public/user.html',
-  //       target: './dist/user.html',
-  //     })
-  //   ]
-  // }
   {
-      input: './src/look-upload.js',
-      output: {
-          file: `./dist/look-upload.js`,
-          format: 'esm'
-      },
-      plugins: [
-        terser(),
-        scss({
-          output: `./dist/look-upload.css`
-        }),
-        postcss({
-          plugins: [autoprefixer()]
-        }),
-        template({
-          template: './public/look-upload.html',
-          target: './dist/look-upload.html',
-        })
-      ]
-    }
+    input: './src/user.js',
+    output: {
+        file: `./dist/user.js`,
+        format: 'esm'
+    },
+    plugins: [
+      terser(),
+      scss({
+        output: `./dist/user.css`
+      }),
+      postcss({
+        plugins: [autoprefixer()]
+      }),
+      template({
+        template: './public/user.html',
+        target: './dist/user.html',
+      })
+    ]
+  },
+  {
+    input: './src/look-upload.js',
+    output: {
+      file: `./dist/look-upload.js`,
+      format: 'esm'
+    },
+    plugins: [
+      terser(),
+      scss({
+        output: `./dist/look-upload.css`
+      }),
+      postcss({
+        plugins: [autoprefixer()]
+      }),
+      template({
+        template: './public/look-upload.html',
+        target: './dist/look-upload.html',
+      })
+    ]
+  },
+  {
+    input: './src/upload.js',
+    output: {
+      file: `./dist/upload.js`,
+      format: 'esm'
+    },
+    plugins: [
+      terser(),
+      scss({
+        output: `./dist/upload.css`
+      }),
+      postcss({
+        plugins: [autoprefixer()]
+      }),
+      template({
+        template: './public/upload.html',
+        target: './dist/upload.html',
+      })
+    ]
+  }
 ];

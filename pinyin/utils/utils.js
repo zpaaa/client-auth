@@ -9,9 +9,9 @@ export function checkLogin(domain) {
       },
       dataType: 'json',
       //  默认情况下，标准的跨域请求是不会发送cookie的
-　　　 xhrFields: {
-　　　　　withCredentials: true
-　　　 },
+      xhrFields: {
+        withCredentials: true
+      },
       success: function (data) {
         if (data && data.response.code === 2000) {
           resolve(data)
@@ -20,7 +20,6 @@ export function checkLogin(domain) {
         }
       },
       error: function (err) {
-        console.log(err)
         reject('fail')
       }
     })
@@ -44,12 +43,31 @@ export function getMyIdentity(domain) {
   })
 }
 
-function getCookie(name) {
-  var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)");
-  if(arr=document.cookie.match(reg))
-  return unescape(arr[2]);
-  else
-  return null;
+//右上角登录状态渲染
+export function renderLogin(el) {
+  checkLogin(location.hostname).then(function (res) {
+    var code = res.response.code
+    var userName = res.userName;
+    if (code === 2000) {
+      islogin = true
+      var str = ` <span class="name"><a href="./user.html">${userName}</a></span>|
+      <span>退出</span>`
+    } else {
+      var str = `<span class="login">
+                    <a href="//passport.2345.com/login?forward=${location.href}">
+                      账号登录
+                    </a>
+                  </span>`
+    }
+    el.html(str)
+  }).catch(function () {
+    var str = `<span class="login">
+                    <a href="//passport.2345.com/login?forward=${location.href}">
+                      账号登录
+                    </a>
+                  </span>`
+    el.html(str)
+  })
 }
 
 export var vrertifyRules = {
@@ -58,8 +76,7 @@ export var vrertifyRules = {
       errorMsg : void 0
   },
   minLength: function (value, length, errorMsg) {
-    console.log(value, length, errorMsg)
-    value = value===undefined ?[]:value
+    value = value === undefined ? [] : value
     return value && value.length < length ?
       errorMsg : void 0
   },
@@ -89,7 +106,7 @@ export var vrertifyRules = {
   },
   fileSize: function (value, size, errorMsg) {
     value = value || [];
-    Object.prototype.toString.call(value) !== "[object Array]"?value = [value]:void 0
+    Object.prototype.toString.call(value) !== "[object Array]" ? value = [value] : void 0
     value = [value]
     var totalSize = 0;
     for (var i = 0; i < value.length; i++) {
@@ -100,10 +117,8 @@ export var vrertifyRules = {
   fileType: function (value, type, errorMsg) {
     var type = eval(type)
     value = value || [];
-    Object.prototype.toString.call(value) !== "[object Array]"?value = [value]:void 0
-    console.log(value, type, errorMsg)
+    Object.prototype.toString.call(value) !== "[object Array]" ? value = [value] : void 0
     for (var i = 0; i < value.length; i++) {
-      console.log(value[i])
       var selfType = value[i].type.split('/')[1]
       if (type.indexOf(selfType) === -1) {
         return errorMsg

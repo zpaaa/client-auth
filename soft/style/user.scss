@@ -55,7 +55,9 @@ body {
       .upload-check, .upload-list, .upload-info {
         margin-bottom: 36px;
       }
-  
+      .upload-list .title a{
+        display: block;
+      }
       table {
         &, th, td{ 
           border: 1px solid #dbdbdb;

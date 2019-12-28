@@ -1,11 +1,9 @@
 
 export function uploadWorks(data) {
-  console.log(data,'datat')
   var formData = new FormData()
   var cookie = {
     domain: location.hostname,
-    projectId:3,
-    type:5,
+    projectId:2,
   }
 
   $.each(data, function (key, value) {
@@ -13,7 +11,6 @@ export function uploadWorks(data) {
       delete data[key]
     }
   })
-
   Object.assign(data, cookie)
   $.each(data, function (key, value) {
     if (Array.isArray(value)) {
@@ -24,7 +21,7 @@ export function uploadWorks(data) {
       formData.append(key, value)
     }
   })
-  console.log(window.a = formData,'sssssssssssssssssssss')
+  console.log(window.a = formData,'上传的formData')
   return new Promise((resolve, reject) => {
     $.ajax({
       type: "post",
@@ -38,7 +35,6 @@ export function uploadWorks(data) {
         withCredentials: true
       },
       success: function (data) {
-        console.log(data)
         resolve(data)
       },
       error: function (err) {
