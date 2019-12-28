@@ -310,16 +310,22 @@ import { Agree } from '../utils/agree'
         var code = res.response.code
         var msg = res.response.msg
         switch (code) {
-          case 2000: dialog.inner('上传成功！'); break;
+          case 2000:
+            dialog.inner('上传成功！');
+            setTimeout(() => {
+              location.href = './user.html';
+            }, 1100);
+            break;
           case 4002:
             dialog.inner('登录状态无效,请重新登录~');
             setTimeout(() => {
-              // location.href = '//passport.2345.com/login?forward=http://ruanjian.2345.cc'
+              location.href = `//passport.2345.com/login?forward=${location.url}`
             }, 1100);
             break;
           default:
             dialog.inner(msg); break;
         }
+
       }).catch(function (err) {
         dialog.inner('上传失败，请稍后再试！')
         console.log(err)
