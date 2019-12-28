@@ -210,7 +210,9 @@ import { Agree} from '../utils/agree';
       } else {
         console.log(getData())
         uploadWorks(getData()).then(function (res) {
-          console.log(res)
+          if(res.response.code===2000){
+            location.href = './user.html'
+          }
         }).catch(function () {
 
         })

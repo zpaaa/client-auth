@@ -313,13 +313,13 @@ import { Agree } from '../utils/agree'
             dialog.inner('上传成功！');
             setTimeout(() => {
               location.href = './user.html';
-            }, 1100);
+            }, 800);
             break;
           case 4002:
             dialog.inner('登录状态无效,请重新登录~');
             setTimeout(() => {
               location.href = `//passport.2345.com/login?forward=${location.url}`
-            }, 1100);
+            }, 800);
             break;
           default:
             dialog.inner(msg); break;
@@ -331,7 +331,7 @@ import { Agree } from '../utils/agree'
       }).finally(function () {
         setTimeout(() => {
           dialog.hide()
-        }, 1000)
+        }, 500)
       })
     } else {
       $('#agree .error-msg').html('请先勾选作者协议')
@@ -341,8 +341,6 @@ import { Agree } from '../utils/agree'
   $('#agree-btn').on('click', function () {
     new Agree()
   })
-
-
 })();
 
 
