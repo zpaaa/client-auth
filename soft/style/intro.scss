@@ -1,13 +1,14 @@
-@import './common/reset.scss';
-@import './common/softHeadeFooter.scss';
-@import './common/footer.scss';
+@import "./common/reset.scss";
+@import "./common/softHeadeFooter.scss";
+@import "./common/footer.scss";
 
 .soft-intro {
   @include softHeader();
-  .main{
+  .main {
     margin-top: 20px;
   }
-  .tab, .container {
+  .tab,
+  .container {
     min-height: 690px;
     float: left;
     box-sizing: border-box;
@@ -78,11 +79,14 @@
       text-indent: 30px;
     }
     li {
-      height: 28px;
+      // height: 28px;
       line-height: 28px;
       margin-bottom: 12px;
       font-size: 14px;
       color: #666;
     }
+  }
+  .contain-box table *{
+    color:#666 !important;
   }
 }
