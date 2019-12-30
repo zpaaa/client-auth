@@ -192,7 +192,6 @@ import { Agree} from '../utils/agree';
       ])
     return validator
   }
-
   $('#submit').on('click', function () {
     console.log(getData())
     var agree = $('#agree .checkbox').hasClass('is-checked')
@@ -209,6 +208,7 @@ import { Agree} from '../utils/agree';
         }
       } else {
         console.log(getData())
+        // TODO:增加弹出框   样式待定
         uploadWorks(getData()).then(function (res) {
           if(res.response.code===2000){
             location.href = './user.html'
@@ -313,7 +313,12 @@ import { Agree} from '../utils/agree';
     }
     $('#userInfo').html(str)
   }).catch(function (err) {
-    console.log(err)
+    var str = `<span class="login">
+        <a href="//passport.2345.com/login?forward=${location.href}">
+          账号登录
+        </a>
+      </span>`
+    $('#userInfo').html(str)
   })
 
   $('#agree').on('click','b',function(){

@@ -301,7 +301,7 @@ import { Agree } from '../utils/agree'
         $('.is-error').removeClass('is-error')
         $('.is-error .error-msg').html('')
       }
-
+      //TODO:增减弹窗 样式待定
       var data = userType === '1' ? person.getData() : company.getData()
       dialog.show()
       uploadIdentity(data).then(function (res) {

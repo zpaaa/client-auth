@@ -9,7 +9,7 @@ import { Agree } from '../utils/agree';
 (function () {
 
   const urlobj = {};
-  location.search.replace(/([^?&=]+)=([^&]+)/g, (_, k, v) => (obj[k] = v));
+  location.search.replace(/([^?&=]+)=([^&]+)/g, (_, k, v) => (urlobj[k] = v));
 
 
   if (urlobj.type == 1) {
@@ -177,23 +177,18 @@ import { Agree } from '../utils/agree';
         { verify: 'isNonEmpty', errMsg: '描述不能为空' },
         { verify: 'maxLength:100', errMsg: '长度不能超过100个汉字或字符' },
       ])
-      .add('upload-file', data.file, [
-        { verify: 'minLength:1', errMsg: '请上传文件' },
-        { verify: 'fileSize:20', errMsg: '文件大小不能超过20M' },
-        { verify: 'fileType:["zip","ssf"]', errMsg: '文件类型只能为Zip' },
-      ])
     /* 1为皮肤 */
     if (urlobj.type == 1) {
       uploadValidator.add('upload-file', data.file, [
         { verify: 'minLength:1', errMsg: '请上传文件' },
         { verify: 'fileSize:1', errMsg: '文件大小不能超过1M' },
-        { verify: 'fileType:["zip","ssf"]', errMsg: '文件类型只能为Zip' },
+        { verify: 'fileType:["zip","ssf"]', errMsg: '文件类型只能为zip、ssf' },
       ])
     } else {
       uploadValidator.add('upload-file', data.file, [
         { verify: 'minLength:1', errMsg: '请上传文件' },
         { verify: 'fileSize:20', errMsg: '文件大小不能超过20M' },
-        { verify: 'fileType:["png","jgp"，"zip"]', errMsg: '文件类型只能为png、jgp、zip' },
+        { verify: 'fileType:["png","jgp","zip"]', errMsg: '文件类型只能为png、jgp、zip' },
       ])
 
     }
@@ -207,6 +202,12 @@ import { Agree } from '../utils/agree';
     data.displayName = $('#display-name input').val()
     data.description = $('#description textarea').val()
     data.file = fileList[0]
+    data.type = urlobj.type
+    if (urlobj.type == 1) {
+      data.type = 4
+    } else {
+      data.type = 1
+    }
     return data
   }
 
