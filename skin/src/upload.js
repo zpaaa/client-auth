@@ -9,7 +9,7 @@ import { uploadIdentity } from '../utils/api'
 import { Dialog } from '../utils/dialog';
 import { headSwitch, getLoginState } from '../utils/common'
 headSwitch();
-getLoginState()
+getLoginState(window.location.hostname);
 
 (function () {
   var fileList = []

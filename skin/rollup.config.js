@@ -55,7 +55,7 @@ export default [
     plugins: [
       terser(),
       scss({
-        output: `./dist/upload.css`
+        output: `./dist/skin-upload.css`
       }),
       postcss({
         plugins: [autoprefixer()]

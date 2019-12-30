@@ -243,6 +243,8 @@ body {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap; }
+  .upload-pic-list .file-box b {
+    vertical-align: middle; }
   .upload-pic-list .file-box i {
     display: inline-block;
     vertical-align: middle;

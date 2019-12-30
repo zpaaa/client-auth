@@ -4,8 +4,8 @@ export function uploadWorks(data) {
   var formData = new FormData()
   var cookie = {
     domain: location.hostname,
-    projectId:3,
-    type:5,
+    projectId:1,
+    type:1,
   }
 
   $.each(data, function (key, value) {

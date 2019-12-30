@@ -188,7 +188,7 @@ import { Agree } from '../utils/agree';
       uploadValidator.add('upload-file', data.file, [
         { verify: 'minLength:1', errMsg: '请上传文件' },
         { verify: 'fileSize:20', errMsg: '文件大小不能超过20M' },
-        { verify: 'fileType:["png","jgp","zip"]', errMsg: '文件类型只能为png、jgp、zip' },
+        { verify: 'fileType:["png","jpg","zip"]', errMsg: '文件类型只能为png、jpg、zip' },
       ])
 
     }
