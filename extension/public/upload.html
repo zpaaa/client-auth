@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="./upload.css">
+  <title>资质审核页面</title>
+</head>
+
+<body>
+  <div id="verify">
+    <!--头部 begin  -->
+	  <div class="head-wp">
+        <div class="headinner clearfix">
+          <a class="logo" href="index.html"><span></span></a>
+          <div class="pc-m clearfix">
+            <i id="curr-pc-m"></i>
+            <a class="pcIcon-bg currColor" href="http://ie.2345.cc">电脑版</a>
+            <a class="mIcon-bg" target="_blank" href="http://app.2345.com/">手机版</a>
+          </div>
+          <div class="user-info">
+            <a href="javascript:;" class="login-btn">登录</a>
+            <div class="log-info clearfix">
+              <a class="username line-cut" href="./user.html">azhupa@2345.com</a> <span>&nbsp|&nbsp</span> <a class="logout" href="javascript:;">退出</a>
+            </div>
+          </div>
+          <ul class="nav-wp">
+            <li><a target="_blank" href="http://ie.2345.cc">首页</a></li>
+            <li><a target="_blank" href="http://skin.ie.2345.com">皮肤</a></li>
+            <li><a class="curr-wp" href="http://extension.ie.2345.com">应用</a></li>
+            <!-- <li><a href="http://ie.2345.cc/log.htm">日志</a></li> -->
+            <li><a href="http://ie.2345.cc/help/v7/index.htm">帮助</a></li>
+            <li><a target="_blank" href="http://bbs.2345.cn/forumdisplay.php?fid=2">论坛</a></li>
+          </ul>	
+        </div>
+      </div><!--head-wp end-->
+      <!--头部 end--> 
+    <div class="verify-main">
+      <div class="verify-main-contain">
+        <div class="title">
+          <span>完整填写资料并通过资质审核后，即可提交软件<b>（*为必填项）</b></span>
+        </div>
+        <form>
+          <div class="form-item">
+            <div class="form-item-box align-top">
+              <div class="form-item_title is-required">
+                <span>作者类型：</span>
+              </div>
+              <div class="form-item_input" id="userType">
+                <label class="margin-right-40" name='aa'>
+                  <span class="radio is-checked">
+                    <span class="radio-input">
+                      <span class="radio-input_inner"></span>
+                      <input type="radio" id="aa" value="1">
+                    </span>
+                    <span class="radio-label">
+                      个人用户
+                    </span>
+                  </span>
+                </label>
+                <label>
+                  <span class="radio">
+                    <span class="radio-input">
+                      <span class="radio-input_inner"></span>
+                      <input type="radio" value="2">
+                    </span>
+                    <span class="radio-label">
+                      企业用户
+                    </span>
+                  </span>
+                </label>
+              </div>
+              <div class="error-msg">
+              </div>
+            </div>
+          </div>
+
+          <div id="person">
+            <div class="form-item  is-required" id="realName">
+              <div class="form-item-box align-top">
+                <div class="form-item_title is-required">
+                  <span>姓名：<b>（请填写真实姓名）</b></span>
+                </div>
+                <div class="form-item_input">
+                  <input type="text" name="" id="" class="input">
+                </div>
+                <div class="error-msg">
+                </div>
+              </div>
+            </div>
+
+            <div class="form-item  is-required" id="idNumber">
+              <div class="form-item-box align-top">
+                <div class="form-item_title is-required">
+                  <span>身份证号码：</b></span>
+                </div>
+                <div class="form-item_input">
+                  <input type="text" name="" id="" class="input">
+                </div>
+                <div class="error-msg">
+                </div>
+              </div>
+            </div>
+
+            <div class="form-item" id="idCardHandHeld">
+              <div class="form-item-box align-top">
+                <div class="form-item_title is-required">
+                  <span>身份证信息：<b>（手持身份证的证明头部照片，照片中能看清姓名、身份证号等信息）</b></span>
+                </div>
+                <div class="form-item_input">
+                  <span>
+                    <button type="button" class="button">上传文件</button>
+                    <input type="file" style="display: none;" accept="image/*">
+                  </span>
+                  <span id="idCardHandHeldUploadList" class="upload-pic-list">
+                  </span>
+                </div>
+                <div class="error-msg">
+                </div>
+              </div>
+            </div>
+
+            <div class="form-item" id="idCardFront">
+              <div class="form-item-box align-top">
+                <div class="form-item_title is-required">
+                  <span>身份证照片：<b>（上传身份证正面照片）</b></span>
+                </div>
+                <div class="form-item_input">
+                  <span>
+                    <button type="button" class="button">上传文件</button>
+                    <input type="file" style="display: none;" accept="image/*" multiple>
+                  </span>
+                  <span id="idCardFrontUploadList" class="upload-pic-list">
+                  </span>
+                </div>
+                <div class="error-msg">
+                </div>
+              </div>
+            </div>
+
+            <div class="form-item" id="idCardBack">
+              <div class="form-item-box align-top">
+                <div class="form-item_title is-required">
+                  <span>身份证照片：<b>（上传身份证反面照片）</b></span>
+                </div>
+                <div class="form-item_input">
+                  <span>
+                    <button type="button" class="button">上传文件</button>
+                    <input type="file" style="display: none;" accept="image/*" multiple>
+                  </span>
+                  <span id="idCardBackUpload" class="upload-pic-list">
+                  </span>
+                </div>
+                <div class="error-msg">
+                </div>
+              </div>
+            </div>
+
+            <div class="form-item  is-required" id="PersonPhone">
+              <div class="form-item-box align-top">
+                <div class="form-item_title is-required">
+                  <span>手机号：</span>
+                </div>
+                <div class="form-item_input">
+                  <input type="text" name="" id="" class="input">
+                </div>
+                <div class="error-msg">
+                </div>
+              </div>
+            </div>
+
+            <div class="form-item" id="personEmail">
+              <div class="form-item-box align-top">
+                <div class="form-item_title">
+                  <span>邮箱：</span>
+                </div>
+                <div class="form-item_input">
+                  <input type="text" name="" id="" class="input">
+                </div>
+                <div class="error-msg">
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <div id="company" style="display: none;">
+            <div class="form-item " id="companyName">
+              <div class="form-item-box align-top">
+                <div class="form-item_title is-required">
+                  <span>公司全称</span>
+                </div>
+                <div class="form-item_input">
+                  <input type="text" name="" id="" class="input">
+                </div>
+                <div class="error-msg">
+                </div>
+              </div>
+            </div>
+
+            <div class="form-item" id="companyContactPerson">
+              <div class="form-item-box align-top">
+                <div class="form-item_title is-required">
+                  <span>企业联系人：<b>（请填写公司企业联系人姓名）</b></span>
+                </div>
+                <div class="form-item_input">
+                  <input type="text" name="" id="" class="input">
+                </div>
+                <div class="error-msg">
+                </div>
+              </div>
+            </div>
+
+            <div class="form-item" id="companyPersonalPhone">
+              <div class="form-item-box align-top">
+                <div class="form-item_title is-required">
+                  <span>企业电话：<b>（建议填写114可以查询到的企业电话）</b></span>
+                </div>
+                <div class="form-item_input">
+                  <input type="text" name="" id="" class="input">
+                </div>
+                <div class="error-msg">
+                </div>
+              </div>
+            </div>
+
+            <div class="form-item" id="companyPictureList">
+              <div class="form-item-box align-top">
+                <div class="form-item_title is-required">
+                  <span>公司资质照片：<b>（账户开通须提供：账户注册申请书（本页面下载）、《营业执照》、注册人手持身份证正反面照片等）</b></span>
+                </div>
+                <div class="form-item_input"
+                  style="user-select: none;-moz-user-select: none;-webkit-user-select: none;">
+                  <span>
+                    <button type="button" class="button">上传文件</button>
+                    <input type="file" style="display: none;" accept="image/*" multiple>
+                  </span>
+                  <span id="uploadList" class="upload-pic-list">
+                  </span>
+                </div>
+                <div class="error-msg">
+                </div>
+              </div>
+            </div>
+
+            <div class="form-item" id="email">
+              <div class="form-item-box align-top">
+                <div class="form-item_title">
+                  <span>企业邮箱:</span>
+                </div>
+                <div class="form-item_input">
+                  <input type="text" name="" id="" class="input">
+                </div>
+              </div>
+            </div>
+
+            <div class="form-item" id="phone">
+              <div class="form-item-box align-top">
+                <div class="form-item_title">
+                  <span>联系电话:</span>
+                </div>
+                <div class="form-item_input">
+                  <input type="text" name="" id="" class="input">
+                </div>
+              </div>
+            </div>
+
+            <div class="form-item introduce-form-item" id="companyIntroduction">
+              <div class="form-item-box align-top">
+                <div class="form-item_title">
+                  <span>公司介绍：<b>（公司背景及主要包含产品的介绍和说明）</b></span>
+                </div>
+                <div class="form-item_input">
+                  <textarea cols="30" rows="10" class="textarea"></textarea>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="form-item " id="agree">
+            <div class="form-item-box align-top">
+              <label>
+                <span class="checkbox">
+                  <span class="checkbox-input">
+                    <span class="checkbox-input_inner"></span>
+                    <input type="checkbox">
+                  </span>
+                  <span class="checkbox-label" id="agree-btn">
+                    我同意<b>《作者协议》</b>
+                  </span>
+                </span>
+              </label>
+              <div class="error-msg">
+              </div>
+            </div>
+          </div>
+
+          <div class="form-item">
+            <button class="submit-btn button" id="submit" type="button">立即提交</button>
+          </div>
+
+        </form>
+      </div>
+    </div>
+    <footer class="footer" style="position: inherit;" >
+      <p>2345版权所有&emsp;沪ICP备15036234号-1</p>
+      <p>
+        <i></i>
+        沪公网安备&nbsp;310115&emsp;&emsp;&emsp;02005439号&emsp;|&emsp;软件申诉邮箱：safesoft@2345.com
+      </p>
+    </footer>
+  </div>
+  <script src="http://ie.2345.com/js/footer.js?style=2345ie&201911251851" type="text/javascript" charset="gbk"></script>
+  <script src="./lib/jquery-1.8.3.min.js"></script>
+</body>
+
+</html>

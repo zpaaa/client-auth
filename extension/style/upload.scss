@@ -1,0 +1,50 @@
+@import "./common/mixins.scss";
+@import './common/form.scss';
+@import './common/dialog.scss';
+@import './common/reset.scss';
+@import "./common.scss";
+@import './common/agree.scss';
+@import './common/message.scss';
+
+#verify {
+  width: 100%;
+  background: #fafafa;
+  position: relative;
+  // padding-bottom: 250px;
+  // .verify-header {
+  //   height: 80px;
+  //   border: 1px solid #e6e6e6;
+  //   background: #ffffff;
+  // }
+}
+
+.verify-main {
+
+  
+  @include contain();
+  overflow: hidden;
+  .verify-main-contain {
+    box-sizing: border-box;
+    @include contain-style();
+    margin-top: 20px;
+    margin-bottom: 30px;
+    background: #ffffff;
+    padding: 45px 60px 60px;
+    box-sizing: border-box;
+    border: 1px solid #e6e6e6;
+  }
+  .title{
+    height: 50px;
+    font-size: 20px;
+    color: #333333;
+    span>b{
+      color: #ff4040;
+      font-weight: 400;
+    }
+  }
+}
+
+
+
+
+

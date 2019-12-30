@@ -1,0 +1,59 @@
+@mixin contain {
+  width: 1200px;
+  margin: 0 auto;
+}
+@mixin contain-style {
+  @media screen and (max-width: 1200px) {
+    width: 100%;
+    padding-left:20px;
+    padding-right:20px;
+    min-width: 1000px;
+  }
+}
+
+@mixin utils-ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+@mixin utils-clearfix {
+  $selector: &;
+  @at-root {
+    #{$selector}::before,
+    #{$selector}::after {
+      display: table;
+      content: "";
+    }
+    #{$selector}::after {
+      clear: both;
+    }
+  }
+}
+
+@mixin when($state) {
+  $selector: "is-" + $state;
+  @at-root {
+    &.#{$selector} {
+      @content;
+    }
+  }
+}
+
+@mixin align($type:middel) {
+  $selector:'.align-' + $type;
+  @at-root {
+    &::after{
+      content: "";
+      display: inline-block;
+      width: 0;
+      height: 100%;
+      vertical-align: #{$type};
+    }
+    &>#{$selector}{
+      display: inline-block;
+      vertical-align: #{$type};
+    }
+  }
+}
+
+
