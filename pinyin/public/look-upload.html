@@ -17,7 +17,7 @@
         <div class="logo">
           <a href="/"></a>
         </div>
-        <div class="user-info" id="userInfo" >
+        <div class="user-info" id="userInfo">
           <span class="login">账号登录</span>
         </div>
         <ul class="nav-list">
@@ -39,8 +39,105 @@
     </header>
 
     <!--头部 end-->
-    <div class="main inner" id="main" >
-     
+    <div class="main inner" id="main">
+      <div class="title">皮肤&表情</div>
+      <div class="form-item" id="type">
+        <div class="form-item-box align-top">
+          <div class="form-item_title is-required">
+            <span>上传类型：</span>
+          </div>
+          <div class="form-item_input" id="userType">
+            <label class="margin-right-40" name='aa'>
+              <span class="radio is-checked">
+                <span class="radio-input">
+                  <span class="radio-input_inner"></span>
+                  <input type="radio" id="aa" value="3">
+                </span>
+                <span class="radio-label">
+                  上传表情
+                </span>
+              </span>
+            </label>
+            <label>
+              <span class="radio">
+                <span class="radio-input">
+                  <span class="radio-input_inner"></span>
+                  <input type="radio" value="4">
+                </span>
+                <span class="radio-label">
+                  上传皮肤
+                </span>
+              </span>
+            </label>
+          </div>
+          <div class="error-msg">
+          </div>
+        </div>
+      </div>
+      <div class="form-item" id="display-name">
+        <div class="form-item-box align-top">
+          <div class="form-item_title is-required">
+            <span>名称 <b>（不超过20个汉字或字符）</b></span>
+          </div>
+          <div class="form-item_input">
+            <input type="text" class="input">
+          </div>
+          <div class="error-msg">
+          </div>
+        </div>
+      </div>
+
+      <div class="form-item introduce-form-item" id="description">
+        <div class="form-item-box align-top">
+          <div class="form-item_title is-required">
+            <span>描述<b>（不超过100个汉字或字符）</b></span>
+          </div>
+          <div class="form-item_input">
+            <textarea cols="30" rows="10" class="textarea"></textarea>
+          </div>
+          <div class="error-msg">
+          </div>
+        </div>
+      </div>
+
+      <div class="form-item" id="upload-file">
+        <div class="form-item-box align-top">
+          <div class="form-item_title is-required">
+            <span>文件 <b>（文件类型只能为png、jpg、zip）</b></span>
+          </div>
+          <div class="form-item_input">
+            <button type="button" class="button" id="upload-btn">上传文件</button>
+            <input type="file" style="display: none;" accept="application/zip">
+            <span id="file" class="upload-pic-list"></span>
+            <span id="uploadList" class="upload-pic-list">
+            </span>
+          </div>
+          <div class="error-msg">
+          </div>
+        </div>
+      </div>
+
+      <div class="form-item agree" id="agree">
+        <div class="form-item-box align-top">
+          <label>
+            <span class="checkbox">
+              <span class="checkbox-input">
+                <span class="checkbox-input_inner"></span>
+                <input type="checkbox">
+              </span>
+              <span class="checkbox-label">
+                我同意<b>《作者协议》</b>
+              </span>
+            </span>
+          </label>
+          <div class="error-msg">
+          </div>
+        </div>
+      </div>
+
+      <div class="form-item" id="submit">
+        <button class="submit-btn button" id="submit" type="button">立即提交</button>
+      </div>
     </div>
 
 

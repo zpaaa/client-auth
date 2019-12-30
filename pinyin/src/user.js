@@ -41,12 +41,17 @@ function renderMywork(data, el) {
 function renderMyIdentity(data, el) {
   if (!data) return
   const { identity = {} } = data
+  const { commitTime, userType, auditStatus, auditReason } = identity
+  if(auditStatus === '1'){
+    $('.upload-info .title span').hide()
+  }else{
+    console.log($('.upload-list .title span'))
+    $('.upload-list .title span').hide()
+  }
   if (JSON.stringify(identity) === '{}') {
-
     el.append('<td colspan="5">还未提交审核~</td>')
     return
   }
-  const { commitTime, userType, auditStatus, auditReason } = identity
   const statusText = auditStatus === '0' ? '待审核' : auditStatus === '1' ? '通过审核' : '审核未通过';
   let identityStr = `
     <tr>
@@ -73,7 +78,7 @@ function init() {
     var userName = res.userName;
     if (code === 2000) {
       var str = ` <span class="name"><a href="./user.html">${userName}</a></span>|
-      <span><a href="//passport.2345.com/login?action=logout&forward=${location.origin}">退出</a></span>`
+      <span><a href="//passport.2345.com/login?action=logout&forward=${location.href}">退出</a></span>`
     } else {
       var str = `<span class="login">
                     <a href="//passport.2345.com/login?forward=${location.href}">

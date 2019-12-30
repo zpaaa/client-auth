@@ -559,6 +559,28 @@ input, textarea, select {
     bottom: 10px;
     margin-left: -75px; }
 
+.message {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 10px 20px;
+  box-sizing: border-box;
+  border: 1px solid #7fc8ff;
+  font-size: 14px;
+  color: #4c5155;
+  border-radius: 2px;
+  z-index: 99;
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.3); }
+  .message .icon {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    vertical-align: middle; }
+  .message .message-title {
+    display: inline-block;
+    vertical-align: middle; }
+
 #verify {
   width: 100%;
   background: #fafafa;
