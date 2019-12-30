@@ -163,7 +163,8 @@ body {
     resize: none;
     border: 1px solid #e6e6e6;
     font-size: 14px;
-    font-family: inherit; }
+    font-family: inherit;
+    padding: 10px; }
     .form-item .textarea:focus {
       border-color: #3d9df2; }
   .form-item .button {

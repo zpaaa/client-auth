@@ -6,7 +6,7 @@ Agree.prototype.render = function () {
   var str = ` <div class="agree-pop" >
   <div class="modal"></div>
   <div class="pop-wrap">
-    <div class="agree-title">《软件管家发放平台作者协议》</div>
+    <div class="agree-title">《浏览器开放平台作者协议》</div>
     <div class="pop-container">
       <div class="agree-text">
       <div>
