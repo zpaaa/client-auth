@@ -24,7 +24,7 @@ function renderMywork(data, el) {
         <td>${commitTime}</td>
         <td>软件</td>
         <td>${uploadName}</td>
-        <td ${status === "2" ? "class='red'" : ""}>${statueMap[status] + (status === "2" && auditReason) ? auditReason : ''}</td>
+        <td ${status === "2" ? "class='red'" : ""}>${statueMap[status] + ((status === "2" && auditReason) ? ' ' + auditReason : '')}</td>
       </tr>
     `
   }
