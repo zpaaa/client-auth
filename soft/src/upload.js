@@ -6,7 +6,7 @@ import { Validator } from '../utils/utils';
 
 import { uploadIdentity, checkLogin } from '../utils/api'
 import { Dialog } from '../utils/dialog';
-import { Agree } from '../utils/agree'
+import { Agree } from '../utils/agree';
 
 (function () {
 

@@ -1,9 +1,7 @@
 // import "../style/reset.scss"
 import "../style/user.scss";
-import { getMyIdentity, checkLogin, getMyworks } from '../utils/api.js';
+import { getMyIdentity, getMyworks } from '../utils/api.js';
 import { headSwitch, getLoginState } from '../utils/common';
-headSwitch()
-
 
 function renderMywork(data, el) {
   if (!data) return
@@ -14,12 +12,26 @@ function renderMywork(data, el) {
   let workItem = ``
   for (var item of myWorks) {
     var { commitTime, uploadType, uploadName, status, auditReason } = item || {}
+    var statueMap = {
+      0: '待审核',
+      1: '通过审核',
+      2: '不通过审核',
+      3: '已上架',
+      4: '已下架'
+    }
+    var uploadTypeMap = {
+      1: '浏览器皮肤',
+      2: '浏览器插件',
+      3: '输入法表情',
+      4: '输入法皮肤',
+      5: '软件'
+    }
     workItem += `
       <tr>
         <td>${commitTime}</td>
-        <td>浏览器皮肤</td>
+        <td>${uploadTypeMap[uploadType]}</td>
         <td>${uploadName}</td>
-        <td ${status === 2 ? "class='red'" : ""}>${status + auditReason ? auditReason : ''}</td>
+        <td ${status === 2 ? "class='red'" : ""}>${statueMap[status]}</td>
       </tr>
     `
   }
@@ -44,29 +56,17 @@ function renderMyIdentity(data, el) {
     <tr>
       <td>${commitTime}</td>
       <td>${userType === '1' ? '个人用户' : '企业用户'}</td>
-      <td ${auditStatus === 2 ? "class='red'" : ""}>${ statusText+ auditReason ? auditReason : ''}</td>
+      <td ${auditStatus === 2 ? "class='red'" : ""}>${statusText + (auditStatus === 2 && auditReason ? auditReason : '')}</td>
     </tr>
   `
   identityStr = identityStr === '' ? '<td colspan="5">还未提交审核~</td>' : identityStr
   el.append($(identityStr))
 }
 
-function initEvent() {
-  $('.user-info .login-btn').on('click', function () {
-    window.location.href = "http://passport.2345.com/login?forward=" + window.location.href
-  })
-}
 
 function init() {
-  initEvent()
-  const domain = window.location.hostname
-  checkLogin(domain).then(res => {
-    $('.user-info .login-btn').hide().siblings().show()
-    $('.user-info .log-info').find('.username').text(res.userName)
-  }).catch(() => {
-    $('.user-info .login-btn').show().siblings().hide()
-  })
-
+  headSwitch()
+  getLoginState(window.location.hostname)
   getMyworks(1, 1, window.location.hostname).then((res) => {
     renderMywork(res, $('.myworks'))
   })

@@ -25,10 +25,18 @@ export function headSwitch() {
 }
 
 export function getLoginState (url) {
+  console.log(url)
   checkLogin(url).then(res => {
-    $('.user-info .login-info').find('.username').text(res.response.username)
+    console.log(res.userName)
+    $('.user-info .log-info').find('.username').text(res.userName)
     $('.user-info .login-btn').hide().siblings().show()
   }).catch(() => {
     $('.user-info .login-btn').show().siblings().hide()
+  })
+  $('.user-info .login-btn').on('click',  function() {
+    window.location.href = `//passport.2345.com/login?forward=${location.href}`
+  })
+  $('.user-info .logout').on('click', function () {
+    window.location.href = `http://passport.2345.com/login?action=logout&forward=${location.href}`
   })
 }

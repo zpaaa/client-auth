@@ -1,8 +1,8 @@
 import '../style/skin.scss'
 import '../style/common/agree.scss'
 import { Validator } from '../utils/utils'
+import { uploadWorks } from '../utils/api'
 export function upload (project, type) {
-  init()
   var fileList = []
 
   function uploadVali() {
@@ -15,7 +15,7 @@ export function upload (project, type) {
       ])
       .add('description', data.description, [
         { verify: 'isNonEmpty', errMsg: '描述不能为空' },
-        { verify: 'maxLength:10', errMsg: '长度不能超过20个汉字或字符' },
+        { verify: 'maxLength:100', errMsg: '长度不能超过100个汉字或字符' },
       ])
       .add('upload-file', data.file, [
         { verify: 'isNonEmpty', errMsg: '请上传文件' },
@@ -31,15 +31,6 @@ export function upload (project, type) {
     data.description = $('#description textarea').val()
     data.file = fileList
     return data
-  }
-
-  function init () {
-    uploadEvent()
-    agreeEvent()
-    submitEvent()
-    valiChangeEvent($('#display-name input'), 'display-name')
-    valiChangeEvent($('#description textarea'), 'description')
-    valiChangeEvent($('#upload-file input'), 'upload-file')
   }
 
   function valiChangeEvent (el, key) {
@@ -68,7 +59,7 @@ export function upload (project, type) {
   function uploadEvent() {
     // 上传事件
     $('#upload-file [type="file"]').on('change', function () {
-      fileList = $(this)[0].files
+      fileList = Array.prototype.slice.call($(this)[0].files,0)
       renderFileList($('#upload-file #uploadList'))
     })
     // 点击事件
@@ -113,11 +104,29 @@ export function upload (project, type) {
             $('#' + id + ' ' + '.error-msg').html(errObj[id])
           }
         } else {
-          console.log(getData(), project, type)
+          var data = getData()
+          uploadWorks(data).then(function (res) {
+            if (res.response.code === 2000) {
+              location.href = './user.html'
+            }
+          }).catch(function (err) {
+            console.log(err)
+          })
         }
       } else {
         $('#agree .error-msg').html('请先勾选作者协议')
       }
     });
   }
+
+  function init () {
+    uploadEvent()
+    agreeEvent()
+    submitEvent()
+    valiChangeEvent($('#display-name input'), 'display-name')
+    valiChangeEvent($('#description textarea'), 'description')
+    valiChangeEvent($('#upload-file input'), 'upload-file')
+  }
+
+  init()
 }

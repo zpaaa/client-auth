@@ -58,6 +58,7 @@ export var vrertifyRules = {
       errorMsg : void 0
   },
   minLength: function (value, length, errorMsg) {
+    value = value === undefined ? [] : value
     return value && value.length < length ?
       errorMsg : void 0
   },
@@ -86,9 +87,8 @@ export var vrertifyRules = {
     return errorMsg
   },
   fileSize: function (value, size, errorMsg) {
-
     value = value || [];
-    Object.prototype.toString.call(value) !== "[object Array]"?value = [value]:void 0
+    Object.prototype.toString.call(value) !== "[object Array]" ? value = [value] : void 0
     value = [value]
     var totalSize = 0;
     for (var i = 0; i < value.length; i++) {
@@ -97,13 +97,11 @@ export var vrertifyRules = {
     return totalSize > size * 1024 ? errorMsg : void 0
   },
   fileType: function (value, type, errorMsg) {
-    console.log(value, type, errorMsg)
+    console.log(window.a = value,type,errorMsg)
     var type = eval(type)
     value = value || [];
-    Object.prototype.toString.call(value) !== "[object Array]"?value = [value]:void 0
-    // 
+    Object.prototype.toString.call(value) !== "[object Array]" ? value = [value] : void 0
     for (var i = 0; i < value.length; i++) {
-      console.log(value[i])
       var selfType = value[i].type.split('/')[1]
       if (type.indexOf(selfType) === -1) {
         return errorMsg
