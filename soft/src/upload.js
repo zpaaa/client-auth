@@ -1,23 +1,21 @@
 
 import '../style/upload.scss'
-
-
 import { Validator } from '../utils/utils';
-
 import { uploadIdentity, checkLogin } from '../utils/api'
 import { Dialog } from '../utils/dialog';
-import { Agree } from '../utils/agree'
-
+import { Agree } from '../utils/agree';
+import { Message } from '../utils/message';
 (function () {
+  var message = new Message()
+
 
   /* 页面初始化获取当前用户的信息 */
-  var dialog = new Dialog('登录状态无效,请重新登录~')
   checkLogin(location.hostname).then(function (res) {
     var code = res.response.code
     var userName = res.userName;
     if (code === 2000) {
       var str = ` <span class="name"><a href="./user.html">${userName}</a></span>|
-      <span>退出</span>`
+      <span><a href="//passport.2345.com/login?action=logout&forward=${location.hostname}">退出</a></span>`
     } else {
       var str = `<span class="login">
                     <a href="//passport.2345.com/login?forward=${location.href}">
@@ -169,6 +167,9 @@ import { Agree } from '../utils/agree'
       ])
       .add('idCardBack', data.idCardBack, [
         { verify: 'minLength:1', errMsg: '必须上传身份证反面' }
+      ]).add('phone',data.phone,[
+        { verify: 'isNonEmpty', errMsg: '手机号不能为空' },
+        { verify: 'rightLength:11', errMsg: '手机号必须为11位' }
       ])
     return conpanyValidator
   }
@@ -273,6 +274,8 @@ import { Agree } from '../utils/agree'
   var dialog = new Dialog('上传资料中~')
   /* 点击上传按钮 */
   $('#submit').on('click', function () {
+    $('.is-error .error-msg').html('')      // 先将上次的错误提示清除
+    $('.is-error').removeClass('is-error')
     var agree = $('#agree .checkbox').hasClass('is-checked')
     if (agree) {
       const userType = $('#userType .is-checked input').val()
@@ -285,6 +288,7 @@ import { Agree } from '../utils/agree'
         conpanyValidator = conpanyVali()
         errObj = conpanyValidator.start()
       }
+      console.log(errObj)
       if (JSON.stringify(errObj) !== '{}') {
         for (var id in errObj) {
           if (id === 'phone' && userType === '1') {
@@ -298,40 +302,36 @@ import { Agree } from '../utils/agree'
         }
         return
       } else {
-        $('.is-error').removeClass('is-error')
         $('.is-error .error-msg').html('')
+        $('.is-error').removeClass('is-error')
       }
-      //TODO:增减弹窗 样式待定
       var data = userType === '1' ? person.getData() : company.getData()
       dialog.show()
       uploadIdentity(data).then(function (res) {
-        console.log(res.response.code, 'sssssssss')
+        dialog.hide() //返回信息之后关闭弹窗
         var code = res.response.code
         var msg = res.response.msg
         switch (code) {
           case 2000:
-            dialog.inner('上传成功！');
+            message.success('上传成功！')
             setTimeout(() => {
               location.href = './user.html';
-            }, 800);
+            }, 2000);
             break;
           case 4002:
-            dialog.inner('登录状态无效,请重新登录~');
+            message.error('登录状态无效,请重新登录~')
             setTimeout(() => {
               location.href = `//passport.2345.com/login?forward=${location.url}`
-            }, 800);
+            }, 2000);
             break;
           default:
-            dialog.inner(msg); break;
+            message.error(msg);
+            break;
         }
 
       }).catch(function (err) {
-        dialog.inner('上传失败，请稍后再试！')
+        message.error("上传失败，请稍后再试！");
         console.log(err)
-      }).finally(function () {
-        setTimeout(() => {
-          dialog.hide()
-        }, 500)
       })
     } else {
       $('#agree .error-msg').html('请先勾选作者协议')

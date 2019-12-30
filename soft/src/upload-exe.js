@@ -4,14 +4,18 @@ import '../style/upload-exe.scss';
 import { Validator } from '../utils/utils';
 
 import { uploadWorks, checkLogin } from '../utils/api'
-import { Agree} from '../utils/agree';
-
+import { Agree } from '../utils/agree';
+import { Message } from '../utils/message'
+import { Dialog } from '../utils/dialog';
 
 
 (function () {
+  var message = new Message()
+  var dialog = new Dialog('上传中~')
   var softScreenshotList = []
   var softIdentityList = []
   var logoList = []
+  var fileList = []
   function initEvent() {
     $('#radioChange').on('click', '.radio', function (e) {
       if ($(e.target).is("input")) {
@@ -37,6 +41,11 @@ import { Agree} from '../utils/agree';
     })
     $('#softIdentityList [type="button"]').on('click', function () {
       $('#softIdentityList [type="file"]').click()
+    })
+
+    $('#file [type="file"]').on('change', function () {
+      fileList = Array.prototype.slice.call($(this)[0].files)
+      render(fileList, 'fileList')
     })
     $('#softLogo [type="file"]').on('change', function () {
       logoList = Array.prototype.slice.call($(this)[0].files)
@@ -75,10 +84,68 @@ import { Agree} from '../utils/agree';
     /* 需要监听的change事件 */
     onchangeValidator($('#displayName input'), 'displayName')
     onchangeValidator($('#softVersion input'), 'softVersion')
-    onchangeValidator($('#description input'), 'description')
+    onchangeValidator($('#description textarea'), 'description')
     onchangeValidator($('#softLogo input'), 'softLogo')
     onchangeValidator($('#softScreenshotList input'), 'softScreenshotList')
     onchangeValidator($('#softIdentityList input'), 'softIdentityList')
+
+    // onchangeValidator($('#downloadUrl input'), 'downloadUrl')
+    // onchangeValidator($('#file input'), 'file')
+    /* 特殊处理 */
+    $('#file input').on('change', function () {
+      var validator = valida()
+      var msg = validator.keyValidator('file')
+      if (msg) {
+        $(this).parents('.form-item').addClass('is-error')
+        $(this).parents('.form-item').find('.error-msg').html(msg)
+        /* 两个一块联动 */
+        $('#downloadUrl').addClass('is-error')
+        $('#downloadUrl').find('.error-msg').html(msg)
+      } else {
+        $(this).parents('.form-item').removeClass('is-error')
+        $(this).parents('.form-item').find('.error-msg').html('')
+        $('#downloadUrl').removeClass('is-error')
+        $('#downloadUrl').find('.error-msg').html('')
+      }
+    })
+
+    $('#downloadUrl input').on('change', function () {
+      var validator = valida()
+      var msg = validator.keyValidator('downloadUrl')
+      if (msg) {
+        $(this).parents('.form-item').addClass('is-error')
+        $(this).parents('.form-item').find('.error-msg').html(msg)
+        /* 两个一块联动 */
+        $('#file').addClass('is-error')
+        $('#file').find('.error-msg').html(msg)
+      } else {
+        $(this).parents('.form-item').removeClass('is-error')
+        $(this).parents('.form-item').find('.error-msg').html('')
+        $('#file').removeClass('is-error')
+        $('#file').find('.error-msg').html('')
+      }
+    })
+
+
+    /* 特殊处理 */
+    $('#osVersionList').on('click', function (e) {
+      setTimeout(() => {
+        if ($(e.target).is('input')) {
+          return
+        }
+        var validator = valida()
+        var msg = validator.keyValidator('osVersionList')
+        console.log($(this))
+        if (msg) {
+          $(this).addClass('is-error')
+          $(this).find('.error-msg').html(msg)
+        } else {
+          $(this).removeClass('is-error')
+          $(this).find('.error-msg').html('')
+        }
+      })
+    })
+
 
   }
 
@@ -193,12 +260,14 @@ import { Agree} from '../utils/agree';
     return validator
   }
   $('#submit').on('click', function () {
+    $('.is-error .error-msg').html('')      // 先将上次的错误提示清除
+    $('.is-error').removeClass('is-error')
     console.log(getData())
+
     var agree = $('#agree .checkbox').hasClass('is-checked')
     if (agree) {
       var validator = valida()
       var errObj = validator.start()
-      console.log(errObj)
       if (JSON.stringify(errObj) !== '{}') {
         $('.is-error .error-msg').html('')
         $('.is-error').removeClass('is-error')
@@ -207,11 +276,15 @@ import { Agree} from '../utils/agree';
           $('#' + id + ' ' + '.error-msg').html(errObj[id])
         }
       } else {
-        console.log(getData())
         // TODO:增加弹出框   样式待定
+        dialog.show()
+
         uploadWorks(getData()).then(function (res) {
-          if(res.response.code===2000){
+          dialog.hide()
+          if (res.response.code === 2000) {
             location.href = './user.html'
+          } else {
+            message.error(res.response.msg)
           }
         }).catch(function () {
 
@@ -303,7 +376,7 @@ import { Agree} from '../utils/agree';
     var userName = res.userName;
     if (code === 2000) {
       var str = ` <span class="name"><a href="./user.html">${userName}</a></span>|
-      <span>退出</span>`
+      <span><a href="//passport.2345.com/login?action=logout&forward=${location.hostname}">退出</a></span>`
     } else {
       var str = `<span class="login">
                     <a href="//passport.2345.com/login?forward=${location.href}">
@@ -321,7 +394,7 @@ import { Agree} from '../utils/agree';
     $('#userInfo').html(str)
   })
 
-  $('#agree').on('click','b',function(){
+  $('#agree').on('click', 'b', function () {
     var agress = new Agree()
   })
 

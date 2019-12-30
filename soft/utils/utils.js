@@ -8,15 +8,15 @@ export var vrertifyRules = {
       errorMsg : void 0
   },
   minLength: function (value, length, errorMsg) {
-    return value && value.length < length ?
+    return !value || value.length < length ?
       errorMsg : void 0
   },
   maxLength: function (value, length, errorMsg) {
-    return value && value.length > length ?
+    return !value || value.length > length ?
       errorMsg : void 0
   },
   rightLength: function (value, length, errorMsg) {
-    return value && value.length != length ?
+    return !value || value.length != length ?
       errorMsg : void 0
   },
   isMoblie: function (value, errorMsg) {
