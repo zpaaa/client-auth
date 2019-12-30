@@ -5,9 +5,10 @@ console.log('pinyin');
 import { Validator, renderLogin } from '../utils/utils';
 import { uploadWorks } from '../utils/api'
 import { Agree } from '../utils/agree';
+import {Message } from '../utils/message';
 
 (function () {
-
+  var message = new Message()
   const urlobj = {};
   location.search.replace(/([^?&=]+)=([^&]+)/g, (_, k, v) => (urlobj[k] = v));
   /* 上传皮肤 */
@@ -154,6 +155,8 @@ import { Agree } from '../utils/agree';
           uploadWorks(data).then(function (res) {
             if (res.response.code === 2000) {
               location.href = './user.html'
+            }else{
+              message.error(res.response.msg)
             }
           }).catch(function (err) {
             console.log(err)
