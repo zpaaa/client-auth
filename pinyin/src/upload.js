@@ -19,7 +19,7 @@ import { Agree } from '../utils/agree'
     var userName = res.userName;
     if (code === 2000) {
       var str = ` <span class="name"><a href="./user.html">${userName}</a></span>|
-      <span>退出</span>`
+      <span><a href="//passport.2345.com/login?action=logout&forward=${location.origin}">退出</a></span>`
     } else {
       var str = `<span class="login">
                     <a href="//passport.2345.com/login?forward=${location.href}">
