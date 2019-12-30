@@ -8,7 +8,7 @@ function renderMywork(data, el) {
   var { myWorks = [] } = data
   let workItem = ``
   for (var item of myWorks) {
-    var { commitTime, uploadName, status, uploadType } = item || {}
+    var { commitTime, uploadName, status, uploadType, auditReason } = item || {}
     var statueMap = {
       0: '待审核',
       1: '通过审核',
@@ -29,7 +29,7 @@ function renderMywork(data, el) {
         <td>${commitTime}</td>
         <td>${uploadTypeMap[uploadType]}</td>
         <td>${uploadName}</td>
-        <td ${status === 2 ? "class='red'" : ""}>${statueMap[status]}</td>
+        <td ${status === "2" ? "class='red'" : ""}>${statueMap[status] + (auditStatus === "2" && auditReason) ? auditReason : ''}</td>
       </tr>
     `
   }
@@ -57,7 +57,7 @@ function renderMyIdentity(data, el) {
     <tr>
       <td>${commitTime}</td>
       <td>${userType === '1' ? '个人用户' : '企业用户'}</td>
-      <td ${auditStatus === 2 ? "class='red'" : ""}>${statusText + (auditStatus === 2 && auditReason ? auditReason : '')}</td>
+      <td ${auditStatus === "2" ? "class='red'" : ""}>${statusText + (auditStatus === "2" && auditReason ? auditReason : '')}</td>
     </tr>
   `
   identityStr = identityStr === '' ? '<td colspan="5">还未提交审核~</td>' : identityStr

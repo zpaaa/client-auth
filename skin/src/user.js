@@ -31,7 +31,7 @@ function renderMywork(data, el) {
         <td>${commitTime}</td>
         <td>${uploadTypeMap[uploadType]}</td>
         <td>${uploadName}</td>
-        <td ${status === 2 ? "class='red'" : ""}>${statueMap[status]}</td>
+        <td ${status === "2" ? "class='red'" : ""}>${statueMap[status] + (auditStatus === "2" && auditReason) ? auditReason : ''}</td>
       </tr>
     `
   }
@@ -45,18 +45,23 @@ function renderMywork(data, el) {
 function renderMyIdentity(data, el) {
   if (!data) return
   const { identity = {} } = data
+  const { commitTime, userType, auditStatus, auditReason } = identity
+  if(auditStatus === '1'){
+    $('.upload-info .title span').hide()
+  }else{
+    console.log($('.upload-list .title span'))
+    $('.upload-list .title span').hide()
+  }
   if (JSON.stringify(identity) === '{}') {
-
     el.append('<td colspan="5">还未提交审核~</td>')
     return
   }
-  const { commitTime, userType, auditStatus, auditReason } = identity
   const statusText = auditStatus === '0' ? '待审核' : auditStatus === '1' ? '通过审核' : '审核未通过';
   let identityStr = `
     <tr>
       <td>${commitTime}</td>
       <td>${userType === '1' ? '个人用户' : '企业用户'}</td>
-      <td ${auditStatus === 2 ? "class='red'" : ""}>${statusText + (auditStatus === 2 && auditReason ? auditReason : '')}</td>
+      <td ${auditStatus === '2' ? "class='red'" : ""}>${statusText + (auditStatus === "2" && auditReason ? auditReason : '')}</td>
     </tr>
   `
   identityStr = identityStr === '' ? '<td colspan="5">还未提交审核~</td>' : identityStr
