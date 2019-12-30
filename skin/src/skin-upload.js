@@ -2,9 +2,11 @@ import '../style/skin.scss'
 import '../style/common/agree.scss'
 import { Validator } from '../utils/utils'
 import { uploadWorks } from '../utils/api'
+import { Agree } from '../utils/agree';
+import { Message } from '../utils/message';
 export function upload (project, type) {
+  var message = new Message()
   var fileList = []
-
   function uploadVali() {
     var uploadValidator = new Validator()
     var data = getData()
@@ -86,6 +88,10 @@ export function upload (project, type) {
       var oCheckbox = $(this).parent('.checkbox')
       oCheckbox.hasClass('is-checked') ? oCheckbox.removeClass('is-checked') : oCheckbox.addClass('is-checked'); $('#agree .error-msg').html('')
     })
+
+    $('#agree-btn').on('click', function () {
+      new Agree()
+    })
   }
 
   function submitEvent () {
@@ -110,7 +116,7 @@ export function upload (project, type) {
               location.href = './user.html'
             }
           }).catch(function (err) {
-            console.log(err)
+            message.error(res.response.msg)
           })
         }
       } else {

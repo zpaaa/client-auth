@@ -8,10 +8,13 @@ import { Validator } from '../utils/utils';
 import { uploadIdentity } from '../utils/api'
 import { Dialog } from '../utils/dialog';
 import { headSwitch, getLoginState } from '../utils/common'
+import { Message } from '../utils/message';
+import { Agree } from '../utils/agree';
 headSwitch();
 getLoginState(window.location.hostname);
 
 (function () {
+  var message = new Message()
   var fileList = []
   function conpanyVali() {
     var conpanyValidator = new Validator()
@@ -281,52 +284,40 @@ getLoginState(window.location.hostname);
 
       var data = userType === '1' ? person.getData() : company.getData()
       dialog.show()
-      uploadIdentity(data).then(function(res){
-        dialog.inner('上传成功！')
-      }).catch(function(err){
-        dialog.inner('上传失败，请稍后再试！')
+      uploadIdentity(data).then(function (res) {
+        dialog.hide() //返回信息之后关闭弹窗
+        var code = res.response.code
+        var msg = res.response.msg
+        switch (code) {
+          case 2000:
+            message.success('上传成功！')
+            setTimeout(() => {
+              location.href = './user.html';
+            }, 2000);
+            break;
+          case 4002:
+            message.error('登录状态无效,请重新登录~')
+            setTimeout(() => {
+              location.href = `//passport.2345.com/login?forward=${location.url}`
+            }, 2000);
+            break;
+          default:
+            message.error(msg);
+            break;
+        }
+
+      }).catch(function (err) {
+        message.error("上传失败，请稍后再试！");
         console.log(err)
-      }).finally(function(){
-        setTimeout(()=>{
-          dialog.hide()
-        },500)
       })
     } else {
       $('#agree .error-msg').html('请先勾选作者协议')
     }
   });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  $('#agree-btn').on('click', 'b', function () {
+    new Agree()
+  })
 })();
 
 

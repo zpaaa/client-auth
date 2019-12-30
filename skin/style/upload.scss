@@ -3,12 +3,14 @@
 @import './common/dialog.scss';
 @import './common/reset.scss';
 @import "./common.scss";
+@import './common/agree.scss';
+@import './common/message.scss';
 
 #verify {
   width: 100%;
   background: #fafafa;
   position: relative;
-  padding-bottom: 250px;
+  // padding-bottom: 250px;
   // .verify-header {
   //   height: 80px;
   //   border: 1px solid #e6e6e6;
