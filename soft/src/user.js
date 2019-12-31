@@ -24,7 +24,7 @@ function renderMywork(data, el) {
         <td>${commitTime}</td>
         <td>软件</td>
         <td>${uploadName}</td>
-        <td ${status === "2" ? "class='red'" : ""}>${statueMap[status] + ((status === "2" && auditReason) ? ' ' + auditReason : '')}</td>
+        <td ${status === "2" ? "class='red'" : ""}>${statueMap[status] + ((status === "2" && auditReason) ? (':' + auditReason) : '')}</td>
       </tr>
     `
   }
@@ -53,7 +53,7 @@ function renderMyIdentity(data, el) {
     <tr>
       <td>${commitTime}</td>
       <td>${userType === '1' ? '个人用户' : '企业用户'}</td>
-      <td ${auditStatus === "2" ? "class='red'" : ""}>${statusText + ((auditStatus === "2" && auditReason) ? auditReason : '')}</td>
+      <td ${auditStatus === "2" ? "class='red'" : ""}>${statusText + ((auditStatus === "2" && auditReason) ? (':' + auditReason) : '')}</td>
     </tr>
   `
   identityStr = identityStr === '' ? '<td colspan="5">还未提交审核~</td>' : identityStr
