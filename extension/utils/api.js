@@ -1,11 +1,11 @@
 
 export function uploadWorks(data) {
-  console.log(data,'datat')
+  // console.log(data,'datat')
   var formData = new FormData()
   var cookie = {
     domain: location.hostname,
     projectId:1,
-    type:1,
+    type:2,
   }
 
   $.each(data, function (key, value) {

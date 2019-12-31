@@ -7,7 +7,7 @@ function renderMywork(data, el) {
   if (!data) return
   var { myWorks = [] } = data
   myWorks = myWorks.filter(v => {
-    return v.uploadType === "1"
+    return v.uploadType === "2"
   })
   let workItem = ``
   for (var item of myWorks) {
