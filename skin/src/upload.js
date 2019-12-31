@@ -252,6 +252,8 @@ getLoginState(window.location.hostname);
   var dialog = new Dialog('上传资料中~')
   /* 点击上传按钮 */
   $('#submit').on('click', function () {
+    $('.is-error').removeClass('is-error')
+    $('.is-error').find('.error-msg').html()
     var agree = $('#agree .checkbox').hasClass('is-checked')
     if (agree) {
       const userType = $('#userType .is-checked input').val()
