@@ -2,10 +2,12 @@
 @import "./common/mixins.scss";
 @import "./common/pinyinHeaderFooter.scss";
 @import "./common/reset.scss";
-@import "./common/footer.scss";
+// @import "./common/footer.scss";
 
 .pinyin {
+  background: #fafafa;
   @include pinyinHeader();
+  @include footer();
   .main {
     margin-top: 20px;
     padding: 33px 0 0 60px;

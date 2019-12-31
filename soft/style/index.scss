@@ -1,9 +1,9 @@
 @import './common/reset.scss';
 @import '../style/common/softHeadeFooter.scss';
-@import '../style/common/footer.scss';
+// @import '../style/common/footer.scss';
 
 @include softHeader();
-
+@include footer();
 
 .banner {
   min-width: 1200px;

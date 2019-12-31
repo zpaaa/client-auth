@@ -4,7 +4,7 @@
 @import './common/mixins.scss';
 @import './common/form.scss';
 @import './common/softHeadeFooter.scss';
-@import './common/footer.scss';
+// @import './common/footer.scss';
 @import './common/agree.scss';
 @import './common/message.scss';
 @import './common/dialog.scss';
@@ -12,7 +12,8 @@
 #upload-exe{
   width: 100%;
   background: #fafafa;
-  @include softHeader()
+  @include softHeader();
+  @include footer()
  
 }
 

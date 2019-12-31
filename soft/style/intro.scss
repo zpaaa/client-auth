@@ -1,9 +1,10 @@
 @import "./common/reset.scss";
 @import "./common/softHeadeFooter.scss";
-@import "./common/footer.scss";
+// @import "./common/footer.scss";
 
 .soft-intro {
   @include softHeader();
+  @include footer();
   .main {
     margin-top: 20px;
   }

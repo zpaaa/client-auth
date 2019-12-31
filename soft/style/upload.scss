@@ -3,7 +3,7 @@
 @import './common/form.scss';
 @import './common/softHeadeFooter.scss';
 @import './common/dialog.scss';
-@import './common/footer.scss';
+// @import './common/footer.scss';
 @import './common/agree.scss';
 @import './common/message.scss';
 
@@ -11,7 +11,7 @@
   width: 100%;
   background: #fafafa;
   @include softHeader();
-
+  @include footer()
 }
 
 .verify-main {

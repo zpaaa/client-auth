@@ -1,10 +1,10 @@
 @import './common/reset.scss';
 @import './common/pinyinHeaderFooter.scss';
-@import './common/footer.scss';
-@import './common/footer.scss';
+// @import './common/footer.scss';
 body {
   background: #fafafa;
   @include pinyinHeader();
+  @include footer();
   .use-center {
     .main {
       margin-top: 20px;

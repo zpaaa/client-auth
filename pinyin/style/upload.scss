@@ -3,7 +3,7 @@
 @import './common/dialog.scss';
 @import './common/reset.scss';
 @import "./common/pinyinHeaderFooter.scss";
-@import "./common/footer.scss";
+// @import "./common/footer.scss";
 @import "../style/common/agree.scss";
 @import "../style/common/message.scss";
 
@@ -11,8 +11,8 @@
   width: 100%;
   background: #fafafa;
   position: relative;
-  padding-bottom: 250px;
-  @include pinyinHeader()
+  @include pinyinHeader();
+  @include footer()
   // .verify-header {
   //   height: 80px;
   //   border: 1px solid #e6e6e6;

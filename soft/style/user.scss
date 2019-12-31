@@ -1,10 +1,11 @@
 @import './common/reset.scss';
 @import './common/softHeadeFooter.scss';
-@import './common/footer.scss';
+// @import './common/footer.scss';
 
 body {
   background: #fafafa;
   @include softHeader();
+  @include footer();
   .use-center {
     .main {
       margin-top: 20px;
