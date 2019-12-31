@@ -164,7 +164,7 @@ import {Message } from '../utils/message';
           })
         }
       } else {
-        $('#agree .error-msg').html('请先勾选作者协议')
+        $('#agree .error-msg').html('请先勾选2345输入法作者协议')
       }
     });
   }
