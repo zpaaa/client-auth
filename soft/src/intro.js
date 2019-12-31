@@ -28,3 +28,13 @@ checkLogin(location.hostname).then(function (res) {
   $('#userInfo').html(str)
 })
 
+
+$('#instor-box .tab').on('click','a',function(e){
+  console.log($(this).attr('attr-index'))
+  var index = $(this).attr('attr-index')
+  $('.contain-box').css({display:'none'})
+  $($('.contain-box')[index]).css({display:'block'})
+
+})
+
+

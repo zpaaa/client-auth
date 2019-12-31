@@ -291,7 +291,8 @@ input, textarea, select {
 .soft-intro .main {
   margin-top: 20px; }
 
-.soft-intro .tab, .soft-intro .container {
+.soft-intro .tab,
+.soft-intro .container {
   min-height: 690px;
   float: left;
   box-sizing: border-box;
@@ -354,8 +355,10 @@ input, textarea, select {
     color: #666;
     text-indent: 30px; }
   .soft-intro .container li {
-    height: 28px;
     line-height: 28px;
     margin-bottom: 12px;
     font-size: 14px;
     color: #666; }
+
+.soft-intro .contain-box table * {
+  color: #666 !important; }
