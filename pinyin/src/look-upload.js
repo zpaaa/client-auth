@@ -137,6 +137,8 @@ import {Message } from '../utils/message';
   function submitEvent() {
     /* 点击上传按钮 */
     $('#submit').on('click', function () {
+      $('.is-error').removeClass('is-error')
+      $('.is-error').find('.error-msg').html()
       var agree = $('#agree .checkbox').hasClass('is-checked')
       if (agree) {
         var uploadValidator;
