@@ -72,7 +72,7 @@ function init() {
     var code = res.response.code
     var userName = res.userName;
     if (code === 2000) {
-      var str = ` <span class="name"><a href="./user.html">${userName}</a></span>|
+      var str = ` <span class="name"><a href="javascript:;">${userName}</a></span>|
       <span><a href="//passport.2345.com/login?action=logout&forward=${location.href}">退出</a></span>`
     } else {
       var str = `<span class="login">

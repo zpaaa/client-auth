@@ -15,7 +15,7 @@ import {Message } from '../utils/message';
   if(urlobj.type==1){
     $('#type .is-checked').removeClass('is-checked')
     $('#type input[value="4"]').parents('.radio').addClass('is-checked')
-    $('#upload-file .is-required').html('<span>文件 <b>（您的扩展包，只支持zip或ssf，不超过100M）</b></span>')
+    // $('#upload-file .is-required').html('<span>文件 <b>（您的扩展包，只支持zip或ssf，不超过100M）</b></span>')
   }
 
   /* 文件的描述信息 */
@@ -33,21 +33,20 @@ import {Message } from '../utils/message';
       .add('description', data.description, [
         { verify: 'isNonEmpty', errMsg: '描述不能为空' },
         { verify: 'maxLength:100', errMsg: '长度不能超过100个汉字或字符' },
+      ]).add('upload-file', data.file, [
+        { verify: 'minLength:1', errMsg: '请上传文件' },
+        { verify: 'fileSize:100', errMsg: '文件大小不能超过100M' },
+        { verify: 'fileType:["zip"]', errMsg: '文件类型只能为zip' },
       ])
     /* 1为皮肤 */
-    if (data.type == 4) {
-      uploadValidator.add('upload-file', data.file, [
-        { verify: 'minLength:1', errMsg: '请上传文件' },
-        { verify: 'fileSize:1', errMsg: '文件大小不能超过1M' },
-        { verify: 'fileType:["zip","ssf"]', errMsg: '文件类型只能为zip、ssf' },
-      ])
-    } else {
-      uploadValidator.add('upload-file', data.file, [
-        { verify: 'minLength:1', errMsg: '请上传文件' },
-        { verify: 'fileSize:20', errMsg: '文件大小不能超过20M' },
-        { verify: 'fileType:["png","jpg","zip"]', errMsg: '文件类型只能为png、jpg、zip' },
-      ])
-    }
+    // if (data.type == 4) {
+    // } else {
+    //   uploadValidator.add('upload-file', data.file, [
+    //     { verify: 'minLength:1', errMsg: '请上传文件' },
+    //     { verify: 'fileSize:20', errMsg: '文件大小不能超过20M' },
+    //     { verify: 'fileType:["zip"]', errMsg: '文件类型只能为zip' },
+    //   ])
+    // }
     return uploadValidator
   }
 
@@ -108,11 +107,11 @@ import {Message } from '../utils/message';
         return
       }
       $(this).addClass('is-checked').parent().siblings().find('.radio').removeClass('is-checked')
-      if($(this).find('input').val()==4){
-        $('#upload-file .is-required').html('<span>文件 <b>（您的扩展包，只支持zip或ssf，不超过100M）</b></span>')
-      }else{
-        $('#upload-file .is-required').html('<span>文件 <b>（文件类型只能为png、jpg、zip）</b></span>')
-      }
+      // if($(this).find('input').val()==4){
+      //   $('#upload-file .is-required').html('<span>文件 <b>（您的扩展包，只支持zip，不超过100M）</b></span>')
+      // }else{
+      //   $('#upload-file .is-required').html('<span>文件 <b>（文件类型只能为zip）</b></span>')
+      // }
       fileList = []
     })
   }
