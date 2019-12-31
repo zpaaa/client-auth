@@ -113,6 +113,7 @@ import {Message } from '../utils/message';
       //   $('#upload-file .is-required').html('<span>文件 <b>（文件类型只能为zip）</b></span>')
       // }
       fileList = []
+      renderFileList($('#upload-file #uploadList'))
     })
   }
   

@@ -334,7 +334,7 @@ import { Message } from '../utils/message';
         console.log(err)
       })
     } else {
-      $('#agree .error-msg').html('请先勾选2345软件管家发放平台作者协议')
+      $('#agree .error-msg').html('请先勾选2345软件管家开放平台作者协议')
     }
   });
 
