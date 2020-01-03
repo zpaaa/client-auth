@@ -20,7 +20,7 @@ export function upload (project, type) {
         { verify: 'maxLength:100', errMsg: '长度不能超过100个汉字或字符' },
       ])
       .add('upload-file', data.file, [
-        { verify: 'isNonEmpty', errMsg: '请上传文件' },
+        { verify: 'minLength:1', errMsg: '请上传文件' },
         { verify: 'fileSize:20', errMsg: '文件大小不能超过20M' },
         { verify: 'fileType:["zip"]', errMsg: '文件类型只能为Zip' },
       ])
@@ -116,6 +116,8 @@ export function upload (project, type) {
           uploadWorks(data).then(function (res) {
             if (res.response.code === 2000) {
               location.href = './user.html'
+            } else {
+              message.error(res.response.msg)
             }
           }).catch(function (err) {
             message.error(res.response.msg)
