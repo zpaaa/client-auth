@@ -49,7 +49,7 @@ function renderMyIdentity(data, el) {
   if(auditStatus === '1'){
     $('.upload-info .title span').hide()
   }else{
-    console.log($('.upload-list .title span'))
+    // console.log($('.upload-list .title span'))
     $('.upload-list .title span').hide()
   }
   if (JSON.stringify(identity) === '{}') {

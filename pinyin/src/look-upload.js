@@ -1,6 +1,6 @@
 import '../style/look-upload.scss';
 import '../style/common/agree.scss';
-console.log('pinyin');
+// console.log('pinyin');
 
 import { Validator, renderLogin } from '../utils/utils';
 import { uploadWorks } from '../utils/api'
@@ -145,7 +145,7 @@ import {Message } from '../utils/message';
         var errObj;
         uploadValidator = uploadVali()
         errObj = uploadValidator.start()
-        console.log(errObj)
+        // console.log(errObj)
         if (JSON.stringify(errObj) !== '{}') {
           for (var id in errObj) {
             $('#' + id).addClass('is-error')
@@ -161,7 +161,7 @@ import {Message } from '../utils/message';
               message.error(res.response.msg)
             }
           }).catch(function (err) {
-            console.log(err)
+            // console.log(err)
           })
         }
       } else {

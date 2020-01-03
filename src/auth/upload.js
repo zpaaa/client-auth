@@ -39,11 +39,11 @@ import { Dialog } from '../dialog';
         if ($(e.target).is("input")) {
           return
         }
-        console.log('切换userType')
+        // console.log('切换userType')
         $(this).find('.radio').addClass('is-checked')
         $(this).siblings().find('.is-checked').removeClass('is-checked')
         var userType = $('#userType .is-checked input').val()
-        console.log(userType)
+        // console.log(userType)
         if (userType === '1') {
           $('#person').css({ display: 'block' })
           $('#company').css({ display: 'none' })
@@ -62,7 +62,7 @@ import { Dialog } from '../dialog';
       })
       /* 点击上传文件 */
       $('#companyPictureList').on('click', '[type="button"]', function () {
-        console.log('上传文件')
+        // console.log('上传文件')
         $('#companyPictureList [type="file"]').click()
       })
       /* 多次选择图片 */
@@ -156,7 +156,7 @@ import { Dialog } from '../dialog';
   var person = {
     initEvent: function () {
       $('#idCardHandHeld [type="button"]').on('click', function () {
-        console.log('上传身份证信息')
+        // console.log('上传身份证信息')
         $('#idCardHandHeld [type="file"]').click()
       })
       $('#idCardFront [type="button"]').on('click', function () {
@@ -282,7 +282,7 @@ import { Dialog } from '../dialog';
         dialog.inner('上传成功！')
       }).catch(function(err){
         dialog.inner('上传失败，请稍后再试！')
-        console.log(err)
+        // console.log(err)
       }).finally(function(){
         setTimeout(()=>{
           dialog.hide()

@@ -15,7 +15,7 @@ export function uploadIdentity(data) {
       formData.append(key, value)
     }
   })
-  console.log(window.aaa =formData,'window.aaaa' )
+  // console.log(window.aaa =formData,'window.aaaa' )
   return new Promise((reslove, reject) => {
     $.ajax({
       url: '//ie.kehuduan.2345.com/api/index.php?r=Api/uploadIdentity',
@@ -26,7 +26,7 @@ export function uploadIdentity(data) {
       type: "POST",
       xhrFields: { withCredentials: true },
       success: function (res) {
-        console.log(res,'api文件中')
+        // console.log(res,'api文件中')
         return reslove(res)
       },
       error: function (err) {

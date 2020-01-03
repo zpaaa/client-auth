@@ -1,7 +1,7 @@
 // import "../style/reset.scss"
 import "./user.scss"
 import { getMyIdentity, checkLogin } from '../utils'
-console.log('auth')
+// console.log('auth')
 
 function getMyworks (project, type, domain) {
   return new Promise((resolve, reject) => {
@@ -15,7 +15,7 @@ function getMyworks (project, type, domain) {
       },
       dataType: 'json',
       success: function(data){
-        // console.log(data)
+        // // console.log(data)
         resolve(data)
       }
    });

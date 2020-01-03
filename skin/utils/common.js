@@ -25,9 +25,9 @@ export function headSwitch() {
 }
 
 export function getLoginState (url) {
-  console.log(url)
+  // console.log(url)
   checkLogin(url).then(res => {
-    console.log(res.userName)
+    // console.log(res.userName)
     $('.user-info .log-info').find('.username').text(res.userName)
     $('.user-info .login-btn').hide().siblings().show()
   }).catch(() => {

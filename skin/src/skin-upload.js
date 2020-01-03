@@ -72,7 +72,7 @@ export function upload (project, type) {
     /* 点击图片的删除 */
     $('#upload-file #uploadList').on('click', 'i', function () {
       var index = $(this).attr('data-index')
-      console.log(index)
+      // console.log(index)
       fileList = []
       $('#upload-file input').val('')
       renderFileList($('#upload-file #uploadList'))

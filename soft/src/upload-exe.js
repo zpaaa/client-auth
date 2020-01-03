@@ -135,7 +135,7 @@ import { Dialog } from '../utils/dialog';
         }
         var validator = valida()
         var msg = validator.keyValidator('osVersionList')
-        console.log($(this))
+        // console.log($(this))
         if (msg) {
           $(this).addClass('is-error')
           $(this).find('.error-msg').html(msg)
@@ -262,7 +262,7 @@ import { Dialog } from '../utils/dialog';
   $('#submit').on('click', function () {
     $('.is-error .error-msg').html('')      // 先将上次的错误提示清除
     $('.is-error').removeClass('is-error')
-    console.log(getData())
+    // console.log(getData())
 
     var agree = $('#agree .checkbox').hasClass('is-checked')
     if (agree) {

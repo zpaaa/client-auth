@@ -20,7 +20,7 @@ export function checkLogin(domain) {
         }
       },
       error: function (err) {
-        console.log(err)
+        // console.log(err)
         reject('fail')
       }
     })
@@ -97,13 +97,13 @@ export var vrertifyRules = {
     return totalSize > size * 1024 ? errorMsg : void 0
   },
   fileType: function (value, type, errorMsg) {
-    console.log(value, type, errorMsg)
+    // console.log(value, type, errorMsg)
     var type = eval(type)
     value = value || [];
     Object.prototype.toString.call(value) !== "[object Array]"?value = [value]:void 0
     // 
     for (var i = 0; i < value.length; i++) {
-      console.log(value[i])
+      // console.log(value[i])
       var selfType = value[i].type.split('/')[1]
       if (type.indexOf(selfType) === -1) {
         return errorMsg

@@ -1,6 +1,6 @@
 import './look-upload.scss'
 
-console.log('pinyin')
+// console.log('pinyin')
 
 
 import { headSwitch, getLoginState } from './common'
@@ -85,7 +85,7 @@ export function upload (project, type) {
     /* 点击图片的删除 */
     $('#upload-file #uploadList').on('click', 'i', function () {
       var index = $(this).attr('data-index')
-      console.log(index)
+      // console.log(index)
       fileList = []
       $('#upload-file input').val('')
       renderFileList($('#upload-file #uploadList'))
@@ -119,7 +119,7 @@ export function upload (project, type) {
             $('#' + id + ' ' + '.error-msg').html(errObj[id])
           }
         } else {
-          console.log(getData(), project, type)
+          // console.log(getData(), project, type)
         }
       } else {
         $('#agree .error-msg').html('请先勾选作者协议')

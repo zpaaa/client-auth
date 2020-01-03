@@ -1,6 +1,6 @@
 import '../style/user.scss';
 import { getMyIdentity, checkLogin, getMyworks } from '../utils/api';
-console.log('auth');
+// console.log('auth');
 
 
 function renderMywork(data, el) {
@@ -40,7 +40,7 @@ function renderMyIdentity(data, el) {
   if(auditStatus === '1'){
     $('.upload-info .title span').hide()
   }else{
-    console.log($('.upload-list .title span'))
+    // console.log($('.upload-list .title span'))
     $('.upload-list .title span').hide()
   }
   if (JSON.stringify(identity) === '{}') {
@@ -81,7 +81,7 @@ function init() {
                     </a>
                   </span>`
     }
-    console.log(str)
+    // console.log(str)
     $('#userInfo').html(str)
   }).catch(() => {
     var str = `<span class="login">

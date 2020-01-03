@@ -38,7 +38,7 @@ Dialog.prototype.show = function(){
 }
 Dialog.prototype.initEvent = function(){
   $('#dialog').on('click',function(e){
-    console.log(window.a = $($(e.target).attr('class')==='close'))
+    // console.log(window.a = $($(e.target).attr('class')==='close'))
     if($(e.target).attr('class')==='close'){
       $('#dialog').css({display:'none'})
       $(document.body).css({overflow:'inherit'})

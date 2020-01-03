@@ -30,7 +30,7 @@ checkLogin(location.hostname).then(function (res) {
 
 
 $('#instor-box .tab').on('click','a',function(e){
-  console.log($(this).attr('attr-index'))
+  // console.log($(this).attr('attr-index'))
   var index = $(this).attr('attr-index')
   $('.contain-box').css({display:'none'})
   $($('.contain-box')[index]).css({display:'block'})

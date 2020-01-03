@@ -21,7 +21,7 @@ export function uploadWorks(data) {
       formData.append(key, value)
     }
   })
-  console.log(window.a = formData,'上传的formData')
+  // console.log(window.a = formData,'上传的formData')
   return new Promise((resolve, reject) => {
     $.ajax({
       type: "post",
@@ -38,7 +38,7 @@ export function uploadWorks(data) {
         resolve(data)
       },
       error: function (err) {
-        console.log(err)
+        // console.log(err)
         reject(err)
       }
     })
@@ -64,7 +64,7 @@ export function checkLogin(domain) {
         resolve(data)
       },
       error: function (err) {
-        console.log(err)
+        // console.log(err)
         reject(err)
       }
     })
@@ -108,7 +108,7 @@ export function uploadIdentity(data) {
       formData.append(key, value)
     }
   })
-  console.log(window.aaa = formData, 'window.aaaa')
+  // console.log(window.aaa = formData, 'window.aaaa')
   return new Promise((reslove, reject) => {
     $.ajax({
       url: '//ie.kehuduan.2345.com/api/index.php?r=Api/uploadIdentity',
@@ -119,7 +119,7 @@ export function uploadIdentity(data) {
       type: "POST",
       xhrFields: { withCredentials: true },
       success: function (res) {
-        console.log(res, 'api文件中')
+        // console.log(res, 'api文件中')
         return reslove(res)
       },
       error: function (err) {
@@ -143,7 +143,7 @@ export function getMyworks(project, type) {
       dataType: 'json',
       xhrFields: { withCredentials: true },
       success: function (data) {
-        // console.log(data)
+        // // console.log(data)
         resolve(data)
       }
     });

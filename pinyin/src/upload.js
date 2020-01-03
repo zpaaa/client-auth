@@ -62,11 +62,11 @@ import { Message } from '../utils/message';
         if ($(e.target).is("input")) {
           return
         }
-        console.log('切换userType')
+        // console.log('切换userType')
         $(this).find('.radio').addClass('is-checked')
         $(this).siblings().find('.is-checked').removeClass('is-checked')
         var userType = $('#userType .is-checked input').val()
-        console.log(userType)
+        // console.log(userType)
         if (userType === '1') {
           $('#person').css({ display: 'block' })
           $('#company').css({ display: 'none' })
@@ -85,7 +85,7 @@ import { Message } from '../utils/message';
       })
       /* 点击上传文件 */
       $('#companyPictureList').on('click', '[type="button"]', function () {
-        console.log('上传文件')
+        // console.log('上传文件')
         $('#companyPictureList [type="file"]').click()
       })
       /* 多次选择图片 */
@@ -182,7 +182,7 @@ import { Message } from '../utils/message';
   var person = {
     initEvent: function () {
       $('#idCardHandHeld [type="button"]').on('click', function () {
-        console.log('上传身份证信息')
+        // console.log('上传身份证信息')
         $('#idCardHandHeld [type="file"]').click()
       })
       $('#idCardFront [type="button"]').on('click', function () {
@@ -286,7 +286,7 @@ import { Message } from '../utils/message';
         conpanyValidator = conpanyVali()
         errObj = conpanyValidator.start()
       }
-      console.log(errObj)
+      // console.log(errObj)
       if (JSON.stringify(errObj) !== '{}') {
         for (var id in errObj) {
           if (id === 'phone' && userType === '1') {
@@ -329,7 +329,7 @@ import { Message } from '../utils/message';
 
       }).catch(function (err) {
         message.error("上传失败，请稍后再试！");
-        console.log(err)
+        // console.log(err)
       })
     } else {
       $('#agree .error-msg').html('请先勾选2345输入法作者协议')

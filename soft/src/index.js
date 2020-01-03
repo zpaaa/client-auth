@@ -35,7 +35,7 @@ import { checkLogin, getMyIdentity } from '../utils/api';
     if (islogin) {
       /* 如果登录成功的话获取当前的审核状态 */
       getMyIdentity(location.hostname).then(res => {
-        console.log(res,"获取资质的接口")
+        // console.log(res,"获取资质的接口")
         if (res.response.code === 4005) { //资质未上传
           location.href = './upload.html'
         } else if (res.response.code === 2000) {

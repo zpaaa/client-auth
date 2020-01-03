@@ -125,7 +125,7 @@ import { Validator } from '../utils';
   function valida() {
     var validator = new Validator()
     var data = getData()
-    console.log(data)
+    // console.log(data)
     validator
       .add('displayName', data.displayName, [
         { verify: 'isNonEmpty', errMsg: '名称不能为空' },
@@ -171,7 +171,7 @@ import { Validator } from '../utils';
     if (agree) {
       var validator = valida()
       var errObj = validator.start()
-      console.log(errObj)
+      // console.log(errObj)
       if (JSON.stringify(errObj) !== '{}') {
         $('.is-error .error-msg').html('')
         $('.is-error').removeClass('is-error')
@@ -180,7 +180,7 @@ import { Validator } from '../utils';
           $('#' + id + ' ' + '.error-msg').html(errObj[id])
         }
       } else {
-        console.log(getData())
+        // console.log(getData())
       }
 
     } else {
@@ -215,7 +215,7 @@ import { Validator } from '../utils';
     var that = this
     $(this.id).on('click', function (e) {
       var target = $(e.target)
-      console.log(target)
+      // console.log(target)
       if(target.hasClass('inner')){
         var options = $(that.id).find('.options-list')
         options.css('display')==='block'?options.css({'display':'none'}):options.css({'display':'block'})

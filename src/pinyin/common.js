@@ -26,10 +26,10 @@ export function headSwitch() {
 
 export function getLoginState () {
   checkLogin().then(res => {
-    console.log('res', res)
+    // console.log('res', res)
     if (res && res.response.code === 2000) {
       // 已登录
-      console.log(res.response.username)
+      // console.log(res.response.username)
     }
   })
 }
