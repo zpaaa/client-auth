@@ -365,6 +365,8 @@ body {
   right: 0;
   left: 0;
   bottom: 0; }
+  .agree-pop * {
+    font-size: 14px !important; }
   .agree-pop .modal {
     position: fixed;
     top: 0;
