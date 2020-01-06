@@ -1,57 +1,3 @@
-// 验证登录信息
-export function checkLogin(domain) {
-  return new Promise((resolve, reject) => {
-    $.ajax({
-      type: "post",
-      url: "//ie.kehuduan.2345.com/index.php?r=Api/login",
-      data: {
-        domain
-      },
-      dataType: 'json',
-      //  默认情况下，标准的跨域请求是不会发送cookie的
-　　　 xhrFields: {
-　　　　　withCredentials: true
-　　　 },
-      success: function (data) {
-        if (data && data.response.code === 2000) {
-          resolve(data)
-        } else {
-          reject('fail')
-        }
-      },
-      error: function (err) {
-        // console.log(err)
-        reject('fail')
-      }
-    })
-  })
-}
-
-// 验证审核信息
-export function getMyIdentity(domain) {
-  return new Promise((resolve, reject) => {
-    $.ajax({
-      type: "post",
-      url: "//ie.kehuduan.2345.com/index.php?r=Api/myIdentity",
-      data: {
-        domain
-      },
-      dataType: 'json',
-      success: function (data) {
-        resolve(data)
-      }
-    })
-  })
-}
-
-function getCookie(name) {
-  var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)");
-  if(arr=document.cookie.match(reg))
-  return unescape(arr[2]);
-  else
-  return null;
-}
-
 export var vrertifyRules = {
   isNonEmpty: function (value, errorMsg) {
     return value === '' ?
@@ -97,15 +43,18 @@ export var vrertifyRules = {
     return totalSize > size * 1024 ? errorMsg : void 0
   },
   fileType: function (value, type, errorMsg) {
-    // console.log(window.a = value,type,errorMsg)
+    // console.log(window.a = value)
     var type = eval(type)
     value = value || [];
     Object.prototype.toString.call(value) !== "[object Array]" ? value = [value] : void 0
     for (var i = 0; i < value.length; i++) {
       var selfType = value[i].type.split('/')[1]
-      if (type.indexOf(selfType) === -1) {
-        return errorMsg
-      }
+      // console.log('文件类型为-----------', selfType)
+      const res = type.filter(v => { return selfType.indexOf(v) >= 0 })
+      if (res.length === 0) { return errorMsg }
+      // if (type.indexOf(selfType) === -1) {
+      //   return errorMsg
+      // }
     }
     return void 0
   }

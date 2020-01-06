@@ -1,4 +1,4 @@
-import { checkLogin } from './utils'
+import { checkLogin } from './api'
 export function headSwitch() {
   var hoverObj = $(".mIcon-bg");
 	var pcmBgObj = $("#curr-pc-m");
