@@ -5,12 +5,12 @@ import postcss from 'rollup-plugin-postcss-modules'
 // import sourceMaps from 'rollup-plugin-sourcemaps'
 import { uglify } from "rollup-plugin-uglify";
 import { terser } from "rollup-plugin-terser";
-const VER = 1;
+// const VER = 1;
 export default [
   {
     input: './src/user.js',
     output: {
-        file: `./dist/user_v${VER}.js`,
+        file: `./dist/user.js`,
         format: 'esm'
     },
     plugins: [
@@ -25,7 +25,7 @@ export default [
         template: './public/user.html',
         target: './dist/user.html',
         replaceVars: {
-          '__STYLE_URL__': `user_v${VER}.css`
+          '__STYLE_URL__': `user.css`
         }
       })
     ]
@@ -33,13 +33,13 @@ export default [
   {
     input: './src/look-upload.js',
     output: {
-      file: `./dist/look-upload_v${VER}.js`,
+      file: `./dist/look-upload.js`,
       format: 'esm'
     },
     plugins: [
       terser(),
       scss({
-        output: `./dist/look-upload_v${VER}.css`
+        output: `./dist/look-upload.css`
       }),
       postcss({
         plugins: [autoprefixer()]
@@ -48,7 +48,7 @@ export default [
         template: './public/look-upload.html',
         target: './dist/look-upload.html',
         replaceVars: {
-          '__STYLE_URL__': `look-upload_v${VER}.css`
+          '__STYLE_URL__': `look-upload.css`
         }
       })
     ]
@@ -56,13 +56,13 @@ export default [
   {
     input: './src/upload.js',
     output: {
-      file: `./dist/upload_v${VER}.js`,
+      file: `./dist/upload.js`,
       format: 'esm'
     },
     plugins: [
       terser(),
       scss({
-        output: `./dist/upload_v${VER}.css`
+        output: `./dist/upload.css`
       }),
       postcss({
         plugins: [autoprefixer()]
@@ -71,7 +71,7 @@ export default [
         template: './public/upload.html',
         target: './dist/upload.html',
         replaceVars: {
-          '__STYLE_URL__': `upload_v${VER}.css`
+          '__STYLE_URL__': `upload.css`
         }
       })
     ]

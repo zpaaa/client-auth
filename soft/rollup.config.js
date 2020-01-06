@@ -4,6 +4,7 @@ import autoprefixer from 'autoprefixer'
 import postcss from 'rollup-plugin-postcss-modules'
 // import sourceMaps from 'rollup-plugin-sourcemaps'
 import { terser } from "rollup-plugin-terser";
+// const VER = 1;
 export default [
   {
     input: './src/index.js',
@@ -23,6 +24,9 @@ export default [
       template({
         template: './public/index.html',
         target: './dist/index.html',
+        replaceVars: {
+          '__STYLE_URL__': `index.css`
+        }
       })
     ]
   },
@@ -44,6 +48,9 @@ export default [
       template({
         template: './public/intro.html',
         target: './dist/intro.html',
+        replaceVars: {
+          '__STYLE_URL__': `intro.css`
+        }
       })
     ]
   },
@@ -65,6 +72,9 @@ export default [
       template({
         template: './public/upload-exe.html',
         target: './dist/upload-exe.html',
+        replaceVars: {
+          '__STYLE_URL__': `upload-exe.css`
+        }
       })
     ]
   },
@@ -86,6 +96,9 @@ export default [
       template({
         template: './public/user.html',
         target: './dist/user.html',
+        replaceVars: {
+          '__STYLE_URL__': `user.css`
+        }
       })
     ]
   },
@@ -107,6 +120,9 @@ export default [
       template({
         template: './public/upload.html',
         target: './dist/upload.html',
+        replaceVars: {
+          '__STYLE_URL__': `upload.css`
+        }
       })
     ]
   },

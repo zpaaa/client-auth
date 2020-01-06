@@ -23,6 +23,9 @@ export default [
       template({
         template: './public/user.html',
         target: './dist/user.html',
+        replaceVars: {
+          '__STYLE_URL__': `user.css`
+        }
       })
     ]
   },
@@ -43,6 +46,9 @@ export default [
       template({
         template: './public/upload.html',
         target: './dist/upload.html',
+        replaceVars: {
+          '__STYLE_URL__': `upload.css`
+        }
       })
     ]
   },
@@ -63,6 +69,9 @@ export default [
       template({
         template: './public/skin-upload.html',
         target: './dist/skin-upload.html',
+        replaceVars: {
+          '__STYLE_URL__': `skin-upload.css`
+        }
       })
     ]
   }
