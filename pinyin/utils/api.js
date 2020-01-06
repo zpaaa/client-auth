@@ -25,7 +25,7 @@ export function uploadWorks(data) {
   return new Promise((resolve, reject) => {
     $.ajax({
       type: "post",
-      url: "//ie.kehuduan.2345.com/api/index.php?r=Api/uploadWorks",
+      url: "//ie.kehuduan.2345.com/index.php?r=Api/uploadWorks",
       data:formData,
       processData: false,
       contentType: false,
@@ -111,7 +111,7 @@ export function uploadIdentity(data) {
   // console.log(window.aaa = formData, 'window.aaaa')
   return new Promise((reslove, reject) => {
     $.ajax({
-      url: '//ie.kehuduan.2345.com/api/index.php?r=Api/uploadIdentity',
+      url: '//ie.kehuduan.2345.com/index.php?r=Api/uploadIdentity',
       data: formData,
       processData: false,
       dataType: "json",

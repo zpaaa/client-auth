@@ -59,6 +59,14 @@ import { Dialog } from '../utils/dialog';
       softIdentityList = softIdentityList.concat(Array.prototype.slice.call($(this)[0].files))
       render(softIdentityList, 'softIdentity')
     })
+
+    $('#fileList').on('click', 'i', function () {
+      var index = $(this).attr('data-index')
+      fileList.splice(index, 1)
+      /* 不管删除的谁  都清空input的value */
+      $('#file [type="file"]')[0].value = ''
+      render(fileList, 'fileList')
+    })
     $('#softScreenshotList').on('click', 'i', function () {
       var index = $(this).attr('data-index')
       softScreenshotList.splice(index, 1)

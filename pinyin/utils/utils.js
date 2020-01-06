@@ -120,9 +120,12 @@ export var vrertifyRules = {
     Object.prototype.toString.call(value) !== "[object Array]" ? value = [value] : void 0
     for (var i = 0; i < value.length; i++) {
       var selfType = value[i].type.split('/')[1]
-      if (type.indexOf(selfType) === -1) {
-        return errorMsg
-      }
+      // console.log('文件类型为-----------', selfType)
+      const res = type.filter(v => { return selfType.indexOf(v) >= 0 })
+      if (res.length === 0) { return errorMsg }
+      // if (type.indexOf(selfType) === -1) {
+      //   return errorMsg
+      // }
     }
     return void 0
   }
