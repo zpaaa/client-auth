@@ -51,10 +51,10 @@ export function renderLogin(el) {
     if (code === 2000) {
       islogin = true
       var str = ` <span class="name"><a href="./user.html">${userName}</a></span>|
-      <span><a href="//passport.2345.com/login?action=logout&forward=${location.href}">退出</a></span>`
+      <span><a href="//passport.2345.com/login?action=logout&forward=${location.origin + location.pathname}">退出</a></span>`
     } else {
       var str = `<span class="login">
-                    <a href="//passport.2345.com/login?forward=${location.href}">
+                    <a href="//passport.2345.com/login?forward=${location.origin + location.pathname}">
                       账号登录
                     </a>
                   </span>`
@@ -62,7 +62,7 @@ export function renderLogin(el) {
     el.html(str)
   }).catch(function () {
     var str = `<span class="login">
-                    <a href="//passport.2345.com/login?forward=${location.href}">
+                    <a href="//passport.2345.com/login?forward=${location.origin + location.pathname}">
                       账号登录
                     </a>
                   </span>`

@@ -15,10 +15,10 @@ import { Message } from '../utils/message';
     var userName = res.userName;
     if (code === 2000) {
       var str = ` <span class="name"><a href="./user.html">${userName}</a></span>|
-      <span><a href="//passport.2345.com/login?action=logout&forward=${location.href}">退出</a></span>`
+      <span><a href="//passport.2345.com/login?action=logout&forward=${location.origin + location.pathname}">退出</a></span>`
     } else {
       var str = `<span class="login">
-                    <a href="//passport.2345.com/login?forward=${location.href}">
+                    <a href="//passport.2345.com/login?forward=${location.origin + location.pathname}">
                       账号登录
                     </a>
                   </span>`
@@ -321,7 +321,7 @@ import { Message } from '../utils/message';
           case 4002:
             message.error('登录状态无效,请重新登录~')
             setTimeout(() => {
-              location.href = `//passport.2345.com/login?forward=${location.url}`
+              location.href = `//passport.2345.com/login?forward=${location.origin + location.pathname}`
             }, 2000);
             break;
           default:

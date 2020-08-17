@@ -62,7 +62,7 @@ function renderMyIdentity(data, el) {
 
 function initEvent() {
   $('.user-info .login-btn').on('click', function () {
-    window.location.href = "http://passport.2345.com/login?forward=" + window.location.href
+    window.location.href = "http://passport.2345.com/login?forward=" + location.origin + location.pathname
   })
 }
 
@@ -73,10 +73,10 @@ function init() {
     var userName = res.userName;
     if (code === 2000) {
       var str = ` <span class="name"><a href="javascript:;">${userName}</a></span>|
-      <span><a href="//passport.2345.com/login?action=logout&forward=${location.href}">退出</a></span>`
+      <span><a href="//passport.2345.com/login?action=logout&forward=${location.origin + location.pathname}">退出</a></span>`
     } else {
       var str = `<span class="login">
-                    <a href="//passport.2345.com/login?forward=${location.href}">
+                    <a href="//passport.2345.com/login?forward=${location.origin + location.pathname}">
                       账号登录
                     </a>
                   </span>`
@@ -85,7 +85,7 @@ function init() {
     $('#userInfo').html(str)
   }).catch(() => {
     var str = `<span class="login">
-        <a href="//passport.2345.com/login?forward=${location.href}">
+        <a href="//passport.2345.com/login?forward=${location.origin + location.pathname}">
           账号登录
         </a>
       </span>`
